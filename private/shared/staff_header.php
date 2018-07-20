@@ -36,5 +36,15 @@
           </form>
         </div><!-- .collapse -->
 
+        <div class="dropdown d-none d-lg-inline ml-2">
+          <button class="dropbtn"><img class="img-fluid rounded-circle" src="<?php echo url_for('/images/user.png'); ?>" width="25px"></button>
+          <div class="dropdown-content">
+            <a href="#">Lists</a>
+            <a href="#">Users</a>
+            <a href="#">Edit Site</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+
       </div><!-- container -->
     </nav><!-- nav -->
