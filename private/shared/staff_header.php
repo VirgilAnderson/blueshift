@@ -19,13 +19,15 @@
         </button>
 
         <div class="collapse navbar-collapse" id="myToggleNav">
-          <span class="navbar-text text-capitalize d-sm-none d-lg-inline ml-auto mr-auto">Attraction Marketing Machine</span>
+          
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="<?php echo url_for('index.php'); ?>">Home</a>
-            <a class="nav-item nav-link" href="#">Mission</a>
-            <a class="nav-item nav-link" href="#">Services</a>
-            <a class="nav-item nav-link" href="#">Blog</a>
-            <a class="nav-item nav-link" href="<?php echo url_for('/staff/login.php'); ?>">Login</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('index.php'); ?>">Dashboard</a>
+            <a class="nav-item nav-link" href="#">Leads</a>
+            <a class="nav-item nav-link" href="#">Actions</a>
+            <a class="nav-item nav-link" href="#">Projects</a>
+            <a class="nav-item nav-link" href="#">Analytics</a>
+            <a class="nav-item nav-link" href="#">Projects</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('/staff/login.php'); ?>">Logout</a>
           </div><!-- navbar -->
         </div><!-- .collapse -->
 
