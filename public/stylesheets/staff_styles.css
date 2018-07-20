@@ -34,3 +34,6 @@ shade 4 = #103634 - Dark
 .btn{
   background-color: var(--dark-blue);
 }
+.breadcrumb-item+.breadcrumb-item::before{
+  content: '>';
+}
