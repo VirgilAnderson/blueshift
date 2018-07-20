@@ -5,11 +5,12 @@
     <p>&copy; BlueShift Tech <script type="text/javaScript">var year = new Date();document.write(year.getFullYear());</script> </p>
 
     <ul class="nav">
-      <a class="nav-item ml-3 text-dark active" href="<?php echo url_for('index.php'); ?>">Home</a>
-      <a class="nav-item ml-3 text-dark" href="#">Mission</a>
-      <a class="nav-item ml-3 text-dark" href="#">Services</a>
-      <a class="nav-item ml-3 text-dark" href="#">Blog</a>
-      <a class="nav-item ml-3 text-dark" href="<?php echo url_for('/staff/login.php'); ?>">Login</a>
+      <a class="nav-item ml-3 text-dark active" href="<?php echo url_for('index.php'); ?>">Dashboard</a>
+      <a class="nav-item ml-3 text-dark" href="#">Leads</a>
+      <a class="nav-item ml-3 text-dark" href="#">Actions</a>
+      <a class="nav-item ml-3 text-dark" href="#">Projects</a>
+      <a class="nav-item ml-3 text-dark" href="#">Analytics</a>
+      <a class="nav-item ml-3 text-dark" href="<?php echo url_for('/staff/login.php'); ?>">Logout</a>
     </ul>
 
   </div><!-- .row -->
