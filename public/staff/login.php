@@ -28,4 +28,4 @@
     </fieldset><!-- fieldset -->
   </form>
 </div><!-- content container -->
-<?php include(SHARED_PATH. '/staff_footer.php'); ?>
+<?php include(SHARED_PATH. '/public_footer.php'); ?>
