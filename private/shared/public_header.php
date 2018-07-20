@@ -24,6 +24,7 @@
             <a class="nav-item nav-link" href="<?php echo url_for('index.php'); ?>">Home</a>
             <a class="nav-item nav-link" href="#">Mission</a>
             <a class="nav-item nav-link" href="#">Services</a>
+            <a class="nav-item nav-link" href="#">Blog</a>
             <a class="nav-item nav-link" href="<?php echo url_for('/staff/login.php'); ?>">Login</a>
           </div><!-- navbar -->
         </div><!-- .collapse -->

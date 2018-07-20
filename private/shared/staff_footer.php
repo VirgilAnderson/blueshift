@@ -8,6 +8,7 @@
       <a class="nav-item ml-3 text-dark active" href="<?php echo url_for('index.php'); ?>">Home</a>
       <a class="nav-item ml-3 text-dark" href="#">Mission</a>
       <a class="nav-item ml-3 text-dark" href="#">Services</a>
+      <a class="nav-item ml-3 text-dark" href="#">Blog</a>
       <a class="nav-item ml-3 text-dark" href="<?php echo url_for('/staff/login.php'); ?>">Login</a>
     </ul>
 
