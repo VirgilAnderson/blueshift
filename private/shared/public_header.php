@@ -19,7 +19,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="myToggleNav">
-          <span class="navbar-text text-capitalize d-sm-none d-lg-inline ml-auto mr-auto">Attraction Marketing Machine</span>
+          <span class="navbar-text text-capitalize d-sm-none d-lg-inline ml-auto mr-auto">Not just a website; a marketing machine!</span>
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="<?php echo url_for('index.php'); ?>">Home</a>
             <a class="nav-item nav-link" href="#">Mission</a>
