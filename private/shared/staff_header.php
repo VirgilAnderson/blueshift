@@ -13,7 +13,7 @@
     <nav class="navbar navbar-dark  navbar-expand-sm">
       <div class="container">
 
-        <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page">BlueShift Tech</a>
+        <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('/staff/index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page">BlueShift Tech</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myToggleNav" aria-controls="myToggleNav" aria-expanded="false" aria-label="Toggle Navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="myToggleNav">
 
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="<?php echo url_for('index.php'); ?>">Dashboard</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
             <a class="nav-item nav-link" href="#">Leads</a>
             <a class="nav-item nav-link" href="#">Actions</a>
             <a class="nav-item nav-link" href="#">Projects</a>
