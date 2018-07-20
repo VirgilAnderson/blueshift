@@ -3,9 +3,9 @@
 
 <div class="container mt-4">
 
-<h2>Login</h2>
+<h2>User Login</h2>
 
-<form>
+<form class="col-sm-6">
 
     <fieldset class="form-group">
       <legend>Your Info</legend>
