@@ -23,6 +23,12 @@ shade 0 = #325554
 shade 3 = #1E4140
 shade 4 = #103634 - Dark
 */
+:root{
+  --navBack: #15213B;
+}
 .navbar{
-  background-color: #15213B;
+  background-color: var(--navBack);
+}
+.btn{
+  background-color: var(--navBack);
 }
