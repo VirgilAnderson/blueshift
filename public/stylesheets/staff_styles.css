@@ -3,7 +3,7 @@
 ---------------------------------------------------
 shade 1 = #737D91 - Light
 shade 2 = #525D76
-shade 0 = #3B465E
+shade 0 = #3B465E - Main
 shade 3 = #243048
 shade 4 = #15213B - Dark
 
@@ -11,7 +11,7 @@ shade 4 = #15213B - Dark
 ---------------------------------------------------
 shade 1 = #7E7795 - Light
 shade 2 = #5D5579
-shade 0 = #453D60
+shade 0 = #453D60 - Main
 shade 3 = #2E264A
 shade 4 = #1F173D - Dark
 
@@ -19,16 +19,18 @@ shade 4 = #1F173D - Dark
 ---------------------------------------------------
 shade 1 = #668483 - Light
 shade 2 = #476B6A
-shade 0 = #325554
+shade 0 = #325554 - Main
 shade 3 = #1E4140
 shade 4 = #103634 - Dark
 */
 :root{
-  --navBack: #15213B;
+  --dark-blue: #15213B;
+  --main-blue: #3B465E;
+  --light-blue: #737D91;
 }
 .navbar{
-  background-color: var(--navBack);
-}
+    background-color: var(--dark-blue);
+  }
 .btn{
-  background-color: var(--navBack);
+  background-color: var(--dark-blue);
 }
