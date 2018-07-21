@@ -14,7 +14,7 @@
   <body class="bg-light">
     <nav class="navbar navbar-dark fixed-top navbar-expand-sm">
       <div class="container">
-        <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('/staff/index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page">Blueshift Tech</a>
+        <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('/staff/index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page"><span class="font-weight-bold">Blueshift</span> Tech</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myToggleNav" aria-controls="myToggleNav" aria-expanded="false" aria-label="Toggle Navigation">
           <span class="navbar-toggler-icon"></span>
