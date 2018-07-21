@@ -12,7 +12,7 @@
     <div class="container col-sm-6 mb-4">
       <div class="card">
         <div class="card-header">
-          <a href=""><h2>Today's Tasks</h2></a>
+          <a href="#" class="text-info"><h2>Today's Tasks</h2></a>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
@@ -54,7 +54,7 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="#"><h2>New Leads</h2></a>
+          <a href="#" class="text-info"><h2>New Leads</h2></a>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
@@ -64,6 +64,7 @@
                   <th>Firstname</th>
                   <th>Lastname</th>
                   <th>Email</th>
+                  <th>Source</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,16 +72,19 @@
                   <td><span class="badge badge-primary">new</span> John</td>
                   <td>Doe</td>
                   <td>john@example.com</td>
+                  <td>Web form</td>
                 </tr>
                 <tr>
                   <td><span class="badge badge-primary">new</span> Mary</td>
                   <td>Moe</td>
                   <td>mary@example.com</td>
+                  <td>Web form</td>
                 </tr>
                 <tr>
                   <td><span class="badge badge-primary">new</span> July</td>
                   <td>Dooley</td>
                   <td>july@example.com</td>
+                  <td>Web form</td>
                 </tr>
               </tbody>
             </table>
@@ -91,9 +95,10 @@
   </div><!-- . row -->
   <div class="row">
     <div class="container col-12 mb-4">
+
       <div class="card">
         <div class="card-header">
-          <a href="#"><h2>Project Tasks</h2></a>
+          <a href="#" class="text-info"><h2>Project Tasks</h2></a>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
