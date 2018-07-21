@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="myToggleNav">
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
-            <a class="nav-item nav-link" href="#">Leads</a>
-            <a class="nav-item nav-link" href="#">Tasks</a>
-            <a class="nav-item nav-link" href="#">Projects</a>
-            <a class="nav-item nav-link" href="#">Analytics</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('staff/leads/index.php'); ?>">Leads</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('staff/tasks/index.php'); ?>">Tasks</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('staff/projects/index.php'); ?>">Projects</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('staff/analytics/index.php'); ?>">Analytics</a>
           </div><!-- navbar -->
 
           <form class="form-inline d-none d-lg-inline-block ml-4">
