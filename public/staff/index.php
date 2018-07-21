@@ -56,6 +56,7 @@
         <div class="card-header">
           <a href="#" class="text-info"><h2>New Leads</h2></a>
         </div><!-- .card-header -->
+
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-hover">
@@ -93,9 +94,9 @@
       </div><!-- .card -->
     </div><!-- .container col-sm-6 -->
   </div><!-- . row -->
-  <div class="row">
-    <div class="container col-12 mb-4">
 
+  <div class="row">  
+    <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
           <a href="#" class="text-info"><h2>Project Tasks</h2></a>
