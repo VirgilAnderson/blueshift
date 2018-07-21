@@ -31,8 +31,8 @@
             <a class="nav-item nav-link" href="#">Analytics</a>
           </div><!-- navbar -->
           <form class="form-inline d-none d-lg-inline-block ml-4">
-            <input class="form-control" type="text" placeholder="Search">
-            <button class="btn btn-outline-light" type="submit">Go</button>
+            <input class="form-control form-control-sm" type="text" placeholder="Search">
+            <button class="btn btn-sm btn-outline-light" type="submit">Go</button>
           </form>
         </div><!-- .collapse -->
 
