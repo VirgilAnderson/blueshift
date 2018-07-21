@@ -13,7 +13,7 @@
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <a href="#" class="text-info"><h2>Tasks</h2></a>
+          <h2>Tasks</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
