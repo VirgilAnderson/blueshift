@@ -11,32 +11,38 @@
   <div class="row">
     <div class="container col-sm-6 mb-4">
       <div class="card">
-        <div class="card-header"><h2>Today's Tasks</h2></div>
+        <div class="card-header">
+          <a href=""><h2>Today's Tasks</h2></a>
+        </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
+                  <th>Title</th>
+                  <th>Due Date</th>
+                  <th>Time</th>
+                  <th>Contact Name</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
+                  <td>Follow Up</td>
+                  <td>12.17.18</td>
+                  <td>5:00 PM</td>
+                  <td>John Smith</td>
                 </tr>
                 <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
+                  <td>Closing</td>
+                  <td>12.17.18</td>
+                  <td>2:00 PM</td>
+                  <td>Betty Lou</td>
                 </tr>
                 <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
+                  <td>Follow Up</td>
+                  <td>12.17.18</td>
+                  <td>3:30 PM</td>
+                  <td>Jimmy Stuart</td>
                 </tr>
               </tbody>
             </table>
@@ -59,17 +65,17 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>John</td>
+                  <td><span class="badge badge-primary">new</span> John</td>
                   <td>Doe</td>
                   <td>john@example.com</td>
                 </tr>
                 <tr>
-                  <td>Mary</td>
+                  <td><span class="badge badge-primary">new</span> Mary</td>
                   <td>Moe</td>
                   <td>mary@example.com</td>
                 </tr>
                 <tr>
-                  <td>July</td>
+                  <td><span class="badge badge-primary">new</span> July</td>
                   <td>Dooley</td>
                   <td>july@example.com</td>
                 </tr>
@@ -89,9 +95,9 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
+                  <th>Title</th>
+                  <th>Due Date</th>
+                  <th>Time</th>
                 </tr>
               </thead>
               <tbody>
