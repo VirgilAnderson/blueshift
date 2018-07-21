@@ -26,7 +26,7 @@
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
             <a class="nav-item nav-link" href="#">Leads</a>
-            <a class="nav-item nav-link" href="#">Actions</a>
+            <a class="nav-item nav-link" href="#">Tasks</a>
             <a class="nav-item nav-link" href="#">Projects</a>
             <a class="nav-item nav-link" href="#">Analytics</a>
           </div><!-- navbar -->
