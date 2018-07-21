@@ -23,7 +23,7 @@
         <input type="text" class="form-control" placeholder="Password">
       </div><!-- form-group -->
 
-      <button class="btn btn-secondary" type="submit">Login</button>
+      <button class="btn btn-info" type="submit">Login</button>
 
     </fieldset><!-- fieldset -->
   </form>

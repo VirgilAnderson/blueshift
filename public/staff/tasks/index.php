@@ -9,6 +9,7 @@
 </div><!-- .container mt-4 -->
 
 <div class="container">
+  <a href="<?php echo url_for('/staff/tasks/new.php'); ?>" class="btn btn-outline-info text-light mb-2" role="button">Add new task</a>
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
