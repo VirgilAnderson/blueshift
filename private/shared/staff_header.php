@@ -11,7 +11,7 @@
       rel="stylesheet">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/staff_styles.css'); ?>" />
   </head>
-  <body>
+  <body class="bg-light">
     <nav class="navbar navbar-dark  navbar-expand-sm">
       <div class="container">
 
