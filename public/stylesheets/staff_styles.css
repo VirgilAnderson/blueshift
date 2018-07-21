@@ -34,6 +34,10 @@ shade 4 = #103634 - Dark
 .btn{
   background-color: var(--dark-blue);
 }
+#tasks{
+  background-color: var(--light-blue);
+}
+
 .breadcrumb-item+.breadcrumb-item::before{
   content: '>';
 }
