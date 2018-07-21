@@ -4,7 +4,8 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item active">Leads</li>
+    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/leads/index.php'); ?>">Leads</a></li>
+    <li class="breadcrumb-item active">New Lead</li>
   </ol>
 </div><!-- .container mt-4 -->
 

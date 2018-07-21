@@ -9,12 +9,12 @@
 </div><!-- .container mt-4 -->
 
 <div class="container">
-  <a href="<?php echo url_for('/staff/projects/new.php'); ?>" class="btn btn-outline-info text-light mb-2" role="button">Add new project</a>
+  <a href="<?php echo url_for('/staff/projects/new.php'); ?>" class="btn btn-outline-dark text-outline-dark mb-2" role="button">Add new project</a>
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Project Tasks</h2>
+          <h2>Projects</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">

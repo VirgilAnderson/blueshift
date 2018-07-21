@@ -9,12 +9,12 @@
 </div><!-- .container mt-4 -->
 
 <div class="container">
-  <a href="<?php echo url_for('/staff/leads/new.php'); ?>" class="btn btn-outline-info text-light mb-2" role="button">Add new lead</a>
+  <a href="<?php echo url_for('/staff/leads/new.php'); ?>" class="btn btn-outline-dark text-outline-dark mb-2" role="button">Add new lead</a>
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>New Leads</h2>
+          <h2>Leads</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">

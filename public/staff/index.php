@@ -12,7 +12,7 @@
     <div class="container col-sm-6 mb-4">
       <div class="card">
         <div class="card-header">
-          <a href="<?php echo url_for('staff/tasks/index.php'); ?>" class="text-info"><h2>Today's Tasks</h2></a>
+          <a href="<?php echo url_for('staff/tasks/index.php'); ?>" class="text-info"><h2>Upcoming Tasks</h2></a>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
@@ -54,7 +54,7 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="<?php echo url_for('staff/leads/index.php'); ?>" class="text-info"><h2>New Leads</h2></a>
+          <a href="<?php echo url_for('staff/leads/index.php'); ?>" class="text-info"><h2>Leads</h2></a>
         </div><!-- .card-header -->
 
         <div class="card-body">
@@ -99,7 +99,7 @@
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <a href="<?php echo url_for('staff/projects/index.php'); ?>" class="text-info"><h2>Project Tasks</h2></a>
+          <a href="<?php echo url_for('staff/projects/index.php'); ?>" class="text-info"><h2>Projects</h2></a>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
