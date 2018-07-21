@@ -70,19 +70,19 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><span class="badge badge-primary">new</span> John</td>
+                  <td><span class="badge badge-info">new</span> John</td>
                   <td>Doe</td>
                   <td>john@example.com</td>
                   <td>Web form</td>
                 </tr>
                 <tr>
-                  <td><span class="badge badge-primary">new</span> Mary</td>
+                  <td><span class="badge badge-info">new</span> Mary</td>
                   <td>Moe</td>
                   <td>mary@example.com</td>
                   <td>Web form</td>
                 </tr>
                 <tr>
-                  <td><span class="badge badge-primary">new</span> July</td>
+                  <td><span class="badge badge-info">new</span> July</td>
                   <td>Dooley</td>
                   <td>july@example.com</td>
                   <td>Web form</td>
