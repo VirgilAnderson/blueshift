@@ -6,10 +6,10 @@
 
     <ul class="nav">
       <a class="nav-item ml-3 text-dark active" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
-      <a class="nav-item ml-3 text-dark" href="#">Leads</a>
-      <a class="nav-item ml-3 text-dark" href="#">Tasks</a>
-      <a class="nav-item ml-3 text-dark" href="#">Projects</a>
-      <a class="nav-item ml-3 text-dark" href="#">Analytics</a>
+      <a class="nav-item ml-3 text-dark" href="<?php echo url_for('staff/leads/index.php'); ?>">Leads</a>
+      <a class="nav-item ml-3 text-dark" href="<?php echo url_for('staff/tasks/index.php'); ?>">Tasks</a>
+      <a class="nav-item ml-3 text-dark" href="<?php echo url_for('staff/projects/index.php'); ?>">Projects</a>
+      <a class="nav-item ml-3 text-dark" href="<?php echo url_for('staff/analytics/index.php'); ?>">Analytics</a>
       <a class="nav-item ml-3 text-dark" href="<?php echo url_for('/staff/login.php'); ?>">Logout</a>
     </ul>
 
