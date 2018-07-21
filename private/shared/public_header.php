@@ -10,7 +10,7 @@
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/staff_styles.css'); ?>" />
   </head>
   <body>
-    <nav class="navbar navbar-dark  navbar-expand-sm">
+    <nav class="navbar navbar-dark fixed-top navbar-expand-sm">
       <div class="container">
 
         <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page">BlueShift Tech</a>

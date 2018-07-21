@@ -1,5 +1,5 @@
 
-<footer class="fixed-bottom text-dark bg-body border border-left-0 border-right-0 border-bottom-0">
+<footer class="text-dark bg-body border border-left-0 border-right-0 border-bottom-0">
   <div class="container pt-4 pb-2">
     <div class="row">
     <p>&copy; BlueShift Tech <script type="text/javaScript">var year = new Date();document.write(year.getFullYear());</script> </p>

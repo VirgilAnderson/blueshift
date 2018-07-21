@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialize.php'); ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
-<div class="container mt-4">
+<div class="container" style="margin-top: 90px;">
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('index.php'); ?>" >Home</a></li>
@@ -28,4 +28,5 @@
     </fieldset><!-- fieldset -->
   </form>
 </div><!-- content container -->
+
 <?php include(SHARED_PATH. '/public_footer.php'); ?>

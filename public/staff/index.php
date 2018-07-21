@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialize.php'); ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
-<div class="container mt-4">
+<div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item active">Dashboard</li>
   </ol>
