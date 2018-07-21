@@ -26,7 +26,6 @@
             <a class="nav-item nav-link" href="<?php echo url_for('staff/leads/index.php'); ?>">Leads</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/tasks/index.php'); ?>">Tasks</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/projects/index.php'); ?>">Projects</a>
-            <a class="nav-item nav-link" href="<?php echo url_for('staff/analytics/index.php'); ?>">Analytics</a>
           </div><!-- navbar -->
 
           <form class="form-inline d-none d-lg-inline-block ml-4">
@@ -41,6 +40,7 @@
             <a href="#">Lists</a>
             <a href="#">Users</a>
             <a href="#">Edit Site</a>
+            <a href="#">Analytics</a>
             <a href="<?php echo url_for('/staff/login.php'); ?>">Logout</a>
           </div><!-- .dropdown-content -->
         </div><!-- .dropdown -->
