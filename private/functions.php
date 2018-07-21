@@ -45,7 +45,7 @@
   function display_errors($errors=array()){
     $output = '';
     if(!empty($errors)){
-      $output .= "<div class=\"errors\">";
+      $output .= "<div class=\"alert alert-warning alert-dismissible fade show\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";
       $output .= "Please fix the following errors:";
       $output .= "<ul>";
 

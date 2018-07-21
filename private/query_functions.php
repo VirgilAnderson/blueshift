@@ -376,7 +376,7 @@ function find_admin_by_id($id){
 function find_admin_by_username($username){
   global $db;
 
-  $sql = "SELECT * FROM admins ";
+  $sql = "SELECT * FROM user ";
   $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
   $sql .= "Limit 1";
   $result = mysqli_query($db, $sql);

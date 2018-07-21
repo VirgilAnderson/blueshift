@@ -74,3 +74,16 @@ shade 4 = #103634 - Dark
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+.errors{
+  display: inline-block;
+  border: 2px solid red;
+  color: red;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.errors ul{
+  margin-bottom: 0;
+  padding-left: 1em;
+}
