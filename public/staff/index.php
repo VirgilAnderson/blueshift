@@ -29,7 +29,7 @@
                 <tr>
                   <td>Follow Up</td>
                   <td>12.17.18</td>
-                  <td>5:00 PM</td>
+                  <td>1:00 PM</td>
                   <td>John Smith</td>
                 </tr>
                 <tr>
@@ -51,8 +51,11 @@
       </div><!-- .card -->
     </div><!-- .container col-sm-6 -->
     <div class="container col-sm-6 mb-4">
+
       <div class="card">
-        <div class="card-header"><h2>New Leads</h2></div>
+        <div class="card-header">
+          <a href="#"><h2>New Leads</h2></a>
+        </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-hover">
@@ -89,7 +92,9 @@
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
-        <div class="card-header"><h2>Project Tasks</h2></div>
+        <div class="card-header">
+          <a href="#"><h2>Project Tasks</h2></a>
+        </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-hover">
