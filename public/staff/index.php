@@ -18,7 +18,7 @@
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <th>Title</th>
                   <th>Due Date</th>
                   <th>Time</th>
@@ -26,19 +26,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <td>Follow Up</td>
                   <td>12.17.18</td>
                   <td>1:00 PM</td>
                   <td>John Smith</td>
                 </tr>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <td>Closing</td>
                   <td>12.17.18</td>
                   <td>2:00 PM</td>
                   <td>Betty Lou</td>
                 </tr>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <td>Follow Up</td>
                   <td>12.17.18</td>
                   <td>3:30 PM</td>
@@ -61,7 +61,7 @@
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <th>Firstname</th>
                   <th>Lastname</th>
                   <th>Email</th>
@@ -69,19 +69,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <td><span class="badge badge-info">new</span> John</td>
                   <td>Doe</td>
                   <td>john@example.com</td>
                   <td>Web form</td>
                 </tr>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <td><span class="badge badge-info">new</span> Mary</td>
                   <td>Moe</td>
                   <td>mary@example.com</td>
                   <td>Web form</td>
                 </tr>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <td><span class="badge badge-info">new</span> July</td>
                   <td>Dooley</td>
                   <td>july@example.com</td>
@@ -105,24 +105,24 @@
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/projects/show.php'); ?>">
                   <th>Title</th>
                   <th>Due Date</th>
                   <th>Time</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/projects/show.php'); ?>">
                   <td>John</td>
                   <td>Doe</td>
                   <td>john@example.com</td>
                 </tr>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/projects/show.php'); ?>">
                   <td>Mary</td>
                   <td>Moe</td>
                   <td>mary@example.com</td>
                 </tr>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('staff/projects/show.php'); ?>">
                   <td>July</td>
                   <td>Dooley</td>
                   <td>july@example.com</td>
