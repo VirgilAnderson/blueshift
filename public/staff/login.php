@@ -49,7 +49,7 @@ if(is_post_request()) {
   </ol>
 
 <form class="col-sm-6" action="login.php" method="post">
-    <h2>User Login</h2> 
+    <h2>User Login</h2>
     <?php echo display_errors($errors); ?>
     <fieldset class="form-group">
       <legend>Your Info</legend>
