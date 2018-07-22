@@ -39,6 +39,7 @@ if(is_post_request()) {
   }
 ?>
 <?php $page_title = 'Log in'; ?>
+<?php $page_title = "login"; ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
 <div class="container" style="margin-top: 90px;">

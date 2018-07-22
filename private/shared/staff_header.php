@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <?php
+      if(!isset($page_title)){
+        $page_title = "Dashboard";
+      }
+      ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.min.css'); ?>" />
-    <title>Blue Shift tech: Staff Page</title>
+    <title>Blue Shift tech: <?php echo h($page_title); ?></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/staff_styles.css'); ?>" />

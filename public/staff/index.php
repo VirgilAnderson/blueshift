@@ -1,4 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php $page_title = "Dashboard"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div class="container" style="margin-top:90px">
