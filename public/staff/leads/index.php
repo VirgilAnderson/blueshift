@@ -23,6 +23,7 @@
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Phone</th>
@@ -32,14 +33,11 @@
                   <th>Date Added</th>
                 </tr>
               </thead>
-
               <tbody>
-
-
-
 
               <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
                 <tr>
+                  <td><?php echo h($individual['id']); ?></td>
                   <td><?php echo h($individual['first_name']); ?></td>
                   <td><?php echo h($individual['last_name']); ?></td>
                   <td><?php echo h($individual['phone_direct']); ?></td>

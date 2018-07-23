@@ -78,9 +78,15 @@ if(is_post_request()) {
         </div><!-- form-group -->
 
         <div class="form-group">
-          <label class="form-control-label" for="lead_source">Lead Source</label>
-          <input class="form-control" type="text" name="lead_source" >
+          <label for="lead_source">Select list:</label>
+            <select class="form-control" name="lead_source">
+              <option>Web</option>
+              <option>Manual Entry</option>
+              <option>Lead List</option>
+              <option>Call In</option>
+            </select>
         </div><!-- form-group -->
+        
 
         <button class="btn btn-outline-info" type="submit">Create New Lead</button>
 
