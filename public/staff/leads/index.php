@@ -1,5 +1,5 @@
 <?php require_once('../../../private/initialize.php'); ?>
-<?php $subject_set = find_all_individual();?>
+<?php $individual_set = find_all_individual();?>
 <?php $page_title = "leads"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -29,21 +29,31 @@
                   <th>Email</th>
                   <th>Role</th>
                   <th>Lead Source</th>
+                  <th>Date Added</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
 
-              </tbody>
+
+
+
+              <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
+                <tr>
+                  <td><?php echo h($individual['first_name']); ?></td>
+                  <td><?php echo h($individual['last_name']); ?></td>
+                  <td><?php echo h($individual['phone_direct']); ?></td>
+                  <td><?php echo h($individual['email']); ?></td>
+                  <td><?php echo h($individual['role']); ?></td>
+                  <td><?php echo h($individual['lead_source']); ?></td>
+                  <td><?php echo h($individual['lead_birthdate']); ?></td>
+                </tr>
+              <?php } ?>
+            </tbody>
             </table>
 
             <?php
-              mysqli_free_result($subject_set);
+              mysqli_free_result($individual_set);
              ?>
           </div><!-- .table-responsive -->
         </div><!-- .card-body -->

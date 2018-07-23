@@ -4,7 +4,7 @@ function find_all_individual(){
   global $db;
 
   $sql = "SELECT * FROM individual ";
-  $sql .= "ORDER BY first_name ASC";
+  $sql .= "ORDER BY lead_birthdate DESC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
@@ -325,7 +325,7 @@ function find_pages_by_subject_id($subject_id, $options=['visible']){
   return $result; // Returns result
 }
 
-function count_pages_by_subject_id($subject_id, $options=['visible']){
+function count_pages_by_individual_id($subject_id, $options=['visible']){
   global $db;
   $visible = isset($options['visible']) ? $options['visible'] : false;
 
