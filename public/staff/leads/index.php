@@ -36,7 +36,7 @@
               <tbody>
 
               <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
-                <tr>
+                <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
                   <td><?php echo h($individual['id']); ?></td>
                   <td><?php echo h($individual['first_name']); ?></td>
                   <td><?php echo h($individual['last_name']); ?></td>

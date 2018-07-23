@@ -20,7 +20,7 @@
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
+                <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
                   <th>Title</th>
                   <th>Due Date</th>
                   <th>Time</th>
@@ -71,7 +71,7 @@
               </thead>
               <tbody>
                 <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
-                  <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
+                  <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
                     <td><span class="badge badge-info">new</span> <?php echo h($individual['first_name']); ?></td>
                     <td><?php echo h($individual['last_name']); ?></td>
                     <td><?php echo h($individual['lead_source']); ?></td>

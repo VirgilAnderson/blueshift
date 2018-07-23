@@ -21,20 +21,16 @@ function find_all_new_individual(){
   return $result;
 }
 
-function find_subject_by_id($id, $options = []){
+function find_individual_by_id($id){
   global $db;
 
-  $visible = isset($options['visible']) ? $options['visible'] : false;
-  $sql = "SELECT * FROM subjects ";
+  $sql = "SELECT * FROM individual ";
   $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
-  if($visible){
-    $sql .= "AND visible = true";
-  }
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
-  $subject = mysqli_fetch_assoc($result);
+  $individual = mysqli_fetch_assoc($result);
   mysqli_free_result($result);
-  return $subject; // Returns an associative array
+  return $individual; // Returns an associative array
 }
 
 function insert_individual($individual){
