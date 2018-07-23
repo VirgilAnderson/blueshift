@@ -1,4 +1,41 @@
-<?php require_once('../../../private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php');
+
+if(is_post_request()) {
+
+  // Handle form values submitted by new.php
+
+  $individual = [];
+  $individual['first_name'] = isset($_POST['first_name']) ? $_POST['first_name'] : '';
+  $individual['last_name'] = isset($_POST['last_name']) ? $_POST['last_name'] : '';
+  $individual['phone_direct'] = isset($_POST['phone_direct']) ? $_POST['phone_direct'] : '';
+  $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
+  $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
+  $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
+
+  $result = insert_individual($individual);
+  if($result === true){
+    $new_id = mysqli_insert_id($db);
+    $_SESSION['message'] = 'The lead was created successfully.';
+    redirect_to(url_for('/staff/leads/show.php?id=' . $new_id ));
+  } else {
+    $errors = $result;
+  }
+} else {
+  // Display the blank form
+  $individual = [];
+  $individual['first_name'] = '';
+  $individual['last_name'] =  '';
+  $individual['phone_direct'] = '';
+  $individual['email'] = '';
+  $individual['role'] = '';
+  $individual['lead_source'] = '';
+}
+
+
+?>
+
+
+
 <?php $page_title = "New lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -8,93 +45,46 @@
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/leads/index.php'); ?>">Leads</a></li>
     <li class="breadcrumb-item active">New Lead</li>
   </ol>
+
+  <form class="col-sm-6" action="<?php echo url_for('/staff/leads/new.php'); ?>"  method="post">
+      <h2>New Lead</h2>
+      <?php echo display_errors($errors); ?>
+      <fieldset class="form-group">
+        <legend>Fill in the form to create a new record</legend>
+
+        <div class="form-group">
+          <label class="form-control-label" for="first_name">First Name</label>
+          <input class="form-control" type="text" name="first_name" >
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="last_name">Last Name</label>
+          <input class="form-control" type="text" name="last_name" >
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="phone_direct">Phone</label>
+          <input class="form-control" type="text" name="phone_direct" >
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="email">Email</label>
+          <input class="form-control" type="text" name="email">
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="role">Role</label>
+          <input class="form-control" type="text" name="role">
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="lead_source">Lead Source</label>
+          <input class="form-control" type="text" name="lead_source" >
+        </div><!-- form-group -->
+
+        <button class="btn btn-outline-info" type="submit">Create New Lead</button>
+
+      </fieldset><!-- fieldset -->
+    </form>
 </div><!-- .container mt-4 -->
-
-<div class="container">
-  <div class="row">
-    <div class="container col-12 mb-4">
-      <div class="card">
-        <div class="card-header">
-          <h2>New Leads</h2>
-        </div><!-- .card-header -->
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Due Date</th>
-                  <th>Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-              </tbody>
-            </table>
-          </div><!-- .table-responsive -->
-        </div><!-- .card-body -->
-      </div><!-- .card -->
-    </div><!-- .container col-sm-12 -->
-  </div><!-- . row -->
-</div><!-- .container -->
-
 <?php include(SHARED_PATH. '/staff_footer.php'); ?>

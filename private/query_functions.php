@@ -26,22 +26,25 @@ function find_subject_by_id($id, $options = []){
   return $subject; // Returns an associative array
 }
 
-function insert_subject($subject){
+function insert_individual($individual){
   global $db;
 
-  $errors = validate_subject($subject);
-  if(!empty($errors)){
-    return $errors;
-  }
+  //$errors = validate_individual($individual);
+  //if(!empty($errors)){
+  //  return $errors;
+  //}
 
-  shift_subject_position(0, $subject['position']);
+  // shift_subject_position(0, $subject['position']);
 
-  $sql = "INSERT INTO subjects ";
-  $sql .= "(menu_name, position, visible) ";
+  $sql = "INSERT INTO individual ";
+  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source) ";
   $sql .= "VALUES (";
-  $sql .= "'" . db_escape($db, $subject['menu_name']) . "', ";
-  $sql .= "'" . db_escape($db, $subject['position']) . "', ";
-  $sql .= "'" . db_escape($db, $subject['visible']) . "'";
+  $sql .= "'" . db_escape($db, $individual['first_name']) . "', ";
+  $sql .= "'" . db_escape($db, $individual['last_name']) . "', ";
+  $sql .= "'" . db_escape($db, $individual['phone_direct']) . "', ";
+  $sql .= "'" . db_escape($db, $individual['email']) . "', ";
+  $sql .= "'" . db_escape($db, $individual['role']) . "', ";
+  $sql .= "'" . db_escape($db, $individual['lead_source']) . "'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
