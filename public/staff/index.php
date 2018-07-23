@@ -1,4 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php $individual_set = find_all_new_individual();?>
 <?php $page_title = "Dashboard"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -63,31 +64,19 @@
             <table class="table table-hover">
               <thead>
                 <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
-                  <th>Source</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Lead Source</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <td><span class="badge badge-info">new</span> John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                  <td>Web form</td>
-                </tr>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <td><span class="badge badge-info">new</span> Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                  <td>Web form</td>
-                </tr>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <td><span class="badge badge-info">new</span> July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                  <td>Web form</td>
-                </tr>
+                <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
+                  <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
+                    <td><span class="badge badge-info">new</span> <?php echo h($individual['first_name']); ?></td>
+                    <td><?php echo h($individual['last_name']); ?></td>
+                    <td><?php echo h($individual['lead_source']); ?></td>
+                  </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div><!-- .table-responsive -->

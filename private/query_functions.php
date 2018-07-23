@@ -10,6 +10,17 @@ function find_all_individual(){
   return $result;
 }
 
+function find_all_new_individual(){
+  global $db;
+
+  $sql = "SELECT * FROM individual ";
+  $sql .= "WHERE viewed='0' ";
+  $sql .= "ORDER BY lead_birthdate DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_subject_by_id($id, $options = []){
   global $db;
 
