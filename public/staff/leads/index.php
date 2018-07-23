@@ -1,4 +1,5 @@
 <?php require_once('../../../private/initialize.php'); ?>
+<?php $subject_set = find_all_individual();?>
 <?php $page_title = "leads"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -22,74 +23,28 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Due Date</th>
-                  <th>Time</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Lead Source</th>
                 </tr>
               </thead>
+
               <tbody>
                 <tr>
                   <td>John</td>
                   <td>Doe</td>
                   <td>john@example.com</td>
                 </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
+
               </tbody>
             </table>
+
+            <?php
+              mysqli_free_result($subject_set);
+             ?>
           </div><!-- .table-responsive -->
         </div><!-- .card-body -->
       </div><!-- .card -->

@@ -1,14 +1,10 @@
 <?php
-// Subjects
-function find_all_subjects($options=[]){
+// Individual
+function find_all_individual(){
   global $db;
 
-  $visible = isset($options['visible']) ? $options['visible'] : false;
-  $sql = "SELECT * FROM subjects ";
-  if($visible) {
-    $sql .= "WHERE visible = true ";
-  }
-  $sql .= "ORDER BY position ASC";
+  $sql = "SELECT * FROM individual ";
+  $sql .= "ORDER BY first_name ASC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
