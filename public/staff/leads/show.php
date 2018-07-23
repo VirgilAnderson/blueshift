@@ -4,6 +4,7 @@
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $individual = find_individual_by_id($id);
+  individual_visited($id);
   include(SHARED_PATH . "/staff_header.php");
 ?>
 <?php $page_title = "Show lead"; ?>

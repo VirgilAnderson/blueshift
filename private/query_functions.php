@@ -66,6 +66,16 @@ function insert_individual($individual){
   }
 }
 
+function individual_visited($id){
+  global $db;
+
+  $sql = "UPDATE individual ";
+  $sql .= "SET viewed = 1 ";
+  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+}
+
 function delete_subject($id){
   global $db;
 
