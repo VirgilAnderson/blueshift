@@ -37,14 +37,15 @@ function insert_individual($individual){
   // shift_subject_position(0, $subject['position']);
 
   $sql = "INSERT INTO individual ";
-  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source) ";
+  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $individual['first_name']) . "', ";
   $sql .= "'" . db_escape($db, $individual['last_name']) . "', ";
   $sql .= "'" . db_escape($db, $individual['phone_direct']) . "', ";
   $sql .= "'" . db_escape($db, $individual['email']) . "', ";
   $sql .= "'" . db_escape($db, $individual['role']) . "', ";
-  $sql .= "'" . db_escape($db, $individual['lead_source']) . "'";
+  $sql .= "'" . db_escape($db, $individual['lead_source']) . "', ";
+  $sql .="'0'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
