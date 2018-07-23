@@ -76,14 +76,10 @@ function individual_visited($id){
   confirm_result_set($result);
 }
 
-function delete_subject($id){
+function delete_individual($id){
   global $db;
 
-  $old_subject = find_subject_by_id($id);
-  $old_position = $old_subject['position'];
-  shift_subject_position($old_position, 0, $id);
-
-  $sql = "DELETE FROM subjects ";
+  $sql = "DELETE FROM individual ";
   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
   $sql .= "LIMIT 1";
 

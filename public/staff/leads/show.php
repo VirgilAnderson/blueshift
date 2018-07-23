@@ -55,6 +55,9 @@
             <dt class="mr-4">Date Created</dt>
             <dd><?php echo h($individual['lead_birthdate']); ?></dd>
           </dl>
+          <dl class="list-group-item d-flex">
+            <dt class="mr-4">Actions</dt>
+            <dd><a class="action" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete</a></a>
 
         </div><!-- .card-body -->
       </div><!-- .card -->
