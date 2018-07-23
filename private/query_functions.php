@@ -21,6 +21,17 @@ function find_all_new_individual(){
   return $result;
 }
 
+function find_all_newest_5_individual(){
+  global $db;
+
+  $sql = "SELECT * FROM individual ";
+  $sql .= "ORDER BY lead_birthdate DESC ";
+  $sql .= "LIMIT 5";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_individual_by_id($id){
   global $db;
 
