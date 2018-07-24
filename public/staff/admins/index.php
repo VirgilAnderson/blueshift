@@ -6,17 +6,17 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item active">Admins</li>
+    <li class="breadcrumb-item active">Users</li>
   </ol>
 </div><!-- .container mt-4 -->
 
 <div class="container">
-  <a href="<?php echo url_for('/staff/admins/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new admin</a>
+  <a href="<?php echo url_for('/staff/admins/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new user</a>
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Leads</h2>
+          <h2>Users</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">

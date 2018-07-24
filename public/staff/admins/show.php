@@ -12,7 +12,7 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/Admins/index.php'); ?>">Admins</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/Admins/index.php'); ?>">Users</a></li>
     <li class="breadcrumb-item active"><?php echo h($admin['first_name']) . " " . h($admin['last_name']);?></li>
   </ol>
 </div><!-- .container mt-4 -->
