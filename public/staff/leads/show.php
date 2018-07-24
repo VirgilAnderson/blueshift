@@ -3,8 +3,9 @@
 
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
+  $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
-  individual_visited($individual);
+  if($new == 0){individual_visited($individual);}
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>

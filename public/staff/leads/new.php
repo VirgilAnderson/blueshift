@@ -16,7 +16,7 @@ if(is_post_request()) {
   if($result === true){
     $new_id = mysqli_insert_id($db);
     $_SESSION['message'] = 'The lead was created successfully.';
-    redirect_to(url_for('/staff/leads/show.php?id=' . $new_id ));
+    redirect_to(url_for('/staff/leads/show.php?id=' . $new_id .'&new=1'));
   } else {
     $errors = $result;
   }
