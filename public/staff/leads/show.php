@@ -19,7 +19,8 @@
 <div class="container">
   <div class="row">
     <div class="container col-12 mb-4">
-      <div class="card"        <div class="card-header">
+      <div class="card">
+        <div class="card-header">
           <h2><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></h2>
         </div><!-- .card-header -->
         <div class="card-body">
