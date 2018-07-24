@@ -117,7 +117,8 @@ function update_individual($individual){
   $sql .= "phone_direct='" . db_escape($db, $individual['phone_direct']) . "', ";
   $sql .= "email='" . db_escape($db, $individual['email']) . "', ";
   $sql .= "role='" . db_escape($db, $individual['role']) . "', ";
-  $sql .= "lead_source='" . db_escape($db, $individual['lead_source']) . "' ";
+  $sql .= "lead_source='" . db_escape($db, $individual['lead_source']) . "', ";
+  $sql .= "lead_birthdate='" . db_escape($db, $individual['lead_birthdate']) . "' ";
   $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "' ";
   $sql .= "LIMIT 1;";
 

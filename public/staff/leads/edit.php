@@ -9,6 +9,7 @@ $phone_direct = '';
 $email = '';
 $role = '';
 $lead_source = '';
+$lead_birthdate = $individual['lead_birthdate'];
 
 
 if(is_post_request()) {
@@ -23,6 +24,7 @@ if(is_post_request()) {
   $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
+  $individual['lead_birthdate'] = isset($_POST['lead_birthdate']) ? $_POST['lead_birthdate'] : '';
 
   $result = update_individual($individual);
   if($result === true){
@@ -99,6 +101,10 @@ if(is_post_request()) {
             </select>
         </div><!-- form-group -->
 
+        <div class="form-group">
+          <label class="form-control-label" for="lead_birthdate">Lead Origination</label>
+          <input class="form-control" type="text" name="lead_birthdate" value="<?php echo h($individual['lead_birthdate']); ?>">
+        </div><!-- form-group -->
 
 
         <button class="btn btn-outline-info" type="submit">Edit</button>
