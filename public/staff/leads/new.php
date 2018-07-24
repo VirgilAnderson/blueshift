@@ -31,10 +31,7 @@ if(is_post_request()) {
   $individual['lead_source'] = '';
 }
 
-
 ?>
-
-
 
 <?php $page_title = "New lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
@@ -86,7 +83,7 @@ if(is_post_request()) {
               <option>Call In</option>
             </select>
         </div><!-- form-group -->
-        
+
 
         <button class="btn btn-outline-info" type="submit">Create New Lead</button>
 
