@@ -32,7 +32,6 @@ if(is_post_request()){
           <h2>Delete Lead</h2>
         </div><!-- .card-header -->
         <div class="card-body">
-          <a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">&laquo; Back to <?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></a>
           <p>Are you sure you want to delete?</p>
           <p><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?> </p>
           <form class="col-sm-6" action="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id'])));?>" method="post">
@@ -41,7 +40,7 @@ if(is_post_request()){
                 <button class="btn btn-outline-info" type="submit">Delete</button>
               </fieldset><!-- fieldset -->
             </form>
-
+            <a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">&laquo; Back to <?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></a>
         </div><!-- .card-body -->
       </div><!-- .card -->
     </div><!-- .container col-sm-12 -->
