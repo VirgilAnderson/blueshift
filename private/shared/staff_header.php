@@ -43,7 +43,7 @@
           <button class="dropbtn"><img class="img-fluid rounded-circle" src="<?php echo url_for('/images/user.png'); ?>" width="25px"></button>
           <div class="dropdown-content">
             <a href="#">Lists</a>
-            <a href="#">Users</a>
+            <a href="<?php echo url_for('/staff/admins/index.php'); ?>">Users</a>
             <a href="#">Edit Site</a>
             <a href="#">Analytics</a>
             <a href="<?php echo url_for('/staff/login.php'); ?>">Logout</a>

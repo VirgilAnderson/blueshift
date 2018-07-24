@@ -372,7 +372,7 @@ function count_pages_by_individual_id($subject_id, $options=['visible']){
 function find_all_admins(){
   global $db;
 
-  $sql = "SELECT * FROM admins ";
+  $sql = "SELECT * FROM user ";
   $sql .= "ORDER BY last_name ASC, first_name ASC ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);

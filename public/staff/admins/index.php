@@ -1,93 +1,52 @@
 <?php require_once('../../../private/initialize.php'); ?>
+<?php $admin_set = find_all_admins(); ?>
+<?php $page_title = "admins"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item active">Analytics</li>
+    <li class="breadcrumb-item active">Admins</li>
   </ol>
 </div><!-- .container mt-4 -->
 
 <div class="container">
+  <a href="<?php echo url_for('/staff/admins/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new admin</a>
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Analytics</h2>
+          <h2>Leads</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Due Date</th>
-                  <th>Time</th>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Username</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
+
+              <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
+                <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
+                  <td><?php echo h($admin['id']); ?></td>
+                  <td><?php echo h($admin['first_name']); ?></td>
+                  <td><?php echo h($admin['last_name']); ?></td>
+                  <td><?php echo h($admin['email']); ?></td>
+                  <td><?php echo h($admin['username']); ?></td>
                 </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-              </tbody>
+              <?php } ?>
+            </tbody>
             </table>
+
+            <?php
+              mysqli_free_result($admin_set);
+             ?>
           </div><!-- .table-responsive -->
         </div><!-- .card-body -->
       </div><!-- .card -->
