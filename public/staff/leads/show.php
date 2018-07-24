@@ -4,8 +4,6 @@
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $individual = find_individual_by_id($id);
-  individual_visited($id);
-  include(SHARED_PATH . "/staff_header.php");
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -21,15 +19,14 @@
 <div class="container">
   <div class="row">
     <div class="container col-12 mb-4">
-      <div class="card">
-        <div class="card-header">
+      <div class="card"        <div class="card-header">
           <h2><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <ul class="list-group">
           <dl class="list-group-item d-flex">
             <dt class="mr-4">First Name</dt>
-            <dd><?php echo h($individual['first_name']) ; ?></dd>
+            <dd><?php echo h($individual['first_name']); ?></dd>
           </dl>
           <dl class="list-group-item d-flex">
             <dt class="mr-4">Last Name</dt>
@@ -57,7 +54,9 @@
           </dl>
           <dl class="list-group-item d-flex">
             <dt class="mr-4">Actions</dt>
-            <dd><a class="action" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete</a></a>
+            <dd><a class="action mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete</a></dd>
+            <dd><a class="action" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit</a></dd>
+          </dl>
 
         </div><!-- .card-body -->
       </div><!-- .card -->

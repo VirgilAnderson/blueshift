@@ -107,24 +107,18 @@ function delete_individual($id){
   }
 }
 
-function update_subject($subject){
+function update_individual($individual){
   global $db;
 
-  $errors = validate_subject($subject);
-  if(!empty($errors)){
-    return $errors;
-  }
-
-  $old_subject = find_subject_by_id($subject['id']);
-  $old_position = $old_subject['position'];
-  shift_subject_position($old_position, $subject['position'], $subject['id']);
-
-  $sql = "UPDATE subjects SET ";
-  $sql .= "menu_name='" . db_escape($db, $subject['menu_name']) . "', ";
-  $sql .= "position='" . db_escape($db, $subject['position']) . "', ";
-  $sql .= "visible='" . db_escape($db, $subject['visible']) . "' ";
-  $sql .= "WHERE id='" . db_escape($db, $subject['id']) . "' ";
-  $sql .= "LIMIT 1";
+  $sql = "UPDATE individual SET ";
+  $sql .= "first_name='" . db_escape($db, $individual['first_name']) . "', ";
+  $sql .= "last_name='" . db_escape($db, $individual['last_name']) . "', ";
+  $sql .= "phone_direct='" . db_escape($db, $individual['phone_direct']) . "', ";
+  $sql .= "email='" . db_escape($db, $individual['email']) . "', ";
+  $sql .= "role='" . db_escape($db, $individual['role']) . "', ";
+  $sql .= "lead_source='" . db_escape($db, $individual['lead_source']) . "' ";
+  $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "' ";
+  $sql .= "LIMIT 1;";
 
   $result = mysqli_query($db, $sql);
   // For UPDATE Statements, result is true/false
