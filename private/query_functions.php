@@ -77,12 +77,13 @@ function insert_individual($individual){
   }
 }
 
-function individual_visited($id){
+function individual_visited($individual){
   global $db;
 
-  $sql = "UPDATE individual ";
-  $sql .= "SET viewed = 1 ";
-  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
+  $sql = "UPDATE individual SET ";
+  $sql .= "viewed=1, ";
+  $sql .= "lead_birthdate='" . db_escape($db, $individual['lead_birthdate']) . "' ";
+  $sql .= "WHERE id ='" . db_escape($db, $individual['id']) . "'; ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
 }
