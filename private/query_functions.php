@@ -383,7 +383,7 @@ function find_all_admins(){
 function find_admin_by_id($id){
   global $db;
 
-  $sql = "SELECT * FROM admins ";
+  $sql = "SELECT * FROM user ";
   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
   $sql .= "Limit 1";
   $result = mysqli_query($db, $sql);
