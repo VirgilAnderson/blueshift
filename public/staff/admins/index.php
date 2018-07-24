@@ -33,7 +33,7 @@
               <tbody>
 
               <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
-                <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
+                <tr class='clickable-row' data-href="<?php echo url_for('/staff/admins/show.php?id=' . h(u($admin['id']))); ?>">
                   <td><?php echo h($admin['id']); ?></td>
                   <td><?php echo h($admin['first_name']); ?></td>
                   <td><?php echo h($admin['last_name']); ?></td>
