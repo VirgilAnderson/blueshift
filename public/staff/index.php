@@ -64,6 +64,7 @@
             <table class="table table-hover">
               <thead>
                 <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
+                  <th></th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Lead Source</th>
@@ -72,7 +73,9 @@
               <tbody>
                 <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
                   <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
-                    <td><?php if($individual['viewed'] == 0){ echo "<span class='badge badge-info'>new</span> ";} echo h($individual['first_name']); ?></td>
+
+                    <td><?php if($individual['viewed'] == 0){ echo "<span class='badge badge-info'>new</span> ";} ?></td>
+                    <td><?php echo h($individual['first_name']); ?></td>
                     <td><?php echo h($individual['last_name']); ?></td>
                     <td><?php echo h($individual['lead_source']); ?></td>
                   </tr>
