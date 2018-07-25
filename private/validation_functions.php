@@ -124,10 +124,6 @@
     $sql .= "AND id != '" . db_escape($db, $current_id) . "'";
 
     $result = mysqli_query($db, $sql);
-    $admin_count = mysqli_num_rows($result);
-    mysqli_free_result($result);
-
-    return $admin_count === 0;
   }
 
 ?>

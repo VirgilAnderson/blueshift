@@ -462,13 +462,9 @@ function validate_admin($admin){
 function insert_admin($admin){
   global $db;
 
-  $errors = validate_admin($admin);
-  if(!empty($errors)){
-    return $errors;
-  }
   $hashed_password = password_hash($admin['password'], PASSWORD_BCRYPT);
 
-  $sql = "INSERT INTO admins ";
+  $sql = "INSERT INTO user ";
   $sql .= "(first_name, last_name, email, username, hashed_password) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $admin['first_name']) . "', ";
