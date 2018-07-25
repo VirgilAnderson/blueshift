@@ -46,7 +46,7 @@
             <a href="<?php echo url_for('/staff/admins/index.php'); ?>">Users</a>
             <a href="#">Edit Site</a>
             <a href="#">Analytics</a>
-            <a href="<?php echo url_for('/staff/login.php'); ?>">Logout</a>
+            <a href="<?php echo url_for('/staff/logout.php'); ?>">Logout</a>
           </div><!-- .dropdown-content -->
         </div><!-- .dropdown -->
 
