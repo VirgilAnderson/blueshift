@@ -489,10 +489,6 @@ function insert_admin($admin){
 function update_admin($admin){
   global $db;
 
-  $errors = validate_admin($admin);
-  if(!empty($errors)){
-    return $errors;
-  }
 
   $hashed_password = password_hash($admin['password'], PASSWORD_BCRYPT);
 
@@ -502,7 +498,7 @@ function update_admin($admin){
   $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
   $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "', ";
   $sql .= "username='" . db_escape($db, $admin['username']) . "', ";
-  $sql .= "WHERE id='" . db_escapte($db, $admin['id']) . "' ";
+  $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
   $sql .= "LIMIT 1";
   $result = mysqli_query($db, $sql);
 
@@ -511,7 +507,6 @@ function update_admin($admin){
     return true;
   } else {
     // UPDATE failed
-    echo mysqli_error($db);
     db_disconnect($db);
     exit;
   }
