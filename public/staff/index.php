@@ -1,4 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php require_login(); ?>
 <?php $individual_set = find_all_newest_5_individual();?>
 <?php $page_title = "Dashboard"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>

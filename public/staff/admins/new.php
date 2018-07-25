@@ -1,4 +1,5 @@
 <?php require_once('../../../private/initialize.php'); ?>
+<?php require_login(); ?>
 <?php include(SHARED_PATH . '/staff_header.php');
 
 if(is_post_request()) {
