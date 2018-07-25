@@ -11,6 +11,7 @@ if(is_post_request()) {
   $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
+  $indivual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = insert_individual($individual);
   if($result === true){

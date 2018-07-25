@@ -21,11 +21,14 @@
       <div class="container">
         <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('/staff/index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page"><span class="font-weight-bold">Blueshift</span> Tech</a>
 
+
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myToggleNav" aria-controls="myToggleNav" aria-expanded="false" aria-label="Toggle Navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="myToggleNav">
+          <span class="navbar-text text-capitalize d-sm-none d-lg-inline ml-auto mr-auto">User: <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?></span>
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/leads/index.php'); ?>">Leads</a>
