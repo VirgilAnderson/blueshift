@@ -521,7 +521,7 @@ function update_admin($admin){
 function delete_admin($admin){
   global $db;
 
-  $sql = "DELETE FROM admins ";
+  $sql = "DELETE FROM user ";
   $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
   $sql .= "LIMIT 1";
   $result = mysqli_query($db, $sql);
