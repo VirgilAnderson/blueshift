@@ -94,7 +94,6 @@ if(is_post_request()) {
               <option value="<?php echo h($admin['id']); ?>"><?php echo h($admin['username']); ?></option>
               <?php } ?>
             </select>
-
         </div><!-- form-group -->
 
 

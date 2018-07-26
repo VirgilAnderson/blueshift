@@ -1,5 +1,6 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
+$admin_set = find_all_admins();
 if(!isset($_GET['id'])){
   redirect_to(url_for('/staff/leads/index.php'));
 }
@@ -10,7 +11,7 @@ $phone_direct = '';
 $email = '';
 $role = '';
 $lead_source = '';
-$lead_birthdate = $individual['lead_birthdate'];
+$lead_birthdate = '';
 
 
 if(is_post_request()) {
@@ -26,6 +27,7 @@ if(is_post_request()) {
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
   $individual['lead_birthdate'] = isset($_POST['lead_birthdate']) ? $_POST['lead_birthdate'] : '';
+  $individual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = update_individual($individual);
   if($result === true){
@@ -107,6 +109,14 @@ if(is_post_request()) {
           <input class="form-control" type="text" name="lead_birthdate" value="<?php echo h($individual['lead_birthdate']); ?>">
         </div><!-- form-group -->
 
+        <div class="form-group">
+          <label for="lead_source">Lead Owner:</label>
+            <select class="form-control" name="user_id">
+              <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
+              <option value="<?php echo h($admin['id']); ?>"><?php echo h($admin['username']); ?></option>
+              <?php } ?>
+            </select>
+        </div><!-- form-group -->
 
         <button class="btn btn-outline-info" type="submit">Edit</button>
 
