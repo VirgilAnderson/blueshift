@@ -6,6 +6,7 @@
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
   if($new == 0){individual_visited($individual);}
+  $admin = find_admin_by_id($individual['user_id']);
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -54,6 +55,10 @@
           <dl class="list-group-item d-flex">
             <dt class="mr-4">Date Created</dt>
             <dd><?php echo h($individual['lead_birthdate']); ?></dd>
+          </dl>
+          <dl class="list-group-item d-flex">
+            <dt class="mr-4">Lead Owner</dt>
+            <dd><?php echo h($admin['username']); ?></dd>
           </dl>
 
 
