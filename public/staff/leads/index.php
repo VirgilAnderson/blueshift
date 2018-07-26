@@ -1,6 +1,7 @@
 <?php require_once('../../../private/initialize.php'); ?>
 <?php require_login(); ?>
-<?php $individual_set = find_all_individual();?>
+<?php $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : ''; ?>
+<?php $individual_set = find_all_user_individual($admin); ?>
 <?php $page_title = "leads"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 

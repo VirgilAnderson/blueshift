@@ -1,5 +1,6 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
+$admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id']: '';
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -11,7 +12,7 @@ if(is_post_request()) {
   $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
-  $indivual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
+  $individual['user_id'] = $admin;
 
   $result = insert_individual($individual);
   if($result === true){
@@ -30,6 +31,7 @@ if(is_post_request()) {
   $individual['email'] = '';
   $individual['role'] = '';
   $individual['lead_source'] = '';
+  $indivual['user_id'] = $_SESSION['admin_id'];
 }
 
 ?>
@@ -37,13 +39,13 @@ if(is_post_request()) {
 <?php $page_title = "New lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
+
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/leads/index.php'); ?>">Leads</a></li>
     <li class="breadcrumb-item active">New Lead</li>
   </ol>
-
   <form class="col-sm-6" action="<?php echo url_for('/staff/leads/new.php'); ?>"  method="post">
       <h2>New Lead</h2>
       <?php echo display_errors($errors); ?>
@@ -84,6 +86,7 @@ if(is_post_request()) {
               <option>Call In</option>
             </select>
         </div><!-- form-group -->
+
 
 
         <button class="btn btn-outline-info" type="submit">Create New Lead</button>

@@ -10,6 +10,17 @@ function find_all_individual(){
   return $result;
 }
 
+function find_all_user_individual($admin){
+  global $db;
+
+  $sql = "SELECT * FROM individual ";
+  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY lead_birthdate DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_all_new_individual(){
   global $db;
 
@@ -55,7 +66,7 @@ function insert_individual($individual){
   // shift_subject_position(0, $subject['position']);
 
   $sql = "INSERT INTO individual ";
-  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed) ";
+  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed, user_id) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $individual['first_name']) . "', ";
   $sql .= "'" . db_escape($db, $individual['last_name']) . "', ";
@@ -63,7 +74,8 @@ function insert_individual($individual){
   $sql .= "'" . db_escape($db, $individual['email']) . "', ";
   $sql .= "'" . db_escape($db, $individual['role']) . "', ";
   $sql .= "'" . db_escape($db, $individual['lead_source']) . "', ";
-  $sql .="'0'";
+  $sql .="'0', ";
+  $sql .= "'" . db_escape($db, $individual['user_id']) . "'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
