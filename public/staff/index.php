@@ -20,7 +20,7 @@
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-sm">
               <thead>
                 <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
                   <th>Title</th>
@@ -63,7 +63,7 @@
 
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-sm">
               <thead>
                 <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
                   <th></th>
@@ -99,7 +99,7 @@
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-sm">
               <thead>
                 <tr class='clickable-row' data-href="<?php echo url_for('staff/projects/show.php'); ?>">
                   <th>Title</th>
