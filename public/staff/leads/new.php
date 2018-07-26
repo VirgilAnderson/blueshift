@@ -1,6 +1,6 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
-$admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id']: '';
+$admin_set = find_all_admins();
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -12,7 +12,7 @@ if(is_post_request()) {
   $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
-  $individual['user_id'] = $admin;
+  $individual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = insert_individual($individual);
   if($result === true){
@@ -31,7 +31,7 @@ if(is_post_request()) {
   $individual['email'] = '';
   $individual['role'] = '';
   $individual['lead_source'] = '';
-  $indivual['user_id'] = $_SESSION['admin_id'];
+  $indivual['user_id'] = '';
 }
 
 ?>
@@ -85,6 +85,16 @@ if(is_post_request()) {
               <option>Lead List</option>
               <option>Call In</option>
             </select>
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label for="lead_source">Lead Owner:</label>
+            <select class="form-control" name="user_id">
+              <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
+              <option value="<?php echo h($admin['id']); ?>"><?php echo h($admin['username']); ?></option>
+              <?php } ?>
+            </select>
+
         </div><!-- form-group -->
 
 
