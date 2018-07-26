@@ -21,6 +21,18 @@ function find_all_user_individual($admin){
   return $result;
 }
 
+function find_five_user_individual($admin){
+  global $db;
+
+  $sql = "SELECT * FROM individual ";
+  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY lead_birthdate DESC ";
+  $sql .= "LIMIT 5";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_all_new_individual(){
   global $db;
 
