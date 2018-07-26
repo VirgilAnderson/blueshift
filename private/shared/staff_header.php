@@ -28,7 +28,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="myToggleNav">
-          <span class="navbar-text text-capitalize d-sm-none d-lg-inline ml-auto mr-auto">User: <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?></span>
+          <span class="navbar-text d-sm-none d-lg-inline ml-auto mr-auto">User: <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?></span>
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/leads/index.php'); ?>">Leads</a>
