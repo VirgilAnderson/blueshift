@@ -32,6 +32,7 @@
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="<?php echo url_for('staff/index.php'); ?>">Dashboard</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/leads/index.php'); ?>">Leads</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('staff/company/index.php'); ?>">Company</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/tasks/index.php'); ?>">Tasks</a>
             <a class="nav-item nav-link" href="<?php echo url_for('staff/projects/index.php'); ?>">Projects</a>
           </div><!-- navbar -->
