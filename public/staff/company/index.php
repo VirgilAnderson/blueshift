@@ -5,17 +5,17 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item active">Projects</li>
+    <li class="breadcrumb-item active">Companies</li>
   </ol>
 </div><!-- .container mt-4 -->
 
 <div class="container">
-  <a href="<?php echo url_for('/staff/projects/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new project</a>
+  <a href="<?php echo url_for('/staff/company/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new Company</a>
   <div class="row">
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Projects</h2>
+          <h2>Companies</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
