@@ -53,7 +53,6 @@
               <?php } ?>
             </tbody>
             </table>
-
             <?php
               mysqli_free_result($individual_set);
              ?>

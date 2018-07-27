@@ -27,41 +27,73 @@
           <h2><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></h2>
         </div><!-- .card-header -->
         <div class="card-body">
-          <ul class="list-group">
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">First Name</dt>
-            <dd><?php echo h($individual['first_name']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Last Name</dt>
-            <dd><?php echo h($individual['last_name']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Phone</dt>
-            <dd><?php echo h($individual['phone_direct']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Email</dt>
-            <dd><?php echo h($individual['email']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Role</dt>
-            <dd><?php echo h($individual['role']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Lead source</dt>
-            <dd><?php echo h($individual['lead_source']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Date Created</dt>
-            <dd><?php echo h($individual['lead_birthdate']); ?></dd>
-          </dl>
-          <dl class="list-group-item d-flex">
-            <dt class="mr-4">Lead Owner</dt>
-            <dd><?php echo h($admin['username']); ?></dd>
-          </dl>
-
-
+          <div class="row">
+            <div class="col-6">
+              <ul class="list-group">
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">First Name</dt>
+                <dd><?php echo h($individual['first_name']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Last Name</dt>
+                <dd><?php echo h($individual['last_name']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Phone</dt>
+                <dd><?php echo h($individual['phone_direct']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Email</dt>
+                <dd><?php echo h($individual['email']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Role</dt>
+                <dd><?php echo h($individual['role']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Lead source</dt>
+                <dd><?php echo h($individual['lead_source']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Date Created</dt>
+                <dd><?php echo h($individual['lead_birthdate']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Lead Owner</dt>
+                <dd><?php echo h($admin['username']); ?></dd>
+              </dl>
+            </ul>
+            </div><!-- .col-5 -->
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">History</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Notes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Tasks</a>
+                    </li>
+                  </ul>
+                </div><!-- .card-header -->
+                <div class="history p-3">
+                  <h2>History</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div><!-- .history -->
+                <div class="notes p-3">
+                  <h2>Notes</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div><!-- .notes -->
+                <div class="tasks p-3">
+                  <h2>Tasks</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div><!-- .tasks -->
+              </div><!-- .card -->
+            </div><!-- .col-5 -->
+          </div><!-- .row -->
         </div><!-- .card-body -->
         <div class="card-footer">
           <dl class="list-group-item d-flex">
