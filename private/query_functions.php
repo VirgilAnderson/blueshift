@@ -231,42 +231,29 @@ function shift_subject_position($start_pos, $end_pos, $current_id=0) {
   }
 }
 
-// Pages
+// companies
 
-function find_all_pages(){
-  global $db;
-  $sql = "SELECT * FROM pages ";
-  $sql .= "ORDER BY subject_id ASC, position ASC";
-  $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
-  return $result;
-}
-
-function find_page_by_id($id, $options=[]){
+function insert_company($company){
   global $db;
 
-  $visible = isset($options['visible']) ? $options['visible'] : false;
-  $sql = "SELECT * FROM pages ";
-  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
-  if($visible){
-    $sql .= "AND visible = true ";
-  }
-  $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
-  $page = mysqli_fetch_assoc($result);
-  mysqli_free_result($result);
-  return $page; // Returns an associative array
-}
+  //$errors = validate_individual($individual);
+  //if(!empty($errors)){
+  //  return $errors;
+  //}
 
-function insert_page($page){
-  global $db;
-  $sql = "INSERT INTO pages ";
-  $sql .= "(menu_name, subject_id, position, visible) ";
+  // shift_subject_position(0, $subject['position']);
+
+  $sql = "INSERT INTO company ";
+  $sql .= "(company_name, company_address, company_city, company_state, company_zip, company_url, company_phone, user_id) ";
   $sql .= "VALUES (";
-  $sql .= "'" . db_escape($db, $page['menu_name']) . "', ";
-  $sql .= "'" . db_escape($db, $page['subject_id']) . "', ";
-  $sql .= "'" . db_escape($db, $page['position']) . "', ";
-  $sql .= "'" . db_escape($db, $page['visible']) . "'";
+  $sql .= "'" . db_escape($db, $company['company_name']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_address']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_city']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_state']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_zip']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_url']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_phone']) . "', ";
+  $sql .= "'" . db_escape($db, $company['user_id']) . "'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
@@ -278,118 +265,6 @@ function insert_page($page){
     db_disconnect($db);
     exit;
   }
-}
-
-function delete_page($id){
-  global $db;
-  $sql = "DELETE FROM pages ";
-  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-  $sql .= "LIMIT 1";
-
-  $result = mysqli_query($db, $sql);
-
-  // For DELETE statements, $result is true/false
-  if($result){
-    return true;
-  } else {
-    // DELETE failed
-    echo mysqli_error($db);
-    db_disconnect($db);
-    exit;
-  }
-}
-
-function update_page($page){
-  global $db;
-
-  $errors = validate_page($page);
-  if(!empty($errors)){
-    return $errors;
-  }
-
-  $sql = "UPDATE pages SET ";
-  $sql .= "menu_name='" . db_escape($db, $page['menu_name']) . "', ";
-  $sql .= "subject_id='" . db_escape($db, $page['subject_id']) . "', ";
-  $sql .= "position='" . db_escape($db, $page['position']) . "', ";
-  $sql .= "visible='" . db_escape($db, $page['visible']) . "' ";
-  $sql .= "WHERE id='" . db_escape($db, $page['id']) . "' ";
-  $sql .= "LIMIT 1";
-
-  $result = mysqli_query($db, $sql);
-  // For UPDATE Statements, result is true/false
-
-  if($result){
-    return true;
-  } else {
-    // UPDATE failed
-    echo mysqli_error($db);
-    db_disconnect($db);
-    exit;
-  }
-}
-
-function validate_page($page){
-
-  $errors = [];
-
-  // menu_name
-  if(is_blank($page['menu_name'])){
-    $errors[] = "Name cannot be blank.";
-  } elseif(!has_length($page['menu_name'], ['min' => 2, 'max' => 255])){
-    $errors[] = "Name must be within 2 and 255 characters.";
-  }
-
-  // Position
-  // Make sure we are working with an integer
-  $position_int = (int) $page['position'];
-  if($position_int <= 0){
-    $errors[] = "Position must be greater than zero.";
-  }
-  if($position_int > 999){
-    $errors[] = "Position must be less than 999.";
-  }
-
-  // visible
-  // Make sure we are working with a string
-  $visible_str=(string) $page['visible'];
-  if(!has_inclusion_of($visible_str, ["0", "1"])){
-    $errors[] = "Visible must be true or false.";
-  }
-
-  return $errors;
-}
-
-function find_pages_by_subject_id($subject_id, $options=['visible']){
-  global $db;
-  $visible = isset($options['visible']) ? $options['visible'] : false;
-
-  $sql = "SELECT * FROM pages ";
-  $sql .= "WHERE subject_id ='" . db_escape($db, $subject_id) . "' ";
-  if($visible){
-    $sql .= "AND visible = true ";
-  }
-  $sql .= "ORDER BY position ASC";
-  $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
-  return $result; // Returns result
-}
-
-function count_pages_by_individual_id($subject_id, $options=['visible']){
-  global $db;
-  $visible = isset($options['visible']) ? $options['visible'] : false;
-
-  $sql = "SELECT COUNT(id) FROM pages ";
-  $sql .= "WHERE subject_id ='" . db_escape($db, $subject_id) . "' ";
-  if($visible){
-    $sql .= "AND visible = true ";
-  }
-  $sql .= "ORDER BY position ASC";
-  $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
-  $row = mysqli_fetch_row($result);
-  mysqli_free_result($result);
-  $count = $row[0];
-  return $count; // Returns result
 }
 
 // admins
