@@ -28,7 +28,7 @@
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <ul class="list-group">
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">First Name</dt>
@@ -63,8 +63,8 @@
                 <dd><?php echo h($admin['username']); ?></dd>
               </dl>
             </ul>
-          </div><!-- .col-sm-6 -->
-            <div class="col-sm-6">
+          </div><!-- .col-sm-5 -->
+            <div class="col-sm-7">
               <div class="card">
                 <div class="card-header">
                 <ul class="nav nav-tabs" role="tablist">
@@ -107,7 +107,7 @@
                  </div><!-- .tab-content -->
                 </div><!-- .card-body -->
               </div><!-- .card -->
-            </div><!-- .col-5 -->
+            </div><!-- .col-7 -->
           </div><!-- .row -->
         </div><!-- .card-body -->
         <div class="card-footer">
@@ -120,5 +120,4 @@
     </div><!-- .container col-sm-12 -->
   </div><!-- . row -->
 </div><!-- .container -->
-<script src="../../js/tabs.js"></script>
 <?php include(SHARED_PATH. '/staff_footer.php'); ?>
