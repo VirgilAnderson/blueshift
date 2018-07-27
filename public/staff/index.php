@@ -87,6 +87,9 @@
             </table>
           </div><!-- .table-responsive -->
         </div><!-- .card-body -->
+        <div class="card-footer">
+          <a href="<?php echo url_for('/staff/leads/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new lead</a>
+        </div><!-- .card-footer -->
       </div><!-- .card -->
     </div><!-- .container col-sm-6 -->
   </div><!-- . row -->
