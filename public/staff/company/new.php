@@ -12,13 +12,14 @@ if(is_post_request()) {
   $company['company_state'] = isset($_POST['company_state']) ? $_POST['company_state'] : '';
   $company['company_zip'] = isset($_POST['company_zip']) ? $_POST['company_zip'] : '';
   $company['company_url'] = isset($_POST['company_url']) ? $_POST['company_url'] : '';
+  $company['phone'] = isset($_POST['phone']) ? $_POST['phone'] : '';
   $company['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = insert_company($company);
   if($result === true){
     $new_id = mysqli_insert_id($db);
     $_SESSION['message'] = 'The company was created successfully.';
-    redirect_to(url_for('/staff/company/show.php?id=' . $new_id .'&new=1'));
+    redirect_to(url_for('/staff/company/show.php?id=' . $new_id));
   } else {
     $errors = $result;
   }
@@ -31,6 +32,7 @@ if(is_post_request()) {
   $company['company_state'] = '';
   $company['company_zip'] = '';
   $company['company_url'] = '';
+  $company['phone'] = '';
   $company['user_id'] = '';
 }
 
@@ -80,6 +82,11 @@ if(is_post_request()) {
         <div class="form-group">
           <label class="form-control-label" for="company_url">Company url</label>
           <input class="form-control" type="text" name="company_url">
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="company_url">Phone</label>
+          <input class="form-control" type="text" name="company_phone">
         </div><!-- form-group -->
 
         <div class="form-group">

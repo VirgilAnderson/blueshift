@@ -267,6 +267,19 @@ function insert_company($company){
   }
 }
 
+function find_company_by_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM company ";
+  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $individual = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $individual; // Returns an associative array
+}
+
+
 // admins
 
 function find_all_admins(){
