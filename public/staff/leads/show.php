@@ -28,7 +28,7 @@
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="row">
-            <div class="col-6">
+            <div class="col-sm-6">
               <ul class="list-group">
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">First Name</dt>
@@ -63,34 +63,38 @@
                 <dd><?php echo h($admin['username']); ?></dd>
               </dl>
             </ul>
-            </div><!-- .col-5 -->
-            <div class="col-6">
+          </div><!-- .col-sm-6 -->
+            <div class="col-sm-6">
               <div class="card">
                 <div class="card-header">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">History</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Notes</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Tasks</a>
-                    </li>
-                  </ul>
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#history_pane">History</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#note_pane">Notes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#task_pane">Tasks</a>
+                  </li>
+                </ul>
                 </div><!-- .card-header -->
-                <div class="history p-3">
-                  <h2>History</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div><!-- .history -->
-                <div class="notes p-3">
-                  <h2>Notes</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div><!-- .notes -->
-                <div class="tasks p-3">
-                  <h2>Tasks</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div><!-- .tasks -->
+                <div class="card-body">
+                  <div class="tab-content">
+                   <div id="history_pane" class="container tab-pane active"><br>
+                     <h3>History</h3>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                   </div><!-- #history -->
+                   <div id="note_pane" class="container tab-pane fade"><br>
+                     <h3>Notes</h3>
+                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                   </div><!-- #notes -->
+                   <div id="task_pane" class="container tab-pane fade"><br>
+                     <h3>Tasks</h3>
+                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                   </div><!-- #tasks -->
+                 </div><!-- .tab-content -->
+                </div><!-- .card-body -->
               </div><!-- .card -->
             </div><!-- .col-5 -->
           </div><!-- .row -->
@@ -105,5 +109,5 @@
     </div><!-- .container col-sm-12 -->
   </div><!-- . row -->
 </div><!-- .container -->
-
+<script src="../../js/tabs.js"></script>
 <?php include(SHARED_PATH. '/staff_footer.php'); ?>

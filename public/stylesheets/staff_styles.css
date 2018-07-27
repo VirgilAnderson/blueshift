@@ -31,9 +31,7 @@ shade 4 = #103634 - Dark
 .navbar{
     background-color: var(--dark-blue);
   }
-#tasks{
-  background-color: var(--light-blue);
-}
+
 
 .breadcrumb-item+.breadcrumb-item::before{
   content: '>';
