@@ -69,7 +69,10 @@
                 <div class="card-header">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#history_pane">History</a>
+                    <a class="nav-link active" data-toggle="tab" href="#company_pane">Company</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#history_pane">History</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#note_pane">Notes</a>
@@ -81,6 +84,10 @@
                 </div><!-- .card-header -->
                 <div class="card-body">
                   <div class="tab-content">
+                    <div id="company_pane" class="container tab-pane active"><br>
+                      <h3>Company</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div><!-- #company_pane -->
                    <div id="history_pane" class="container tab-pane active"><br>
                      <h3>History</h3>
                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
