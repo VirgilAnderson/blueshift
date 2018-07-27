@@ -93,7 +93,7 @@ if(is_post_request()) {
 
 
 
-        <button class="btn btn-outline-info" type="submit">Create New Lead</button>
+        <button class="btn btn-outline-info" type="submit">Create New Company</button>
 
       </fieldset><!-- fieldset -->
     </form>
