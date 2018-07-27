@@ -31,7 +31,7 @@ if(is_post_request()) {
   $individual['email'] = '';
   $individual['role'] = '';
   $individual['lead_source'] = '';
-  $indivual['user_id'] = '';
+  $individual['user_id'] = '';
 }
 
 ?>
