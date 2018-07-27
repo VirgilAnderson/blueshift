@@ -29,7 +29,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-5">
-              <ul class="list-group">
+              <ul class="list-group list-group-flush">
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">First Name</dt>
                 <dd><?php echo h($individual['first_name']); ?></dd>
@@ -63,9 +63,10 @@
                 <dd><?php echo h($admin['username']); ?></dd>
               </dl>
             </ul>
-          </div><!-- .col-sm-5 -->
+          </div><!-- .col-sm-5  -->
+
             <div class="col-sm-7">
-              <div class="card">
+              <div class="card bg-light">
                 <div class="card-header">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
@@ -80,15 +81,37 @@
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#task_pane">Tasks</a>
                   </li>
-                </ul>
+                </ul><!-- .nav nav-tabs -->
                 </div><!-- .card-header -->
                 <div class="card-body">
                   <div class="tab-content">
                     <div id="company_pane" class="container tab-pane active"><br>
-                      <h3>Company</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <ul class="list-group list-group-flush">
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Company Name</dt>
+                          <dd>company name here</dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Address</dt>
+                          <dd>company address here</dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">City</dt>
+                          <dd>company city here</dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">State</dt>
+                          <dd>company state here</dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">URL</dt>
+                          <dd>web address here</dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Company Phone</dt>
+                          <dd>Main line here</dd>
+                        </dl>
+                      </ul>
                     </div><!-- #company_pane -->
 
                    <div id="history_pane" class="container tab-pane"><br>
@@ -106,6 +129,12 @@
                    </div><!-- #tasks -->
                  </div><!-- .tab-content -->
                 </div><!-- .card-body -->
+                <div class="card-footer">
+                  <dl class="list-group-item d-flex">
+                    <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete</a></dt>
+                    <dt><a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit</a></dt>
+                  </dl>
+                </div><!-- .card-footer -->
               </div><!-- .card -->
             </div><!-- .col-7 -->
           </div><!-- .row -->
