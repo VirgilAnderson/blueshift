@@ -102,10 +102,6 @@
                           <dt class="mr-4">Lead source</dt>
                           <dd><?php echo h($individual['lead_source']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Lead Owner</dt>
-                          <dd><?php echo h($admin['username']); ?></dd>
-                        </dl>
                       </ul>
                     </div><!-- #company_pane -->
 
