@@ -318,6 +318,26 @@ function update_company($company){
   }
 }
 
+function delete_company($id){
+  global $db;
+
+  $sql = "DELETE FROM company ";
+  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+
+  // For DELETE statements, $result is true/false
+  if($result){
+    return true;
+  } else {
+    // DELETE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 
 // admins
 
