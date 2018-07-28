@@ -279,6 +279,17 @@ function find_company_by_id($id){
   return $individual; // Returns an associative array
 }
 
+function find_all_user_company($admin){
+  global $db;
+
+  $sql = "SELECT * FROM company ";
+  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY company_name DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 
 // admins
 
