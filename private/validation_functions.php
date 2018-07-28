@@ -12,7 +12,7 @@
   // * validates data has_presence
   // * reverse of is_blank()
   // * I prefer validation with names "has_ "
-  function has_prsence($value){
+  function has_presence($value){
     return !is_blank($value);
   }
 
