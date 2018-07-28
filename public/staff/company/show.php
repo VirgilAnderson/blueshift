@@ -125,8 +125,8 @@
                 </div><!-- .card-body -->
                 <div class="card-footer">
                   <dl class="list-group-item d-flex">
-                    <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($company['id']))); ?>">Delete</a></dt>
-                    <dt><a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($company['id']))); ?>">Edit</a></dt>
+                    <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete</a></dt>
+                    <dt><a class="card-link" href="<?php echo url_for('/staff/company/edit.php?id=' . h(u($company['id']))); ?>">Edit</a></dt>
                   </dl>
                 </div><!-- .card-footer -->
               </div><!-- .card -->
@@ -135,8 +135,8 @@
         </div><!-- .card-body -->
         <div class="card-footer">
           <dl class="list-group-item d-flex">
-            <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($company['id']))); ?>">Delete</a></dt>
-            <dt><a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($company['id']))); ?>">Edit</a></dt>
+            <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete</a></dt>
+            <dt><a class="card-link" href="<?php echo url_for('/staff/company/edit.php?id=' . h(u($company['id']))); ?>">Edit</a></dt>
           </dl>
         </div><!-- .card-footer -->
       </div><!-- .card -->

@@ -290,6 +290,34 @@ function find_all_user_company($admin){
   return $result;
 }
 
+function update_company($company){
+  global $db;
+
+  $sql = "UPDATE company SET ";
+  $sql .= "company_name='" . db_escape($db, $company['company_name']) . "', ";
+  $sql .= "company_address='" . db_escape($db, $company['company_address']) . "', ";
+  $sql .= "company_city='" . db_escape($db, $company['company_city']) . "', ";
+  $sql .= "company_state='" . db_escape($db, $company['company_state']) . "', ";
+  $sql .= "company_zip='" . db_escape($db, $company['company_zip']) . "', ";
+  $sql .= "company_url='" . db_escape($db, $company['company_url']) . "', ";
+  $sql .= "company_phone='" . db_escape($db, $company['company_phone']) . "', ";
+  $sql .= "user_id='" . db_escape($db, $company['user_id']) . "' ";
+  $sql .= "WHERE id='" . db_escape($db, $company['id']) . "' ";
+  $sql .= "LIMIT 1;";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 
 // admins
 
