@@ -101,6 +101,18 @@
                           <dd><?php echo h($company['company_phone']); ?></dd>
                         </dl>
                       </ul>
+
+                      <dl class="list-group-item d-flex bg-light">
+                        <dt class="mr-4">
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/new.php?id=' . h(u($individual['id']))); ?>">Add New Company</a>
+                        </dt>
+                        <dt>
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">Link To Company</a>
+                        </dt>
+                        <dt>
+                          <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/company/edit.php?id=' . h(u($company['id']))); ?>">Edit Company</a>
+                        </dt>
+                      </dl>
                     </div><!-- #company_pane -->
 
                    <div id="history_pane" class="container tab-pane"><br>
