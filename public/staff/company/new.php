@@ -12,7 +12,7 @@ if(is_post_request()) {
   $company['company_state'] = isset($_POST['company_state']) ? $_POST['company_state'] : '';
   $company['company_zip'] = isset($_POST['company_zip']) ? $_POST['company_zip'] : '';
   $company['company_url'] = isset($_POST['company_url']) ? $_POST['company_url'] : '';
-  $company['phone'] = isset($_POST['phone']) ? $_POST['phone'] : '';
+  $company['company_phone'] = isset($_POST['company_phone']) ? $_POST['company_phone'] : '';
   $company['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = insert_company($company);
@@ -32,7 +32,7 @@ if(is_post_request()) {
   $company['company_state'] = '';
   $company['company_zip'] = '';
   $company['company_url'] = '';
-  $company['phone'] = '';
+  $company['company_phone'] = '';
   $company['user_id'] = '';
 }
 
@@ -85,7 +85,7 @@ if(is_post_request()) {
         </div><!-- form-group -->
 
         <div class="form-group">
-          <label class="form-control-label" for="company_url">Phone</label>
+          <label class="form-control-label" for="company_phone">Phone</label>
           <input class="form-control" type="text" name="company_phone">
         </div><!-- form-group -->
 
