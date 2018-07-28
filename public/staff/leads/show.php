@@ -107,7 +107,7 @@
                           <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/new.php?individual_id=' . h(u($individual['id']))); ?>">Add New Company</a>
                         </dt>
                         <dt>
-                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">Link To Company</a>
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">Link To Existing Company</a>
                         </dt>
                         <dt>
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/company/edit.php?id=' . h(u($company['id']))); ?>">Edit Company</a>
