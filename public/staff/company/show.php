@@ -4,6 +4,7 @@
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $company = find_company_by_id($id);
+  $individual = find_individual_by_company_id($company['id']);
   $admin = find_admin_by_id($company['user_id']);
 ?>
 <?php $page_title = "Show lead"; ?>
@@ -64,7 +65,7 @@
                 <div class="card-header">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#company_pane">Company</a>
+                    <a class="nav-link active" data-toggle="tab" href="#company_pane">Employees</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#history_pane">History</a>
@@ -82,28 +83,28 @@
                     <div id="company_pane" class="container tab-pane active"><br>
                       <ul class="list-group list-group-flush">
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Company Name</dt>
-                          <dd>company name here</dd>
+                          <dt class="mr-4">Employee Name</dt>
+                          <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Address</dt>
-                          <dd>company address here</dd>
+                          <dt class="mr-4">Phone</dt>
+                          <dd><?php echo h($individual['phone_direct']); ?></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">City</dt>
-                          <dd>company city here</dd>
+                          <dt class="mr-4">Email</dt>
+                          <dd><?php echo h($individual['email']); ?></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">State</dt>
-                          <dd>company state here</dd>
+                          <dt class="mr-4">Role</dt>
+                          <dd><?php echo h($individual['role']); ?></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">URL</dt>
-                          <dd>web address here</dd>
+                          <dt class="mr-4">Lead source</dt>
+                          <dd><?php echo h($individual['lead_source']); ?></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Company Phone</dt>
-                          <dd>Main line here</dd>
+                          <dt class="mr-4">Lead Owner</dt>
+                          <dd><?php echo h($admin['username']); ?></dd>
                         </dl>
                       </ul>
                     </div><!-- #company_pane -->
