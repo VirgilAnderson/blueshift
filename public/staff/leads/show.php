@@ -5,6 +5,7 @@
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
+  $company = find_company_by_id($individual['company_id']);
   if($new == 0){individual_visited($individual);}
   $admin = find_admin_by_id($individual['user_id']);
 ?>
@@ -87,29 +88,33 @@
                   <div class="tab-content">
                     <div id="company_pane" class="container tab-pane active"><br>
                       <ul class="list-group list-group-flush">
-                        <dl class="list-group-item d-flex bg-light">
+                        <dl class="list-group-item d-flex">
                           <dt class="mr-4">Company Name</dt>
-                          <dd>company name here</dd>
+                          <dd><?php echo h($company['company_name']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex bg-light">
+                        <dl class="list-group-item d-flex">
                           <dt class="mr-4">Address</dt>
-                          <dd>company address here</dd>
+                          <dd><?php echo h($company['company_address']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex bg-light">
+                        <dl class="list-group-item d-flex">
                           <dt class="mr-4">City</dt>
-                          <dd>company city here</dd>
+                          <dd><?php echo h($company['company_city']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex bg-light">
+                        <dl class="list-group-item d-flex">
+                          <dt class="mr-4">Zip</dt>
+                          <dd><?php echo h($company['company_zip']); ?></dd>
+                        </dl>
+                        <dl class="list-group-item d-flex">
                           <dt class="mr-4">State</dt>
-                          <dd>company state here</dd>
+                          <dd><?php echo h($company['company_state']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex bg-light">
+                        <dl class="list-group-item d-flex">
                           <dt class="mr-4">URL</dt>
-                          <dd>web address here</dd>
+                          <dd><?php echo h($company['company_url']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Company Phone</dt>
-                          <dd>Main line here</dd>
+                        <dl class="list-group-item d-flex">
+                          <dt class="mr-4">Phone</dt>
+                          <dd><?php echo h($company['company_phone']); ?></dd>
                         </dl>
                       </ul>
                     </div><!-- #company_pane -->

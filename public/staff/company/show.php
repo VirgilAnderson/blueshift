@@ -3,9 +3,7 @@
 <?php require_login(); ?>
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
-  $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $company = find_company_by_id($id);
-  if($new == 0){company_visited($company);}
   $admin = find_admin_by_id($company['user_id']);
 ?>
 <?php $page_title = "Show lead"; ?>
