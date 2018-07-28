@@ -84,19 +84,19 @@
                   <div class="tab-content">
                     <div id="company_pane" class="container tab-pane active"><br>
                       <ul class="list-group list-group-flush">
-                        <dl class="list-group-item d-flex">
+                        <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Company Name</dt>
                           <dd><?php echo h($company['company_name']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex">
+                        <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Address</dt>
                           <dd><?php echo h($company['company_address']) . " " . h($company['company_city']) . " " . h($company['company_state']) . " " . h($company['company_zip']); ?></dd>
                         </dl>
-                        <dl class="list-group-item d-flex">
+                        <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">URL</dt>
                           <dd><a href='http://<?php echo $company['company_url']; ?>' target="_blank"><?php echo h($company['company_url']); ?></a></dd>
                         </dl>
-                        <dl class="list-group-item d-flex">
+                        <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Phone</dt>
                           <dd><?php echo h($company['company_phone']); ?></dd>
                         </dl>
@@ -118,12 +118,6 @@
                    </div><!-- #tasks -->
                  </div><!-- .tab-content -->
                 </div><!-- .card-body -->
-                <div class="card-footer">
-                  <dl class="list-group-item d-flex">
-                    <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete</a></dt>
-                    <dt><a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit</a></dt>
-                  </dl>
-                </div><!-- .card-footer -->
               </div><!-- .card -->
             </div><!-- .col-7 -->
           </div><!-- .row -->
