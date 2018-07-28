@@ -32,12 +32,8 @@
             <div class="col-sm-5">
               <ul class="list-group list-group-flush">
               <dl class="list-group-item d-flex">
-                <dt class="mr-4">First Name</dt>
-                <dd><?php echo h($individual['first_name']); ?></dd>
-              </dl>
-              <dl class="list-group-item d-flex">
-                <dt class="mr-4">Last Name</dt>
-                <dd><?php echo h($individual['last_name']); ?></dd>
+                <dt class="mr-4">Name</dt>
+                <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
               </dl>
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">Phone</dt>
@@ -94,23 +90,11 @@
                         </dl>
                         <dl class="list-group-item d-flex">
                           <dt class="mr-4">Address</dt>
-                          <dd><?php echo h($company['company_address']); ?></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex">
-                          <dt class="mr-4">City</dt>
-                          <dd><?php echo h($company['company_city']); ?></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex">
-                          <dt class="mr-4">Zip</dt>
-                          <dd><?php echo h($company['company_zip']); ?></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex">
-                          <dt class="mr-4">State</dt>
-                          <dd><?php echo h($company['company_state']); ?></dd>
+                          <dd><?php echo h($company['company_address']) . " " . h($company['company_city']) . " " . h($company['company_state']) . " " . h($company['company_zip']); ?></dd>
                         </dl>
                         <dl class="list-group-item d-flex">
                           <dt class="mr-4">URL</dt>
-                          <dd><?php echo h($company['company_url']); ?></dd>
+                          <dd><a href='http://<?php echo $company['company_url']; ?>' target="_blank"><?php echo h($company['company_url']); ?></a></dd>
                         </dl>
                         <dl class="list-group-item d-flex">
                           <dt class="mr-4">Phone</dt>
