@@ -86,7 +86,7 @@
                       <ul class="list-group list-group-flush">
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Company Name</dt>
-                          <dd><?php echo h($company['company_name']); ?></dd>
+                          <dd><a href="<?php echo url_for('/staff/company/show.php?id=' . h(u($company['id']))); ?>"><?php echo h($company['company_name']); ?></a></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Address</dt>

@@ -84,7 +84,7 @@
                       <ul class="list-group list-group-flush">
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Employee Name</dt>
-                          <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
+                          <dd><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></a></dd>
                         </dl>
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Phone</dt>
