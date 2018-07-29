@@ -96,6 +96,7 @@ if(is_post_request()) {
         <div class="form-group">
           <label for="company_id">Company:</label>
               <select class="form-control" name="company_id">
+                <option value=''>none</option>
             <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
                 <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $company_id){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
             <?php } ?>
