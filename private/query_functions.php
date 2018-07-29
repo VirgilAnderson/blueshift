@@ -365,6 +365,137 @@ function delete_company($id, $individual){
   }
 }
 
+// tasks
+
+function insert_task($task){
+  global $db;
+
+  //$errors = validate_individual($individual);
+  //if(!empty($errors)){
+  //  return $errors;
+  //}
+
+  // shift_subject_position(0, $subject['position']);
+
+  $sql = "INSERT INTO company ";
+  $sql .= "(company_name, company_address, company_city, company_state, company_zip, company_url, company_phone, user_id) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $company['company_name']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_address']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_city']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_state']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_zip']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_url']) . "', ";
+  $sql .= "'" . db_escape($db, $company['company_phone']) . "', ";
+  $sql .= "'" . db_escape($db, $company['user_id']) . "'";
+  $sql .= ")";
+  $result = mysqli_query($db, $sql);
+  // For Insert Statements, result is True False
+  if($result){
+    return true;
+  }
+}
+
+function find_task_by_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM company ";
+  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $individual = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $individual; // Returns an associative array
+}
+
+function find_all_user_tasks($admin){
+  global $db;
+
+  $sql = "SELECT * FROM tasks ";
+  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY id DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function find_five_task_individual($admin){
+  global $db;
+
+  $sql = "SELECT * FROM individual ";
+  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY lead_birthdate DESC ";
+  $sql .= "LIMIT 5";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function find_all_task_company($admin){
+  global $db;
+
+  $sql = "SELECT * FROM company ";
+  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY company_name DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function update_task($task){
+  global $db;
+
+  $sql = "UPDATE company SET ";
+  $sql .= "company_name='" . db_escape($db, $company['company_name']) . "', ";
+  $sql .= "company_address='" . db_escape($db, $company['company_address']) . "', ";
+  $sql .= "company_city='" . db_escape($db, $company['company_city']) . "', ";
+  $sql .= "company_state='" . db_escape($db, $company['company_state']) . "', ";
+  $sql .= "company_zip='" . db_escape($db, $company['company_zip']) . "', ";
+  $sql .= "company_url='" . db_escape($db, $company['company_url']) . "', ";
+  $sql .= "company_phone='" . db_escape($db, $company['company_phone']) . "', ";
+  $sql .= "user_id='" . db_escape($db, $company['user_id']) . "' ";
+  $sql .= "WHERE id='" . db_escape($db, $company['id']) . "' ";
+  $sql .= "LIMIT 1;";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+function delete_task($id, $task){
+  global $db;
+
+  $sql = "DELETE FROM company ";
+  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  $sql .= "LIMIT 1; ";
+
+  $sql = "UPDATE individual SET ";
+  $sql .= "company_id=NULL ";
+  $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "' ";
+  $sql .= "LIMIT 1; ";
+
+
+  $result = mysqli_query($db, $sql);
+
+  // For DELETE statements, $result is true/false
+  if($result){
+    return true;
+  } else {
+    // DELETE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 
 // admins
 
