@@ -1,6 +1,10 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
 $admin_set = find_all_admins();
+$admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
+$company_set = find_all_user_company($admin);
+$company_id = $_GET['company_id'];
+$company = find_company_by_id($company_id);
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -12,7 +16,9 @@ if(is_post_request()) {
   $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
+  $individual['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
   $individual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
+
 
   $result = insert_individual($individual);
   if($result === true){
@@ -88,10 +94,20 @@ if(is_post_request()) {
         </div><!-- form-group -->
 
         <div class="form-group">
+          <label for="company_id">Company:</label>
+              <select class="form-control" name="company_id">
+            <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
+                <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $company_id){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
+            <?php } ?>
+            </select>
+
+        </div><!-- form-group -->
+
+        <div class="form-group">
           <label for="lead_source">Lead Owner:</label>
             <select class="form-control" name="user_id">
               <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
-              <option value="<?php echo h($admin['id']); ?>"><?php echo h($admin['username']); ?></option>
+              <option value="<?php echo h($admin['id']); ?>" ><?php echo h($admin['username']); ?></option>
               <?php } ?>
             </select>
         </div><!-- form-group -->

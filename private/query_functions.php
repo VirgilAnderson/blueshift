@@ -82,15 +82,8 @@ function find_individual_by_company_id($id){
 function insert_individual($individual){
   global $db;
 
-  //$errors = validate_individual($individual);
-  //if(!empty($errors)){
-  //  return $errors;
-  //}
-
-  // shift_subject_position(0, $subject['position']);
-
   $sql = "INSERT INTO individual ";
-  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed, user_id) ";
+  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed, company_id, user_id) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $individual['first_name']) . "', ";
   $sql .= "'" . db_escape($db, $individual['last_name']) . "', ";
@@ -99,8 +92,9 @@ function insert_individual($individual){
   $sql .= "'" . db_escape($db, $individual['role']) . "', ";
   $sql .= "'" . db_escape($db, $individual['lead_source']) . "', ";
   $sql .="'0', ";
-  $sql .= "'" . db_escape($db, $individual['user_id']) . "'";
-  $sql .= ")";
+  $sql .= "'" . db_escape($db, $individual['company_id']) . "', ";
+  $sql .= "'" . db_escape($db, $individual['user_id']) . "' ";
+  $sql .= ");";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
