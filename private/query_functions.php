@@ -15,7 +15,7 @@ function find_all_user_individual($admin){
 
   $sql = "SELECT * FROM individual ";
   $sql .= "WHERE user_id=" . $admin . " ";
-  $sql .= "ORDER BY lead_birthdate DESC";
+  $sql .= "ORDER BY id DESC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
