@@ -106,6 +106,9 @@
                         <dt>
                           <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/link.php?id=' . h(u($individual['id']))); ?>">Set As Company Contact</a>
                         </dt>
+                        <dt class="mr-4">
+                          <a class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete Company</a>
+                        </dt>
                         <dt>
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/company/edit.php?id=' . h(u($company['id']))); ?>">Edit Company</a>
                         </dt>
@@ -133,8 +136,12 @@
         </div><!-- .card-body -->
         <div class="card-footer">
           <dl class="list-group-item d-flex">
-            <dt class="mr-4"><a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete</a></dt>
-            <dt><a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit</a></dt>
+            <dt class="mr-4">
+              <a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+            </dt>
+            <dt>
+              <a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
+            </dt>
           </dl>
         </div><!-- .card-footer -->
       </div><!-- .card -->
