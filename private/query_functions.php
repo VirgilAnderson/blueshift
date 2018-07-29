@@ -431,6 +431,17 @@ function find_five_task_individual($admin){
   return $result;
 }
 
+function find_all_task_individual($individual){
+  global $db;
+
+  $sql = "SELECT * FROM tasks ";
+  $sql .= "WHERE individual_id='" . db_escape($db, $individual['id']) . "' ";
+  $sql .= "ORDER BY due_date DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_all_task_company($admin){
   global $db;
 

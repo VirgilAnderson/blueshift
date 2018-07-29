@@ -6,6 +6,7 @@
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
   $company = find_company_by_id($individual['company_id']);
+  $task_set = find_all_task_individual($individual['id']);
   if($new == 0){individual_visited($individual);}
   $admin = find_admin_by_id($individual['user_id']);
 ?>
@@ -124,9 +125,47 @@
                      <h3>Notes</h3>
                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                    </div><!-- #notes -->
+
                    <div id="task_pane" class="container tab-pane fade"><br>
-                     <h3>Tasks</h3>
-                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                     <div class="table-responsive">
+                       <table class="table table-hover table-sm">
+                         <thead>
+                           <tr>
+                             <th>Title</th>
+                             <th>Task Type</th>
+                             <th>Task State</th>
+                             <th>Due Date</th>
+
+                           </tr>
+                         </thead>
+                         <tbody>
+
+                         <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
+                           <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
+                             <td><?php echo h($task['task_name']); ?></td>
+                             <td><?php echo h($task['task_type']); ?></td>
+                             <td><?php echo h($task['task_state']); ?></td>
+                             <td><?php echo h($task['due_date']); ?></td>
+                           </tr>
+                         <?php } ?>
+                       </tbody>
+                       </table>
+                       <?php
+                         mysqli_free_result($task_set);
+                        ?>
+                     </div><!-- .table-responsive -->
+
+                     <dl class="list-group-item d-flex bg-light">
+                       <dt class="mr-4">
+                         <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?id=' . h(u($individual['id']))); ?>">Add Task</a>
+                       </dt>
+                       <dt class="mr-4">
+                         <a <?php if(!$task){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($company['id']))); ?>">Delete Task</a>
+                       </dt>
+                       <dt class="mr-4">
+                         <a <?php if(!$task){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($company['id']))); ?>">Edit Task</a>
+                       </dt>
+                     </dl>
                    </div><!-- #tasks -->
                  </div><!-- .tab-content -->
                 </div><!-- .card-body -->
