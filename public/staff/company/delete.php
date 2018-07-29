@@ -4,9 +4,10 @@ if(!isset($_GET['id'])){
   redirect_to(url_for('/staff/company/index.php'));
 }
 $id = $_GET['id'];
+$individual = find_individual_by_company_id($id);
 
 if(is_post_request()){
-  $result = delete_company($id);
+  $result = delete_company($id, $individual);
   redirect_to(url_for('/staff/company/index.php'));
 } else {
   $company = find_company_by_id($id);
