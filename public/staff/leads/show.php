@@ -6,7 +6,7 @@
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
   $company = find_company_by_id($individual['company_id']);
-  $task_set = find_all_task_individual($individual['id']);
+  $task_set = find_all_task_individual($individual);
   if($new == 0){individual_visited($individual);}
   $admin = find_admin_by_id($individual['user_id']);
 ?>
@@ -135,6 +135,8 @@
                              <th>Task Type</th>
                              <th>Task State</th>
                              <th>Due Date</th>
+                             <th></th>
+                             <th></th>
 
                            </tr>
                          </thead>
@@ -142,10 +144,12 @@
 
                          <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
                            <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
-                             <td><?php echo h($task['task_name']); ?></td>
+                             <td><a href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>"><?php echo h($task['task_name']); ?></a></td>
                              <td><?php echo h($task['task_type']); ?></td>
                              <td><?php echo h($task['task_state']); ?></td>
                              <td><?php echo h($task['due_date']); ?></td>
+                             <td><a class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($task['id']))); ?>">Delete</a></td>
+                             <td><a class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($task['id']))); ?>">Edit</a></td>
                            </tr>
                          <?php } ?>
                        </tbody>
@@ -158,12 +162,6 @@
                      <dl class="list-group-item d-flex bg-light">
                        <dt class="mr-4">
                          <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?individual_id=' . h(u($individual['id']))); ?>">Add Task</a>
-                       </dt>
-                       <dt class="mr-4">
-                         <a <?php if(!$task){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($company['id']))); ?>">Delete Task</a>
-                       </dt>
-                       <dt class="mr-4">
-                         <a <?php if(!$task){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($company['id']))); ?>">Edit Task</a>
                        </dt>
                      </dl>
                    </div><!-- #tasks -->
