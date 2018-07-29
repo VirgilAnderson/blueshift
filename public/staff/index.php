@@ -52,6 +52,9 @@
             </table>
           </div><!-- .table-responsive -->
         </div><!-- .card-body -->
+        <div class="card-footer">
+          <a href="<?php echo url_for('/staff/tasks/new.php'); ?>" class="btn btn-outline-info mb-2" role="button">Add new task</a>
+        </div><!-- .card-footer -->
       </div><!-- .card -->
     </div><!-- .container col-sm-6 -->
     <div class="container col-sm-6 mb-4">

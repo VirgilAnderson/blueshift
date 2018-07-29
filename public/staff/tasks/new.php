@@ -3,7 +3,7 @@ require_login();
 $admin_set = find_all_admins();
 $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
 $company_set = find_all_user_company($admin);
-$company_id = $_GET['company_id'];
+$company_id = isset($_GET['company_id']) ? $_GET['company_id'] : '';
 $company = find_company_by_id($company_id);
 $individual_set = find_all_user_individual($admin);
 $individual_id = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
