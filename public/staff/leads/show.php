@@ -157,7 +157,7 @@
 
                      <dl class="list-group-item d-flex bg-light">
                        <dt class="mr-4">
-                         <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?id=' . h(u($individual['id']))); ?>">Add Task</a>
+                         <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?individual_id=' . h(u($individual['id']))); ?>">Add Task</a>
                        </dt>
                        <dt class="mr-4">
                          <a <?php if(!$task){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($company['id']))); ?>">Delete Task</a>

@@ -105,7 +105,7 @@ if(is_post_request()) {
             <select class="form-control" name="individual_id">
                 <option>none</option>
               <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
-                <option value="<?php echo h($individual['id']); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></option>
+                <option value="<?php echo h($individual['id']); ?>" <?php if($individual['id'] == $individual_id){echo "selected";}?>><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></option>
               <?php } ?>
             </select>
         </div><!-- form-group -->
