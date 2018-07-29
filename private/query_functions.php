@@ -377,17 +377,17 @@ function insert_task($task){
 
   // shift_subject_position(0, $subject['position']);
 
-  $sql = "INSERT INTO company ";
-  $sql .= "(company_name, company_address, company_city, company_state, company_zip, company_url, company_phone, user_id) ";
+  $sql = "INSERT INTO tasks ";
+  $sql .= "(task_name, task_type, task_state, task_description, due_date, individual_id, company_id, user_id) ";
   $sql .= "VALUES (";
-  $sql .= "'" . db_escape($db, $company['company_name']) . "', ";
-  $sql .= "'" . db_escape($db, $company['company_address']) . "', ";
-  $sql .= "'" . db_escape($db, $company['company_city']) . "', ";
-  $sql .= "'" . db_escape($db, $company['company_state']) . "', ";
-  $sql .= "'" . db_escape($db, $company['company_zip']) . "', ";
-  $sql .= "'" . db_escape($db, $company['company_url']) . "', ";
-  $sql .= "'" . db_escape($db, $company['company_phone']) . "', ";
-  $sql .= "'" . db_escape($db, $company['user_id']) . "'";
+  $sql .= "'" . db_escape($db, $task['task_name']) . "', ";
+  $sql .= "'" . db_escape($db, $task['task_type']) . "', ";
+  $sql .= "'" . db_escape($db, $task['task_state']) . "', ";
+  $sql .= "'" . db_escape($db, $task['task_description']) . "', ";
+  $sql .= "'" . db_escape($db, $task['due_date']) . "', ";
+  $sql .= "'" . db_escape($db, $task['individual_id']) . "', ";
+  $sql .= "'" . db_escape($db, $task['company_id']) . "', ";
+  $sql .= "'" . db_escape($db, $task['user_id']) . "'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
