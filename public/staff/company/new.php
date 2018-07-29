@@ -1,7 +1,6 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
 $admin_set = find_all_admins();
-$individual = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -17,6 +16,7 @@ if(is_post_request()) {
   $company['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = insert_company($company);
+
   if($result === true){
     $new_id = mysqli_insert_id($db);
     $_SESSION['message'] = 'The company was created successfully.';

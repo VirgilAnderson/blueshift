@@ -243,6 +243,26 @@ function shift_subject_position($start_pos, $end_pos, $current_id=0) {
   }
 }
 
+function insert_company_into_individual($company, $id){
+  global $db;
+
+  $sql = "UPDATE individual SET ";
+  $sql .= "company_id='" . db_escape($db, $company['company_id']) .  "' ";
+  $sql .= "WHERE id='" . $id . "';";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 // companies
 
 function insert_company($company){
@@ -271,11 +291,6 @@ function insert_company($company){
   // For Insert Statements, result is True False
   if($result){
     return true;
-  } else {
-    // INSERT failed
-    echo mysqli_error($db);
-    db_disconnect($db);
-    exit;
   }
 }
 
