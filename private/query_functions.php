@@ -419,12 +419,12 @@ function find_all_user_tasks($admin){
   return $result;
 }
 
-function find_five_task_individual($admin){
+function find_five_task_user($admin){
   global $db;
 
-  $sql = "SELECT * FROM individual ";
+  $sql = "SELECT * FROM tasks ";
   $sql .= "WHERE user_id=" . $admin . " ";
-  $sql .= "ORDER BY lead_birthdate DESC ";
+  $sql .= "ORDER BY id DESC ";
   $sql .= "LIMIT 5";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);

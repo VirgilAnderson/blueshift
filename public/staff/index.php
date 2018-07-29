@@ -2,6 +2,7 @@
 <?php require_login(); ?>
 <?php $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id']: ''; ?>
 <?php $individual_set = find_five_user_individual($admin);?>
+<?php $task_set = find_five_task_user($admin); ?>
 <?php $page_title = "Dashboard"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -25,29 +26,22 @@
                 <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
                   <th>Title</th>
                   <th>Due Date</th>
-                  <th>Time</th>
-                  <th>Contact Name</th>
+                  <th>Status</th>
+                  <th>Task Type</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <td>Follow Up</td>
-                  <td>12.17.18</td>
-                  <td>1:00 PM</td>
-                  <td>John Smith</td>
-                </tr>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <td>Closing</td>
-                  <td>12.17.18</td>
-                  <td>2:00 PM</td>
-                  <td>Betty Lou</td>
-                </tr>
-                <tr class='clickable-row' data-href="<?php echo url_for('staff/tasks/show.php'); ?>">
-                  <td>Follow Up</td>
-                  <td>12.17.18</td>
-                  <td>3:30 PM</td>
-                  <td>Jimmy Stuart</td>
-                </tr>
+                <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
+                  <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
+
+                    <td><?php echo h($task['task_name']); ?></td>
+                    <td><?php echo h($task['due_date']); ?></td>
+                    <td><?php echo h($task['task_state']); ?></td>
+                    <td><?php echo h($task['task_type']); ?></td>
+
+                  </tr>
+
+                <?php } ?>
               </tbody>
             </table>
           </div><!-- .table-responsive -->
