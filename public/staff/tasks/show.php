@@ -5,7 +5,6 @@
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $task = find_task_by_id($id);
-  $admin = find_admin_by_id($individual['user_id']);
   $individual = find_individual_by_id($task['individual_id']);
   $company = find_company_by_id($task['company_id']);
 ?>
@@ -97,6 +96,14 @@
                           <dd><?php echo h($individual['lead_source']); ?></dd>
                         </dl>
                       </ul>
+                      <dl class="list-group-item d-flex bg-light">
+                        <dt class="mr-4">
+                          <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+                        </dt>
+                        <dt class="mr-4">
+                          <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
+                        </dt>
+                      </dl>
                     </div><!-- #employee_pane -->
 
                     <div id="company_pane" class="container tab-pane"><br>
@@ -121,7 +128,7 @@
 
                       <dl class="list-group-item d-flex bg-light">
                         <dt class="mr-4">
-                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/link.php?id=' . h(u($individual['id']))); ?>">Set As Company Contact</a>
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/company/new.php?id=' . h(u($task['id']))); ?>">Add Company</a>
                         </dt>
                         <dt class="mr-4">
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete Company</a>
