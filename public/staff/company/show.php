@@ -65,7 +65,7 @@
                 <div class="card-header">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#company_pane">Employees</a>
+                    <a class="nav-link active" data-toggle="tab" href="#employee_pane">Employees</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#history_pane">History</a>
@@ -80,7 +80,7 @@
                 </div><!-- .card-header -->
                 <div class="card-body">
                   <div class="tab-content">
-                    <div id="company_pane" class="container tab-pane active"><br>
+                    <div id="employee_pane" class="container tab-pane active"><br>
                       <ul class="list-group list-group-flush">
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Employee Name</dt>

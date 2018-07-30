@@ -399,13 +399,13 @@ function insert_task($task){
 function find_task_by_id($id){
   global $db;
 
-  $sql = "SELECT * FROM company ";
+  $sql = "SELECT * FROM tasks ";
   $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
-  $individual = mysqli_fetch_assoc($result);
+  $task = mysqli_fetch_assoc($result);
   mysqli_free_result($result);
-  return $individual; // Returns an associative array
+  return $task; // Returns an associative array
 }
 
 function find_all_user_tasks($admin){
@@ -506,6 +506,7 @@ function delete_task($id, $task){
     exit;
   }
 }
+
 
 
 // admins
