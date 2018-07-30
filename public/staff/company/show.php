@@ -6,6 +6,7 @@
   $company = find_company_by_id($id);
   $individual = find_individual_by_company_id($company['id']);
   $admin = find_admin_by_id($company['user_id']);
+  $task_set = find_all_task_company($company);
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -102,8 +103,19 @@
                           <dt class="mr-4">Lead source</dt>
                           <dd><?php echo h($individual['lead_source']); ?></dd>
                         </dl>
+                        <dl class="list-group-item d-flex">
+                          <dt class="mr-4">
+                            <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+                          </dt>
+                          <dt>
+                            <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
+                          </dt>
+                          <dt>
+                            <a <?php if($individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/new.php?company_id=' . $id); ?>">Add Employee</a>
+                          </dt>
+                        </dl>
                       </ul>
-                    </div><!-- #company_pane -->
+                    </div><!-- #employee_pane -->
 
                    <div id="history_pane" class="container tab-pane"><br>
                      <h3>History</h3>
@@ -115,24 +127,47 @@
                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                    </div><!-- #notes -->
                    <div id="task_pane" class="container tab-pane fade"><br>
-                     <h3>Tasks</h3>
-                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                     <div class="table-responsive">
+                       <table class="table table-hover table-sm">
+                         <thead>
+                           <tr>
+                             <th>Title</th>
+                             <th>Task Type</th>
+                             <th>Task State</th>
+                             <th>Due Date</th>
+                             <th></th>
+                             <th></th>
+
+                           </tr>
+                         </thead>
+                         <tbody>
+
+                         <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
+                           <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
+                             <td><a href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>"><?php echo h($task['task_name']); ?></a></td>
+                             <td><?php echo h($task['task_type']); ?></td>
+                             <td><?php echo h($task['task_state']); ?></td>
+                             <td><?php echo h($task['due_date']); ?></td>
+                             <td><a class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($task['id']))); ?>">Delete</a></td>
+                             <td><a class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($task['id']))); ?>">Edit</a></td>
+                           </tr>
+                         <?php } ?>
+                       </tbody>
+                       </table>
+                       <?php
+                         mysqli_free_result($task_set);
+                        ?>
+                     </div><!-- .table-responsive -->
+
+                     <dl class="list-group-item d-flex bg-light">
+                       <dt class="mr-4">
+                         <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?individual_id=' . h(u($individual['id']))) . '&company_id=' . h(u($company['id'])); ?>">Add Task</a>
+                       </dt>
+                     </dl>
                    </div><!-- #tasks -->
                  </div><!-- .tab-content -->
                 </div><!-- .card-body -->
-                <div class="card-footer">
-                  <dl class="list-group-item d-flex">
-                    <dt class="mr-4">
-                      <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
-                    </dt>
-                    <dt>
-                      <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
-                    </dt>
-                    <dt>
-                      <a <?php if($individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/new.php?company_id=' . $id); ?>">Add Employee</a>
-                    </dt>
-                  </dl>
-                </div><!-- .card-footer -->
+
               </div><!-- .card -->
             </div><!-- .col-7 -->
           </div><!-- .row -->

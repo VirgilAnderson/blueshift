@@ -442,12 +442,12 @@ function find_all_task_individual($individual){
   return $result;
 }
 
-function find_all_task_company($admin){
+function find_all_task_company($company){
   global $db;
 
-  $sql = "SELECT * FROM company ";
-  $sql .= "WHERE user_id=" . $admin . " ";
-  $sql .= "ORDER BY company_name DESC";
+  $sql = "SELECT * FROM tasks ";
+  $sql .= "WHERE company_id=" . db_escape($db, $company['id']) . " ";
+  $sql .= "ORDER BY due_date DESC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
