@@ -128,7 +128,7 @@
 
                       <dl class="list-group-item d-flex bg-light">
                         <dt class="mr-4">
-                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/company/new.php?id=' . h(u($task['id']))); ?>">Add Company</a>
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/tasks/link.php?id=' . h(u($task['id']))); ?>">Link To Company</a>
                         </dt>
                         <dt class="mr-4">
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete Company</a>

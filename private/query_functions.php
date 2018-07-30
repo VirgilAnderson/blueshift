@@ -507,6 +507,25 @@ function delete_task($id, $task){
   }
 }
 
+function insert_company_into_task($company, $id){
+  global $db;
+
+  $sql = "UPDATE tasks SET ";
+  $sql .= "company_id='" . db_escape($db, $company['company_id']) .  "' ";
+  $sql .= "WHERE id='" . $id . "';";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
 
 
 // admins
