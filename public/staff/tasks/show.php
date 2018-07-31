@@ -103,6 +103,9 @@
                         <dt class="mr-4">
                           <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
                         </dt>
+                        <dt class="mr-4">
+                          <a <?php if($individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/tasks/individual_link.php?id=' . h(u($task['id']))); ?>">Link To Employee</a>
+                        </dt>
                       </dl>
                     </div><!-- #employee_pane -->
 

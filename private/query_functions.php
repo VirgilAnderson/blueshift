@@ -527,6 +527,26 @@ function insert_company_into_task($company, $id){
   }
 }
 
+function insert_individual_into_task($individual, $id){
+  global $db;
+
+  $sql = "UPDATE tasks SET ";
+  $sql .= "individual_id='" . db_escape($db, $individual['individual_id']) .  "' ";
+  $sql .= "WHERE id='" . $id . "';";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 
 // admins
 
