@@ -413,7 +413,7 @@ function find_all_user_tasks($admin){
 
   $sql = "SELECT * FROM tasks ";
   $sql .= "WHERE user_id=" . $admin . " ";
-  $sql .= "ORDER BY id DESC";
+  $sql .= "ORDER BY due_date DESC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
