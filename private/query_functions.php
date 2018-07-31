@@ -481,18 +481,12 @@ function update_task($task){
   }
 }
 
-function delete_task($id, $task){
+function delete_task($id){
   global $db;
 
-  $sql = "DELETE FROM company ";
+  $sql = "DELETE FROM tasks ";
   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
   $sql .= "LIMIT 1; ";
-
-  $sql = "UPDATE individual SET ";
-  $sql .= "company_id=NULL ";
-  $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "' ";
-  $sql .= "LIMIT 1; ";
-
 
   $result = mysqli_query($db, $sql);
 

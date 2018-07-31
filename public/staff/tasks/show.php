@@ -151,46 +151,6 @@
                      <h3>Notes</h3>
                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                    </div><!-- #notes -->
-
-                   <div id="task_pane" class="container tab-pane fade"><br>
-                     <div class="table-responsive">
-                       <table class="table table-hover table-sm">
-                         <thead>
-                           <tr>
-                             <th>Title</th>
-                             <th>Task Type</th>
-                             <th>Task State</th>
-                             <th>Due Date</th>
-                             <th></th>
-                             <th></th>
-
-                           </tr>
-                         </thead>
-                         <tbody>
-
-                         <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
-                           <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
-                             <td><a href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>"><?php echo h($task['task_name']); ?></a></td>
-                             <td><?php echo h($task['task_type']); ?></td>
-                             <td><?php echo h($task['task_state']); ?></td>
-                             <td><?php echo h($task['due_date']); ?></td>
-                             <td><a class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($task['id']))); ?>">Delete</a></td>
-                             <td><a class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($task['id']))); ?>">Edit</a></td>
-                           </tr>
-                         <?php } ?>
-                       </tbody>
-                       </table>
-                       <?php
-                         mysqli_free_result($task_set);
-                        ?>
-                     </div><!-- .table-responsive -->
-
-                     <dl class="list-group-item d-flex bg-light">
-                       <dt class="mr-4">
-                         <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?individual_id=' . h(u($individual['id']))) . '&company_id=' . h(u($company['id'])); ?>">Add Task</a>
-                       </dt>
-                     </dl>
-                   </div><!-- #tasks -->
                  </div><!-- .tab-content -->
                 </div><!-- .card-body -->
               </div><!-- .card -->
