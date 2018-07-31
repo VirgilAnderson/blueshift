@@ -87,7 +87,7 @@ if(is_post_request()) {
 
         <div class="form-group">
           <label class="form-control-label" for="due_date">Due Date</label>
-          <input class="form-control" type="text" name="due_date">
+          <input class="form-control" type="datetime-local" name="due_date">
         </div><!-- form-group -->
 
         <div class="form-group">
