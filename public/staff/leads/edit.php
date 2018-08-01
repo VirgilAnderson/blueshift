@@ -1,6 +1,10 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
 $admin_set = find_all_admins();
+$admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
+$company_set = find_all_user_company($admin);
+$company_id = isset($_GET['company_id']) ? $_GET['company_id'] : '';
+$company = find_company_by_id($company_id);
 if(!isset($_GET['id'])){
   redirect_to(url_for('/staff/leads/index.php'));
 }
@@ -18,6 +22,7 @@ if(is_post_request()) {
   $individual['email'] = isset($_POST['email']) ? $_POST['email'] : '';
   $individual['role'] = isset($_POST['role']) ? $_POST['role'] : '';
   $individual['lead_source'] = isset($_POST['lead_source']) ? $_POST['lead_source'] : '';
+  $individual['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
   $individual['lead_birthdate'] = isset($_POST['lead_birthdate']) ? $_POST['lead_birthdate'] : '';
   $individual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
@@ -99,6 +104,16 @@ if(is_post_request()) {
         <div class="form-group">
           <label class="form-control-label" for="lead_birthdate">Lead Origination</label>
           <input class="form-control" type="text" name="lead_birthdate" value="<?php echo h($individual['lead_birthdate']); ?>">
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label for="company_id">Company:</label>
+            <select class="form-control" name="company_id">
+                <option>none</option>
+              <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
+                <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $individual['company_id']){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
+              <?php } ?>
+            </select>
         </div><!-- form-group -->
 
         <div class="form-group">

@@ -149,6 +149,7 @@ function update_individual($individual){
   $sql .= "role='" . db_escape($db, $individual['role']) . "', ";
   $sql .= "lead_source='" . db_escape($db, $individual['lead_source']) . "', ";
   $sql .= "lead_birthdate='" . db_escape($db, $individual['lead_birthdate']) . "', ";
+  $sql .= "company_id='" . db_escape($db, $individual['company_id']) . "', ";
   $sql .= "user_id='" . db_escape($db, $individual['user_id']) . "' ";
   $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "' ";
   $sql .= "LIMIT 1;";

@@ -177,7 +177,7 @@
               <a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
             </dt>
             <dt>
-              <a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
+              <a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id'])) . '&company_id=' . h(u($company['id']))); ?>">Edit Employee</a>
             </dt>
           </dl>
         </div><!-- .card-footer -->
