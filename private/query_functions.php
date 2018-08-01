@@ -456,16 +456,16 @@ function find_all_task_company($company){
 function update_task($task){
   global $db;
 
-  $sql = "UPDATE company SET ";
-  $sql .= "company_name='" . db_escape($db, $company['company_name']) . "', ";
-  $sql .= "company_address='" . db_escape($db, $company['company_address']) . "', ";
-  $sql .= "company_city='" . db_escape($db, $company['company_city']) . "', ";
-  $sql .= "company_state='" . db_escape($db, $company['company_state']) . "', ";
-  $sql .= "company_zip='" . db_escape($db, $company['company_zip']) . "', ";
-  $sql .= "company_url='" . db_escape($db, $company['company_url']) . "', ";
-  $sql .= "company_phone='" . db_escape($db, $company['company_phone']) . "', ";
-  $sql .= "user_id='" . db_escape($db, $company['user_id']) . "' ";
-  $sql .= "WHERE id='" . db_escape($db, $company['id']) . "' ";
+  $sql = "UPDATE tasks SET ";
+  $sql .= "task_name='" . db_escape($db, $task['task_name']) . "', ";
+  $sql .= "task_type='" . db_escape($db, $task['task_type']) . "', ";
+  $sql .= "task_state='" . db_escape($db, $task['task_state']) . "', ";
+  $sql .= "task_description='" . db_escape($db, $task['task_description']) . "', ";
+  $sql .= "due_date='" . db_escape($db, $task['due_date']) . "', ";
+  $sql .= "individual_id='" . db_escape($db, $task['individual_id']) . "', ";
+  $sql .= "company_id='" . db_escape($db, $task['company_id']) . "', ";
+  $sql .= "user_id='" . db_escape($db, $task['user_id']) . "' ";
+  $sql .= "WHERE id='" . db_escape($db, $task['id']) . "' ";
   $sql .= "LIMIT 1;";
 
   $result = mysqli_query($db, $sql);

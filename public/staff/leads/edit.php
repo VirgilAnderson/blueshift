@@ -5,14 +5,6 @@ if(!isset($_GET['id'])){
   redirect_to(url_for('/staff/leads/index.php'));
 }
 $id = $_GET['id'];
-$first_name = '';
-$last_name = '';
-$phone_direct = '';
-$email = '';
-$role = '';
-$lead_source = '';
-$lead_birthdate = '';
-
 
 if(is_post_request()) {
 
