@@ -563,6 +563,17 @@ function insert_note($note){
   }
 }
 
+function find_all_user_notes($individual){
+  global $db;
+
+  $sql = "SELECT * FROM notes ";
+  $sql .= "WHERE individual_id='" . db_escape($db, $individual['id']) . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 // admins
 
 function find_all_admins(){

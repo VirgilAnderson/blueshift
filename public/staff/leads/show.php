@@ -9,6 +9,7 @@
   $task_set = find_all_task_individual($individual);
   if($new == 0){individual_visited($individual);}
   $admin = find_admin_by_id($individual['user_id']);
+  $note_set = find_all_user_notes($individual);
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -163,7 +164,32 @@
                    </div><!-- #history -->
 
                    <div id="note_pane" class="container tab-pane fade"><br>
-                    <dl>
+                      <div class="table-responsive">
+                        <table class="table table-hover table-sm">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Note</th>
+                              <th></th>
+                              <th></th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                          <?php while($note = mysqli_fetch_assoc($note_set)){ ?>
+                            <tr>
+                              <td><?php echo h($note['id']); ?></td>
+                              <td><?php echo h($note['note']); ?></td>
+                              <td><a class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($task['id']))); ?>">Delete</a></td>
+                              <td><a class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($task['id']))); ?>">Edit</a></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                        </table>
+
+                      </div><!-- .table-responsive -->
+
                       <dt class="mr-4">
                         <a class="card-link" href="<?php echo url_for('/staff/notes/new.php?individual_id=' .  h(u($individual['id'])) . '&company_id=' . h(u($company['id']))); ?>">Add Note</a>
                       </dt>
