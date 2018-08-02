@@ -127,6 +127,7 @@
                    </div><!-- #notes -->
 
                    <div id="task_pane" class="container tab-pane fade"><br>
+
                      <div class="table-responsive">
                        <table class="table table-hover table-sm">
                          <thead>
