@@ -137,7 +137,7 @@
                           <tbody>
 
                           <?php while($note = mysqli_fetch_assoc($note_set)){ ?>
-                            <tr>
+                            <tr class='clickable-row' data-href="<?php echo url_for('/staff/notes/show.php?id=' . h(u($note['id']))); ?>">
                               <td><?php echo h($note['id']); ?></td>
                               <td><?php echo h($note['note']); ?></td>
                               <td><a class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($task['id']))); ?>">Delete</a></td>
