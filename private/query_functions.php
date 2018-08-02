@@ -542,6 +542,26 @@ function insert_individual_into_task($individual, $id){
   }
 }
 
+// notes
+
+function insert_note($note){
+  global $db;
+
+
+  $sql = "INSERT INTO notes ";
+  $sql .= "(note, individual_id, user_id, company_id) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $note['note']) . "', ";
+  $sql .= "'" . db_escape($db, $note['individual_id']) . "', ";
+  $sql .= "'" . db_escape($db, $note['user_id']) . "', ";
+  $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
+  $sql .= ")";
+  $result = mysqli_query($db, $sql);
+  // For Insert Statements, result is True False
+  if($result){
+    return true;
+  }
+}
 
 // admins
 
