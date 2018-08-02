@@ -3,21 +3,20 @@
 <?php require_login(); ?>
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
-  $new = isset($_GET['new']) ? $_GET['new'] : '0';
-  $individual = find_individual_by_id($id);
-  $company = find_company_by_id($individual['company_id']);
+  $note = find_note_by_id($id);
+  $company = find_company_by_id($note['company_id']);
   $task_set = find_all_task_individual($individual);
-  if($new == 0){individual_visited($individual);}
+  $individual = find_individual_by_id($note['individual_id']);
   $admin = find_admin_by_id($individual['user_id']);
 ?>
-<?php $page_title = "Show lead"; ?>
+<?php $page_title = "Show note"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
 
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/leads/index.php'); ?>">Leads</a></li>
-    <li class="breadcrumb-item active"><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></li>
+    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></a></li>
+    <li class="breadcrumb-item active">Note</li>
   </ol>
 </div><!-- .container mt-4 -->
 
@@ -26,39 +25,33 @@
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></h2>
+          <h2>New Note<?php if(isset($individual)){
+            echo ": " .
+           h($individual['first_name']) . " " . h($individual['last_name']);}?></h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="row">
             <div class="col-sm-5">
               <ul class="list-group list-group-flush">
               <dl class="list-group-item d-flex">
-                <dt class="mr-4">Name</dt>
-                <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
+                <dt class="mr-4">Note Description</dt>
+                <dd><?php echo h($note['note']); ?></dd>
               </dl>
               <dl class="list-group-item d-flex">
-                <dt class="mr-4">Phone</dt>
-                <dd><?php echo h($individual['phone_direct']); ?></dd>
+                <dt class="mr-4">Note Time</dt>
+                <dd><?php echo h($note['time']); ?></dd>
               </dl>
               <dl class="list-group-item d-flex">
-                <dt class="mr-4">Email</dt>
-                <dd><?php echo h($individual['email']); ?></dd>
-              </dl>
-              <dl class="list-group-item d-flex">
-                <dt class="mr-4">Role</dt>
-                <dd><?php echo h($individual['role']); ?></dd>
-              </dl>
-              <dl class="list-group-item d-flex">
-                <dt class="mr-4">Lead source</dt>
-                <dd><?php echo h($individual['lead_source']); ?></dd>
-              </dl>
-              <dl class="list-group-item d-flex">
-                <dt class="mr-4">Date Created</dt>
-                <dd><?php echo h($individual['lead_birthdate']); ?></dd>
-              </dl>
-              <dl class="list-group-item d-flex">
-                <dt class="mr-4">Lead Owner</dt>
+                <dt class="mr-4">Note Owner</dt>
                 <dd><?php echo h($admin['username']); ?></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Note Owner</dt>
+                <dd><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></a></dd>
+              </dl>
+              <dl class="list-group-item d-flex">
+                <dt class="mr-4">Note Company</dt>
+                <dd><a href="<?php echo url_for('/staff/company/show.php?id=' . h(u($company['id']))); ?>"><?php echo h($company['company_name']); ?></a></dd>
               </dl>
             </ul>
           </div><!-- .col-sm-5  -->
@@ -74,7 +67,7 @@
                     <a class="nav-link" data-toggle="tab" href="#history_pane">History</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#note_pane">Notes</a>
+                    <a class="nav-link" data-toggle="tab" href="#employee_pane">Employee</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#task_pane">Tasks</a>
@@ -105,7 +98,7 @@
 
                       <dl class="list-group-item d-flex bg-light">
                         <dt class="mr-4">
-                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/link.php?id=' . h(u($individual['id']))); ?>">Set As Company Contact</a>
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/notes/link.php?id=' . h(u($individual['id']))); ?>">Set As Company Contact</a>
                         </dt>
                         <dt class="mr-4">
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete Company</a>
@@ -121,10 +114,41 @@
                      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                    </div><!-- #history -->
 
-                   <div id="note_pane" class="container tab-pane fade"><br>
-                     <h3>Notes</h3>
-                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                   </div><!-- #notes -->
+                   <div id="employee_pane" class="container tab-pane"><br>
+                     <ul class="list-group list-group-flush">
+                       <dl class="list-group-item d-flex bg-light">
+                         <dt class="mr-4">Employee Name</dt>
+                         <dd><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></a></dd>
+                       </dl>
+                       <dl class="list-group-item d-flex bg-light">
+                         <dt class="mr-4">Phone</dt>
+                         <dd><?php echo h($individual['phone_direct']); ?></dd>
+                       </dl>
+                       <dl class="list-group-item d-flex bg-light">
+                         <dt class="mr-4">Email</dt>
+                         <dd><?php echo h($individual['email']); ?></dd>
+                       </dl>
+                       <dl class="list-group-item d-flex bg-light">
+                         <dt class="mr-4">Role</dt>
+                         <dd><?php echo h($individual['role']); ?></dd>
+                       </dl>
+                       <dl class="list-group-item d-flex bg-light">
+                         <dt class="mr-4">Lead source</dt>
+                         <dd><?php echo h($individual['lead_source']); ?></dd>
+                       </dl>
+                       <dl class="list-group-item d-flex">
+                         <dt class="mr-4">
+                           <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+                         </dt>
+                         <dt>
+                           <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
+                         </dt>
+                         <dt>
+                           <a <?php if($individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/new.php?company_id=' . $id); ?>">Add Employee</a>
+                         </dt>
+                       </dl>
+                     </ul>
+                   </div><!-- #employee_pane -->
 
                    <div id="task_pane" class="container tab-pane fade"><br>
 
@@ -175,10 +199,10 @@
         <div class="card-footer">
           <dl class="list-group-item d-flex">
             <dt class="mr-4">
-              <a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+              <a class="card-link mr-4" href="<?php echo url_for('/staff/notes/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
             </dt>
             <dt>
-              <a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id'])) . '&company_id=' . h(u($company['id']))); ?>">Edit Employee</a>
+              <a class="card-link" href="<?php echo url_for('/staff/notes/edit.php?id=' . h(u($individual['id'])) . '&company_id=' . h(u($company['id']))); ?>">Edit Employee</a>
             </dt>
           </dl>
         </div><!-- .card-footer -->

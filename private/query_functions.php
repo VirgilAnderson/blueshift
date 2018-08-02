@@ -574,6 +574,18 @@ function find_all_user_notes($individual){
   return $result;
 }
 
+function find_note_by_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM notes ";
+  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $note = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $note; // Returns an associative array
+}
+
 // admins
 
 function find_all_admins(){
