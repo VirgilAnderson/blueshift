@@ -347,13 +347,12 @@ function delete_company($id, $individual){
   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
   $sql .= "LIMIT 1; ";
 
-  $sql = "UPDATE individual SET ";
+  $sql .= "UPDATE individual SET ";
   $sql .= "company_id=NULL ";
-  $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "' ";
-  $sql .= "LIMIT 1; ";
+  $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "'; ";
 
 
-  $result = mysqli_query($db, $sql);
+  $result = mysqli_multi_query($db, $sql);
 
   // For DELETE statements, $result is true/false
   if($result){
