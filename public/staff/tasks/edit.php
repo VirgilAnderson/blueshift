@@ -93,7 +93,7 @@ if(is_post_request()) {
         <?php $date = date_create($task['due_date']); ?>
         <div class="form-group">
           <label class="form-control-label" for="due_date">Due Date</label>
-          <input class="form-control" name="due_date" type="datetime-local" value="<?php echo date_format($date,'Y') . '-' . date_format($date, 'm') . '-' . date_format($date,'d') . 'T' . date_format($date,'H:i:s'); ?>" >
+          <input class="form-control" name="due_date" type="datetime-local" value="<?php echo date_format($date,'Y-m-d') . 'T' . date_format($date,'H:i:s'); ?>" >
         </div><!-- form-group -->
 
 

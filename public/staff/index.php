@@ -33,9 +33,9 @@
               <tbody>
                 <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
                   <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
-
+                    <?php $date = date_create($task['due_date']); ?>
                     <td><?php echo h($task['task_name']); ?></td>
-                    <td><?php echo h($task['due_date']); ?></td>
+                    <td><?php echo date_format($date,'Y/m/d'); ?></td>
                     <td><?php echo h($task['task_state']); ?></td>
                     <td><?php echo h($task['task_type']); ?></td>
 
