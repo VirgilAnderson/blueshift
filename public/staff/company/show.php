@@ -8,6 +8,7 @@
   $admin = find_admin_by_id($company['user_id']);
   $task_set = find_all_task_company($company);
   $note_set = find_all_user_notes($individual);
+  $history_set = find_history_by_company_id($id);
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -118,10 +119,29 @@
                       </ul>
                     </div><!-- #employee_pane -->
 
-                   <div id="history_pane" class="container tab-pane"><br>
-                     <h3>History</h3>
-                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                   </div><!-- #history -->
+                    <div id="history_pane" class="container tab-pane"><br>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                          <thead>
+                            <tr>
+                              <th>Time</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                          <?php while($history = mysqli_fetch_assoc($history_set)){ ?>
+                            <tr>
+                              <td><?php echo h($history['time']); ?></td>
+                              <td><?php echo h($history['action']); ?></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                        </table>
+
+                      </div><!-- .table-responsive -->
+
+                    </div><!-- #history -->
 
                    <div id="note_pane" class="container tab-pane fade"><br>
                       <div class="table-responsive">
@@ -135,7 +155,6 @@
                             </tr>
                           </thead>
                           <tbody>
-
                           <?php while($note = mysqli_fetch_assoc($note_set)){ ?>
                             <tr class='clickable-row' data-href="<?php echo url_for('/staff/notes/show.php?id=' . h(u($note['id']))); ?>">
                               <td><?php echo h($note['id']); ?></td>
@@ -146,7 +165,6 @@
                           <?php } ?>
                         </tbody>
                         </table>
-
                       </div><!-- .table-responsive -->
 
                       <dt class="mr-4">
