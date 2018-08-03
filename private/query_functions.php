@@ -282,12 +282,6 @@ function insert_company_into_individual($company, $id){
 function insert_company($company, $next_id){
   global $db;
 
-  //$errors = validate_individual($individual);
-  //if(!empty($errors)){
-  //  return $errors;
-  //}
-
-  // shift_subject_position(0, $subject['position']);
 
   $sql = "INSERT INTO company ";
   $sql .= "(company_name, company_address, company_city, company_state, company_zip, company_url, company_phone, user_id) ";
@@ -416,15 +410,8 @@ function last_company_id(){
 
 // tasks
 
-function insert_task($task){
+function insert_task($task, $next_id){
   global $db;
-
-  //$errors = validate_individual($individual);
-  //if(!empty($errors)){
-  //  return $errors;
-  //}
-
-  // shift_subject_position(0, $subject['position']);
 
   $sql = "INSERT INTO tasks ";
   $sql .= "(task_name, task_type, task_state, task_description, due_date, individual_id, company_id, user_id) ";
@@ -437,12 +424,28 @@ function insert_task($task){
   $sql .= "'" . db_escape($db, $task['individual_id']) . "', ";
   $sql .= "'" . db_escape($db, $task['company_id']) . "', ";
   $sql .= "'" . db_escape($db, $task['user_id']) . "'";
-  $sql .= ")";
-  $result = mysqli_query($db, $sql);
+  $sql .= ");";
+
+  $sql .= "INSERT INTO history ";
+  $sql .= "(action, task_id) ";
+  $sql .= "VALUES ('Task Created', ";
+  $sql .= "'" . $next_id . "');";
+
+  $result = mysqli_multi_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
     return true;
   }
+}
+
+function find_all_task(){
+  global $db;
+
+  $sql = "SELECT * FROM tasks ";
+  $sql .= "ORDER BY due_date DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
 }
 
 function find_task_by_id($id){
@@ -590,6 +593,19 @@ function insert_individual_into_task($individual, $id){
   }
 }
 
+function last_task_id(){
+  $task_set = find_all_task();
+  $largest = 0;
+  while($task = mysqli_fetch_assoc($task_set)){
+    if($task['id'] > $largest){
+        $largest = $task['id'];
+    }
+  }
+
+  return $largest + 1;
+
+  }
+
 // notes
 
 function insert_note($note){
@@ -652,6 +668,17 @@ function find_history_by_company_id($id){
 
   $sql = "SELECT * FROM history ";
   $sql .= "WHERE company_id='" . $id . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function find_history_by_task_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM history ";
+  $sql .= "WHERE task_id='" . $id . "' ";
   $sql .= "ORDER BY time DESC ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);

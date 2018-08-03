@@ -7,6 +7,7 @@ $company_id = isset($_GET['company_id']) ? $_GET['company_id'] : '';
 $company = find_company_by_id($company_id);
 $individual_set = find_all_user_individual($admin);
 $individual_id = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
+$next_id = last_task_id();
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -21,7 +22,7 @@ if(is_post_request()) {
   $task['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
   $task['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
-  $result = insert_task($task);
+  $result = insert_task($task, $next_id);
   if($result === true){
     $new_id = mysqli_insert_id($db);
     $_SESSION['message'] = 'The task was created successfully.';
