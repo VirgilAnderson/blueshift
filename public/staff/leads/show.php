@@ -10,6 +10,7 @@
   if($new == 0){individual_visited($individual);}
   $admin = find_admin_by_id($individual['user_id']);
   $note_set = find_all_user_notes($individual);
+  $history_set = find_history_by_individual_id($id);
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -160,8 +161,27 @@
                     </div><!-- #tasks -->
 
                    <div id="history_pane" class="container tab-pane"><br>
-                     <h3>History</h3>
-                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                     <div class="table-responsive">
+                       <table class="table table-striped table-sm">
+                         <thead>
+                           <tr>
+                             <th>Time</th>
+                             <th>Action</th>
+                           </tr>
+                         </thead>
+                         <tbody>
+
+                         <?php while($history = mysqli_fetch_assoc($history_set)){ ?>
+                           <tr>
+                             <td><?php echo h($history['time']); ?></td>
+                             <td><?php echo h($history['action']); ?></td>
+                           </tr>
+                         <?php } ?>
+                       </tbody>
+                       </table>
+
+                     </div><!-- .table-responsive -->
+
                    </div><!-- #history -->
 
                    <div id="note_pane" class="container tab-pane fade"><br>

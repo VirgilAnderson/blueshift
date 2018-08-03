@@ -604,6 +604,19 @@ function find_note_by_id($id){
   return $note; // Returns an associative array
 }
 
+// history
+
+function find_history_by_individual_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM history ";
+  $sql .= "WHERE individual_id='" . $id . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 // admins
 
 function find_all_admins(){
