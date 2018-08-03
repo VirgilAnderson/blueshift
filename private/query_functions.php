@@ -279,7 +279,7 @@ function insert_company_into_individual($company, $id){
 
 // companies
 
-function insert_company($company){
+function insert_company($company, $next_id){
   global $db;
 
   //$errors = validate_individual($individual);
@@ -300,8 +300,15 @@ function insert_company($company){
   $sql .= "'" . db_escape($db, $company['company_url']) . "', ";
   $sql .= "'" . db_escape($db, $company['company_phone']) . "', ";
   $sql .= "'" . db_escape($db, $company['user_id']) . "'";
-  $sql .= ")";
-  $result = mysqli_query($db, $sql);
+  $sql .= ");";
+
+  $sql .= "INSERT INTO history ";
+  $sql .= "(action, company_id) ";
+  $sql .= "VALUES ('Company Created', ";
+  $sql .= "'" . $next_id . "');";
+
+
+  $result = mysqli_multi_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
     return true;
@@ -325,6 +332,16 @@ function find_all_user_company($admin){
 
   $sql = "SELECT * FROM company ";
   $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "ORDER BY company_name DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function find_all_company(){
+  global $db;
+
+  $sql = "SELECT * FROM company ";
   $sql .= "ORDER BY company_name DESC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
@@ -383,6 +400,19 @@ function delete_company($id, $individual){
     exit;
   }
 }
+
+function last_company_id(){
+  $company_set = find_all_company();
+  $largest = 0;
+  while($company = mysqli_fetch_assoc($company_set)){
+    if($company['id'] > $largest){
+        $largest = $company['id'];
+    }
+  }
+
+  return $largest + 1;
+
+  }
 
 // tasks
 

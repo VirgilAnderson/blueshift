@@ -1,6 +1,7 @@
 <?php require_once('../../../private/initialize.php');
 require_login();
 $admin_set = find_all_admins();
+$next_id = last_company_id();
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -15,7 +16,7 @@ if(is_post_request()) {
   $company['company_phone'] = isset($_POST['company_phone']) ? $_POST['company_phone'] : '';
   $company['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
-  $result = insert_company($company);
+  $result = insert_company($company, $next_id);
 
   if($result === true){
     $new_id = mysqli_insert_id($db);
