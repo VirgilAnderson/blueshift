@@ -16,7 +16,7 @@
       rel="stylesheet">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/staff_styles.css'); ?>" />
   </head>
-  <body class="bg-light">
+  <body class="bg-white">
     <nav class="navbar navbar-dark fixed-top navbar-expand-sm">
       <div class="container">
         <a class="navbar-brand text-uppercase  d-sm-inline-block" href="<?php echo url_for('/staff/index.php'); ?>"><img class="d-inline mr-2" src="<?php echo url_for('/images/logo.png'); ?>" style="width: 40px" alt="Blue Shift Staff Page"><span class="font-weight-bold">Blueshift</span> Tech</a>
