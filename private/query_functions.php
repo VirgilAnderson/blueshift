@@ -79,7 +79,7 @@ function find_individual_by_company_id($id){
   return $individual; // Returns an associative array
 }
 
-function insert_individual($individual){
+function insert_individual($individual, $next_id){
   global $db;
 
   $sql = "INSERT INTO individual ";
@@ -95,7 +95,13 @@ function insert_individual($individual){
   $sql .= "'" . db_escape($db, $individual['company_id']) . "', ";
   $sql .= "'" . db_escape($db, $individual['user_id']) . "' ";
   $sql .= ");";
-  $result = mysqli_query($db, $sql);
+
+  $sql .= "INSERT INTO history ";
+  $sql .= "(action, individual_id) ";
+  $sql .= "VALUES ('Lead Created', ";
+  $sql .= "'" . $next_id . "');";
+
+  $result = mysqli_multi_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
     return true;
@@ -106,6 +112,19 @@ function insert_individual($individual){
     exit;
   }
 }
+
+function last_id(){
+  $lead_set = find_all_individual();
+  $largest = 0;
+  while($lead = mysqli_fetch_assoc($lead_set)){
+    if($lead['id'] > $largest){
+        $largest = $lead['id'];
+    }
+  }
+
+  return $largest + 1;
+
+  }
 
 function individual_visited($individual){
   global $db;

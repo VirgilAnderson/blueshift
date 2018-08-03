@@ -81,7 +81,7 @@
                     <a class="nav-link" data-toggle="tab" href="#note_pane">Notes</a>
                   </li>
                 </ul><!-- .nav nav-tabs -->
-                
+
                 </div><!-- .card-header -->
                 <div class="card-body">
                   <div class="tab-content">

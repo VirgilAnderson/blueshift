@@ -5,6 +5,7 @@ $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
 $company_set = find_all_user_company($admin);
 $company_id = $_GET['company_id'];
 $company = find_company_by_id($company_id);
+$next_id = last_id();
 if(is_post_request()) {
 
   // Handle form values submitted by new.php
@@ -20,7 +21,7 @@ if(is_post_request()) {
   $individual['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
 
-  $result = insert_individual($individual);
+  $result = insert_individual($individual, $next_id);
   if($result === true){
     $new_id = mysqli_insert_id($db);
     $_SESSION['message'] = 'The lead was created successfully.';
