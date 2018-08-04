@@ -185,8 +185,8 @@
                             <tr  class='clickable-row' data-href="<?php echo url_for('/staff/notes/show.php?id=' . h(u($note['id']))); ?>">
                               <td><?php echo h($note['id']); ?></td>
                               <td><?php echo h($note['note']); ?></td>
-                              <td><a class="card-link mr-4" href="<?php echo url_for('/staff/tasks/delete.php?id=' . h(u($task['id']))); ?>">Delete</a></td>
-                              <td><a class="card-link" href="<?php echo url_for('/staff/tasks/edit.php?id=' . h(u($task['id']))); ?>">Edit</a></td>
+                              <td><a class="card-link mr-4" href="<?php echo url_for('/staff/notes/delete.php?id=' . h(u($note['id']))); ?>">Delete</a></td>
+                              <td><a class="card-link" href="<?php echo url_for('/staff/notes/edit.php?id=' . h(u($note['id']))); ?>">Edit</a></td>
                             </tr>
                           <?php } ?>
                         </tbody>

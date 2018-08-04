@@ -650,6 +650,29 @@ function find_note_by_id($id){
   return $note; // Returns an associative array
 }
 
+function update_note($note){
+  global $db;
+
+  $sql = "UPDATE notes SET ";
+  $sql .= "note='" . db_escape($db, $note['note']) . "', ";
+  $sql .= "individual_id='" . db_escape($db, $note['individual_id']) . "', ";
+  $sql .= "user_id='" . db_escape($db, $note['user_id']) . "', ";
+  $sql .= "company_id='" . db_escape($db, $note['company_id']) . "' ";
+  $sql .= "WHERE id='" . db_escape($db, $note['id']) . "'; ";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 // history
 
 function find_history_by_individual_id($id){

@@ -199,10 +199,10 @@
         <div class="card-footer">
           <dl class="list-group-item d-flex">
             <dt class="mr-4">
-              <a class="card-link mr-4" href="<?php echo url_for('/staff/notes/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+              <a class="card-link mr-4" href="<?php echo url_for('/staff/notes/delete.php?id=' . h(u($note['id']))); ?>">Delete Note</a>
             </dt>
             <dt>
-              <a class="card-link" href="<?php echo url_for('/staff/notes/edit.php?id=' . h(u($individual['id'])) . '&company_id=' . h(u($company['id']))); ?>">Edit Employee</a>
+              <a class="card-link" href="<?php echo url_for('/staff/notes/edit.php?id=' . h(u($note['id']))); ?>">Edit Note</a>
             </dt>
           </dl>
         </div><!-- .card-footer -->
