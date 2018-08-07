@@ -140,11 +140,20 @@ function individual_visited($individual){
 function delete_individual($id){
   global $db;
 
-  $sql = "DELETE FROM individual ";
-  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-  $sql .= "LIMIT 1";
+  $sql .= "DELETE FROM tasks ";
+  $sql .= "WHERE individual_id='" . db_escape($db, $id) . "'; ";
 
-  $result = mysqli_query($db, $sql);
+  $sql = "DELETE FROM notes ";
+  $sql .= "WHERE individual_id='" . db_escape($db, $id) . "'; ";
+
+  $sql .= "DELETE FROM history ";
+  $sql .= "WHERE individual_id='" . db_escape($db, $id) . "'; ";
+
+  $sql .= "DELETE FROM individual ";
+  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  $sql .= "LIMIT 1;";
+
+  $result = mysqli_multi_query($db, $sql);
 
   // For DELETE statements, $result is true/false
   if($result){
