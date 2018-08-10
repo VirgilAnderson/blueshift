@@ -379,16 +379,12 @@ function update_company($company){
   }
 }
 
-function delete_company($id, $individual){
+function delete_company($id){
   global $db;
 
-  $sql = "DELETE FROM company ";
+  $sql .= "DELETE FROM company ";
   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
   $sql .= "LIMIT 1; ";
-
-  $sql .= "UPDATE individual SET ";
-  $sql .= "company_id=NULL ";
-  $sql .= "WHERE id='" . db_escape($db, $individual['id']) . "'; ";
 
 
   $result = mysqli_multi_query($db, $sql);
