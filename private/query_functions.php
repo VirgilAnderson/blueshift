@@ -499,7 +499,7 @@ function find_all_task_individual($individual){
   global $db;
 
   $sql = "SELECT * FROM tasks ";
-  $sql .= "WHERE individual_id='" . db_escape($db, $individual['id']) . "' ";
+  $sql .= "WHERE individual_id='" . db_escape($db, $individual) . "' ";
   $sql .= "ORDER BY due_date DESC ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);

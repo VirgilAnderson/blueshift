@@ -5,7 +5,7 @@
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $note = find_note_by_id($id);
   $company = find_company_by_id($note['company_id']);
-  $task_set = find_all_task_individual($individual);
+  $task_set = find_all_task_individual($note['individual_id']);
   $individual = find_individual_by_id($note['individual_id']);
   $admin = find_admin_by_id($individual['user_id']);
 ?>
