@@ -94,8 +94,7 @@ function insert_individual($individual, $next_id){
   $sql .="'0', ";
   $sql .= "'" . db_escape($db, $individual['user_id']) . "', ";
   if($individual['company_id']=='none'){
-    $sql .= 'NULL';
-  } else {
+
   $sql .= "'" . db_escape($db, $individual['company_id']) . "', ";
   }
   $sql .= "); ";
@@ -621,14 +620,27 @@ function insert_note($note){
   $sql .= "(note, individual_id, user_id, company_id) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $note['note']) . "', ";
-  $sql .= "'" . db_escape($db, $note['individual_id']) . "', ";
+  if($note['individual_id'] == 'none'){
+    $sql .= 'NULL';
+  } else {
+    $sql .= "'" . db_escape($db, $note['individual_id']) . "', ";
+  }
   $sql .= "'" . db_escape($db, $note['user_id']) . "', ";
-  $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
+  if($note['company_id'] == 'none'){
+    $sql .= 'NULL';
+  } else {
+    $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
+  }
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
     return true;
+  } else {
+    // INSERT failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
   }
 }
 
