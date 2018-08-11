@@ -94,7 +94,7 @@ if(is_post_request()) {
         <div class="form-group">
           <label for="task_source">Company:</label>
             <select class="form-control" name="company_id">
-                <option>none</option>
+                <option value='none'>none</option>
               <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
                 <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $company_id){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
               <?php } ?>
@@ -104,7 +104,7 @@ if(is_post_request()) {
         <div class="form-group">
           <label for="task_source">Employee:</label>
             <select class="form-control" name="individual_id">
-                <option>none</option>
+                <option value='none'>none</option>
               <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
                 <option value="<?php echo h($individual['id']); ?>" <?php if($individual['id'] == $individual_id){echo "selected";}?>><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></option>
               <?php } ?>

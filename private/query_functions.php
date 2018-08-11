@@ -425,8 +425,16 @@ function insert_task($task, $next_id){
   $sql .= "'" . db_escape($db, $task['task_state']) . "', ";
   $sql .= "'" . db_escape($db, $task['task_description']) . "', ";
   $sql .= "'" . db_escape($db, $task['due_date']) . "', ";
-  $sql .= "'" . db_escape($db, $task['individual_id']) . "', ";
-  $sql .= "'" . db_escape($db, $task['company_id']) . "', ";
+  if($task['individual_id'] == 'none'){
+    $sql .= 'NULL, ';
+  } else {
+    $sql .= "'" . db_escape($db, $task['individual_id']) . "', ";
+  }
+  if($task['company_id'] == 'none'){
+    $sql .= 'NULL, ';
+  } else {
+    $sql .= "'" . db_escape($db, $task['company_id']) . "', ";
+  }
   $sql .= "'" . db_escape($db, $task['user_id']) . "'";
   $sql .= ");";
 
