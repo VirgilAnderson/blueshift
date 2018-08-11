@@ -629,13 +629,13 @@ function insert_note($note){
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $note['note']) . "', ";
   if($note['individual_id'] == 'none'){
-    $sql .= 'NULL';
+    $sql .= 'NULL, ';
   } else {
     $sql .= "'" . db_escape($db, $note['individual_id']) . "', ";
   }
   $sql .= "'" . db_escape($db, $note['user_id']) . "', ";
   if($note['company_id'] == 'none'){
-    $sql .= 'NULL';
+    $sql .= 'NULL, ';
   } else {
     $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
   }
