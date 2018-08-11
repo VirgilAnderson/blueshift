@@ -3,7 +3,7 @@ require_login();
 $admin_set = find_all_admins();
 $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
 $company_set = find_all_user_company($admin);
-$company_id = $_GET['company_id'];
+$company_id = isset($_GET['company_id']) ? $_GET['company_id'] : NULL;
 $company = find_company_by_id($company_id);
 $next_id = last_id();
 if(is_post_request()) {
@@ -97,11 +97,11 @@ if(is_post_request()) {
         <div class="form-group">
           <label for="company_id">Company:</label>
               <select class="form-control" name="company_id">
-                <option value=''>none</option>
-            <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
+                <option value='none'>none</option>
+                <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
                 <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $company_id){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
-            <?php } ?>
-            </select>
+                <?php } ?>
+              </select>
 
         </div><!-- form-group -->
 
