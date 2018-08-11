@@ -719,6 +719,26 @@ function delete_note($id){
   }
 }
 
+function insert_company_into_note($company, $id){
+  global $db;
+
+  $sql = "UPDATE notes SET ";
+  $sql .= "company_id='" . db_escape($db, $company['company_id']) .  "' ";
+  $sql .= "WHERE id='" . $id . "';";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 // history
 
 function find_history_by_individual_id($id){

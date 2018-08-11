@@ -97,7 +97,7 @@
 
                       <dl class="list-group-item d-flex bg-light">
                         <dt class="mr-4">
-                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/notes/link.php?id=' . h(u($individual['id']))); ?>">Set As Company Contact</a>
+                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/notes/link.php?id=' . h(u($note['id']))); ?>">Link To Company</a>
                         </dt>
                         <dt class="mr-4">
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete Company</a>

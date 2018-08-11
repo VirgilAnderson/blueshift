@@ -15,9 +15,9 @@ if(is_post_request()) {
   $company = [];
   $company['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
 
-  $result = insert_company_into_individual($company, $id);
+  $result = insert_company_into_note($company, $id);
   if($result === true){
-    redirect_to(url_for('/staff/leads/show.php?id=' . $id));
+    redirect_to(url_for('/staff/notes/show.php?id=' . $id));
   } else {
     $errors = $result;
 
@@ -42,7 +42,7 @@ if(is_post_request()) {
 
 
 
-  <form class="col-sm-6" action="<?php echo url_for('/staff/leads/link.php?id=' . h(u($id))); ?>" method="post">
+  <form class="col-sm-6" action="<?php echo url_for('/staff/notes/link.php?id=' . h(u($id))); ?>" method="post">
       <h2><?php echo h($individual['first_name']) . " " . h($individual['last_name']);?></h2>
       <?php echo display_errors($errors); ?>
       <fieldset class="form-group">
