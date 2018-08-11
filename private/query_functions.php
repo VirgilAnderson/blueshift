@@ -94,9 +94,9 @@ function insert_individual($individual, $next_id){
   $sql .="'0', ";
   $sql .= "'" . db_escape($db, $individual['user_id']) . "', ";
   if($individual['company_id']=='none'){
-    $sql .= 'NULL';
+    $sql .= 'NULL ';
   } else {
-    $sql .= "'" . db_escape($db, $individual['company_id']) . "', ";
+    $sql .= "'" . db_escape($db, $individual['company_id']) . " '";
   }
   $sql .= "); ";
 
