@@ -36,13 +36,16 @@
               </thead>
               <tbody>
 
-              <?php while($task = mysqli_fetch_assoc($task_set)){ ?>
+              <?php while($task = mysqli_fetch_assoc($task_set)){
+                $individual = find_individual_by_id($task['individual_id']);
+                $company = find_company_by_id($task['company_id']);
+                 ?>
                 <tr class='clickable-row' data-href="<?php echo url_for('/staff/tasks/show.php?id=' . h(u($task['id']))); ?>">
                   <td><?php echo h($task['task_name']); ?></td>
                   <td><?php echo h($task['task_type']); ?></td>
                   <td><?php echo h($task['task_state']); ?></td>
-                  <td><?php echo h($task['individual_id']); ?></td>
-                  <td><?php echo h($task['company_id']); ?></td>
+                  <td><?php echo h($individual['first_name']); ?></td>
+                  <td><?php echo h($company['company_name']); ?></td>
                   <td><?php echo h($task['due_date']); ?></td>
                 </tr>
               <?php } ?>
