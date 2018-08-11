@@ -298,7 +298,7 @@ function insert_company($company, $next_id){
   $sql .= "'" . db_escape($db, $company['company_url']) . "', ";
   $sql .= "'" . db_escape($db, $company['company_phone']) . "', ";
   $sql .= "'" . db_escape($db, $company['user_id']) . "'";
-  $sql .= ");";
+  $sql .= "); ";
 
   $sql .= "INSERT INTO history ";
   $sql .= "(action, company_id) ";
@@ -310,6 +310,11 @@ function insert_company($company, $next_id){
   // For Insert Statements, result is True False
   if($result){
     return true;
+  } else {
+    // INSERT failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
   }
 }
 
