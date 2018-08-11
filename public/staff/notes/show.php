@@ -7,7 +7,7 @@
   $company = find_company_by_id($note['company_id']);
   $task_set = find_all_task_individual($note['individual_id']);
   $individual = find_individual_by_id($note['individual_id']);
-  $admin = find_admin_by_id($individual['user_id']);
+  $admin = find_admin_by_id($note['user_id']);
 ?>
 <?php $page_title = "Show note"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -46,7 +46,7 @@
                 <dd><?php echo h($admin['username']); ?></dd>
               </dl>
               <dl class="list-group-item d-flex">
-                <dt class="mr-4">Note Owner</dt>
+                <dt class="mr-4">Note Employee</dt>
                 <dd><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></a></dd>
               </dl>
               <dl class="list-group-item d-flex">
