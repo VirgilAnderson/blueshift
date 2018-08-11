@@ -636,7 +636,7 @@ function insert_note($note){
   }
   $sql .= "'" . db_escape($db, $note['user_id']) . "', ";
   if($note['company_id'] == 'none'){
-    $sql .= 'NULL, ';
+    $sql .= 'NULL';
   } else {
     $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
   }
