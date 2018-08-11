@@ -6,7 +6,7 @@
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
   $company = find_company_by_id($individual['company_id']);
-  $task_set = find_all_task_individual($individual);
+  $task_set = find_all_task_individual($individual['id']);
   if($new == 0){individual_visited($individual);}
   $admin = find_admin_by_id($individual['user_id']);
   $note_set = find_all_user_notes($individual);
