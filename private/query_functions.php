@@ -98,7 +98,7 @@ function insert_individual($individual, $next_id){
   } else {
   $sql .= "'" . db_escape($db, $individual['company_id']) . "', ";
   }
-  $sql .= ");";
+  $sql .= "); ";
 
   $sql .= "INSERT INTO history ";
   $sql .= "(action, individual_id) ";
