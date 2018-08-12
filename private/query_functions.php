@@ -488,7 +488,8 @@ function find_five_task_user($admin){
   global $db;
 
   $sql = "SELECT * FROM tasks ";
-  $sql .= "WHERE user_id=" . $admin . " ";
+  $sql .= "WHERE user_id=" . $admin . " AND ";
+  $sql .= "task_state='Open' ";
   $sql .= "ORDER BY due_date DESC ";
   $sql .= "LIMIT 5";
   $result = mysqli_query($db, $sql);
