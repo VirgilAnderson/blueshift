@@ -528,9 +528,21 @@ function update_task($task){
   $sql .= "task_state='" . db_escape($db, $task['task_state']) . "', ";
   $sql .= "task_description='" . db_escape($db, $task['task_description']) . "', ";
   $sql .= "due_date='" . db_escape($db, $task['due_date']) . "', ";
-  $sql .= "individual_id='" . db_escape($db, $task['individual_id']) . "', ";
-  $sql .= "company_id='" . db_escape($db, $task['company_id']) . "', ";
-  $sql .= "user_id='" . db_escape($db, $task['user_id']) . "' ";
+  if($task['individual_id'] == 'none'){
+    $sql .= 'individual_id= NULL, ';
+  } else {
+    $sql .= "individual_id='" . db_escape($db, $task['individual_id']) . "', ";
+  }
+  if($task['company_id'] == 'none'){
+    $sql .= 'company_id= NULL, ';
+  } else {
+    $sql .= "company_id='" . db_escape($db, $task['company_id']) . "', ";
+  }
+  if($task['user_id'] == 'none'){
+    $sql .= 'user_id= NULL ';
+  } else {
+    $sql .= "user_id='" . db_escape($db, $task['user_id']) . "' ";
+  }
   $sql .= "WHERE id='" . db_escape($db, $task['id']) . "' ";
   $sql .= "LIMIT 1;";
 
