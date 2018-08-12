@@ -87,8 +87,8 @@ if(is_post_request()) {
         </div><!-- form-group -->
 
         <div class="form-group">
-          <label class="form-control-label" for="company_zip">Company URL</label>
-          <input class="form-control" type="text" name="company_url" value="<?php echo h($company['company_zip']); ?>">
+          <label class="form-control-label" for="company_url">Company URL</label>
+          <input class="form-control" type="text" name="company_url" value="<?php echo h($company['company_url']); ?>">
         </div><!-- form-group -->
 
 
