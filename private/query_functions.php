@@ -827,6 +827,17 @@ function find_history_by_task_id($id){
   return $result;
 }
 
+function find_history_by_note_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM history ";
+  $sql .= "WHERE note_id='" . $id . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 // admins
 
 function find_all_admins(){

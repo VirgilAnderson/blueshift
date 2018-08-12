@@ -8,6 +8,7 @@
   $task_set = find_all_task_individual($note['individual_id']);
   $individual = find_individual_by_id($note['individual_id']);
   $admin = find_admin_by_id($note['user_id']);
+  $history_set = find_history_by_note_id($id);
 ?>
 <?php $page_title = "Show note"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -108,10 +109,29 @@
                       </dl>
                     </div><!-- #company_pane -->
 
-                   <div id="history_pane" class="container tab-pane"><br>
-                     <h3>History</h3>
-                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                   </div><!-- #history -->
+                    <div id="history_pane" class="container tab-pane"><br>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                          <thead>
+                            <tr>
+                              <th>Time</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                          <?php while($history = mysqli_fetch_assoc($history_set)){ ?>
+                            <tr>
+                              <td><?php echo h($history['time']); ?></td>
+                              <td><?php echo h($history['action']); ?></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                        </table>
+
+                      </div><!-- .table-responsive -->
+
+                    </div><!-- #history -->
 
                    <div id="employee_pane" class="container tab-pane"><br>
                      <ul class="list-group list-group-flush">
