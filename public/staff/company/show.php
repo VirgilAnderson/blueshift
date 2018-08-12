@@ -7,7 +7,7 @@
   $individual = find_individual_by_company_id($company['id']);
   $admin = find_admin_by_id($company['user_id']);
   $task_set = find_all_task_company($company);
-  $note_set = find_all_user_notes($individual);
+  $note_set = find_all_company_notes($company);
   $history_set = find_history_by_company_id($id);
 ?>
 <?php $page_title = "Show lead"; ?>

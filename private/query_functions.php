@@ -680,6 +680,17 @@ function find_all_user_notes($individual){
   return $result;
 }
 
+function find_all_company_notes($company){
+  global $db;
+
+  $sql = "SELECT * FROM notes ";
+  $sql .= "WHERE company_id='" . db_escape($db, $company['id']) . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_note_by_id($id){
   global $db;
 
