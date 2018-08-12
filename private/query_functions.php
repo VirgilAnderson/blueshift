@@ -621,7 +621,7 @@ function last_task_id(){
 
 // notes
 
-function insert_note($note){
+function insert_note($note, $next_id){
   global $db;
 
 
@@ -640,11 +640,14 @@ function insert_note($note){
   } else {
     $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
   }
-  $sql .= ")";
+  $sql .= "); ";
 
+  $sql .= "INSERT INTO history ";
+  $sql .= "(action, note_id) ";
+  $sql .= "VALUES ('Note created', ";
+  $sql .= "'" . $next_id . "');";
 
-
-  $result = mysqli_query($db, $sql);
+  $result = mysqli_multi_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
     return true;
@@ -654,6 +657,16 @@ function insert_note($note){
     db_disconnect($db);
     exit;
   }
+}
+
+function find_all_note(){
+  global $db;
+
+  $sql = "SELECT * FROM notes ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
 }
 
 function find_all_user_notes($individual){
@@ -741,6 +754,19 @@ function insert_company_into_note($company, $id){
     exit;
   }
 }
+
+function last_note_id(){
+  $note_set = find_all_note();
+  $largest = 0;
+  while($note = mysqli_fetch_assoc($note_set)){
+    if($note['id'] > $largest){
+        $largest = $note['id'];
+    }
+  }
+
+  return $largest + 1;
+
+  }
 
 // history
 

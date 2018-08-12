@@ -7,6 +7,7 @@ $user_id = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
 $company_id = isset($_GET['company_id']) ? $_GET['company_id'] : '';
 $individual_set = find_all_user_individual($admin);
 $individual_id = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
+$next_id = last_note_id();
 
 if(is_post_request()) {
 
@@ -20,7 +21,7 @@ if(is_post_request()) {
 
 
 
-  $result = insert_note($note);
+  $result = insert_note($note, $next_id);
   if($result === true){
     $new_id = mysqli_insert_id($db);
     $_SESSION['message'] = 'The note was created successfully.';
