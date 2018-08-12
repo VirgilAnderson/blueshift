@@ -641,6 +641,9 @@ function insert_note($note){
     $sql .= "'" . db_escape($db, $note['company_id']) . "' ";
   }
   $sql .= ")";
+
+
+
   $result = mysqli_query($db, $sql);
   // For Insert Statements, result is True False
   if($result){
