@@ -325,9 +325,9 @@ function find_company_by_id($id){
   $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
-  $individual = mysqli_fetch_assoc($result);
+  $company = mysqli_fetch_assoc($result);
   mysqli_free_result($result);
-  return $individual; // Returns an associative array
+  return $company; // Returns an associative array
 }
 
 function find_all_user_company($admin){
@@ -519,6 +519,17 @@ function find_all_task_company($company){
   return $result;
 }
 
+function find_all_task_project($project){
+  global $db;
+
+  $sql = "SELECT * FROM tasks ";
+  $sql .= "WHERE project_id=" . db_escape($db, $project['id']) . " ";
+  $sql .= "ORDER BY id DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function update_task($task){
   global $db;
 
@@ -704,6 +715,17 @@ function find_all_company_notes($company){
   return $result;
 }
 
+function find_all_project_notes($project){
+  global $db;
+
+  $sql = "SELECT * FROM notes ";
+  $sql .= "WHERE project_id='" . db_escape($db, $project['id']) . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function find_note_by_id($id){
   global $db;
 
@@ -838,6 +860,17 @@ function find_history_by_note_id($id){
   return $result;
 }
 
+function find_history_by_project_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM history ";
+  $sql .= "WHERE project_id='" . $id . "' ";
+  $sql .= "ORDER BY time DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 // projects
 
 function last_project_id(){
@@ -911,6 +944,18 @@ function insert_project($project, $next_id){
     db_disconnect($db);
     exit;
   }
+}
+
+function find_project_by_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM project ";
+  $sql .= "WHERE id ='" . db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $project = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $project; // Returns an associative array
 }
 
 
