@@ -907,6 +907,20 @@ function find_all_user_project($admin){
   return $result;
 }
 
+function find_five_user_project($admin){
+  global $db;
+
+  $sql = "SELECT * FROM project ";
+  $sql .= "WHERE user_id='" . $admin . "' ";
+  $sql .= "AND project_state<>'Complete' ";
+  $sql .= "AND project_state<>'Cancelled' ";
+  $sql .= "ORDER BY id DESC ";
+  $sql .= "LIMIT 5";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function insert_project($project, $next_id){
   global $db;
 

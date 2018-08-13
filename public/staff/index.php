@@ -3,7 +3,7 @@
 <?php $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id']: ''; ?>
 <?php $individual_set = find_five_user_individual($admin);?>
 <?php $task_set = find_five_task_user($admin); ?>
-<?php $project_set = find_all_user_project($admin); ?>
+<?php $project_set = find_five_user_project($admin); ?>
 <?php $page_title = "Dashboard"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -113,13 +113,18 @@
               </thead>
               <tbody>
 
-              <?php while($project = mysqli_fetch_assoc($project_set)){ ?>
+              <?php while($project = mysqli_fetch_assoc($project_set)){
+                $company = find_company_by_id($project['company_id']);
+                $individual = find_individual_by_id($project['individual_id']);
+                $admin = find_admin_by_id($project['user_id']);
+                 ?>
+
                 <tr class='clickable-row' data-href="<?php echo url_for('/staff/projects/show.php?id=' . h(u($project['id']))); ?>">
                   <td><?php echo h($project['project_title']); ?></td>
                   <td><?php echo h($project['project_state']); ?></td>
-                  <td><?php echo h($project['company_id']); ?></td>
-                  <td><?php echo h($project['individual_id']); ?></td>
-                  <td><?php echo h($project['user_id']); ?></td>
+                  <td><?php echo h($company['company_name']); ?></td>
+                  <td><?php echo h($individual['first_name']); ?></td>
+                  <td><?php echo h($admin['username']); ?></td>
                 </tr>
               <?php } ?>
             </tbody>
