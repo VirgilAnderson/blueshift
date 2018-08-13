@@ -123,7 +123,7 @@
                   <td><?php echo h($project['project_title']); ?></td>
                   <td><?php echo h($project['project_state']); ?></td>
                   <td><?php echo h($company['company_name']); ?></td>
-                  <td><?php echo h($individual['first_name']) . h($individual['last_name']); ?></td>
+                  <td><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></td>
                   <td><?php echo h($admin['username']); ?></td>
                 </tr>
               <?php } ?>
