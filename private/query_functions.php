@@ -838,6 +838,71 @@ function find_history_by_note_id($id){
   return $result;
 }
 
+// projects
+
+function last_project_id(){
+  $project_set = find_all_project();
+  $largest = 0;
+  while($project = mysqli_fetch_assoc($project_set)){
+    if($project['id'] > $largest){
+        $largest = $project['id'];
+    }
+  }
+
+  return $largest + 1;
+
+  }
+
+function find_all_project(){
+  global $db;
+
+  $sql = "SELECT * FROM project ";
+  $sql .= "ORDER BY id DESC ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function insert_project($project, $next_id){
+  global $db;
+
+  $sql = "INSERT INTO project ";
+  $sql .= "(project_title, project_state, project_description, individual_id, company_id, user_id) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $project['project_title']) . "', ";
+  $sql .= "'" . db_escape($db, $project['project_state']) . "', ";
+  $sql .= "'" . db_escape($db, $project['project_description']) . "', ";
+  if($project['individual_id']=='none'){
+    $sql .= 'NULL, ';
+  } else {
+    $sql .= "'" . db_escape($db, $project['individual_id']) . "', ";
+  }
+  if($project['company_id']=='none'){
+    $sql .= 'NULL, ';
+  } else {
+    $sql .= "'" . db_escape($db, $project['company_id']) . "', ";
+  }
+  $sql .= "'" . db_escape($db, $project['user_id']) . "' ";
+  $sql .= "); ";
+
+  $sql .= "INSERT INTO history ";
+  $sql .= "(action, project_id) ";
+  $sql .= "VALUES ('Project Created', ";
+  $sql .= "'" . $next_id . "');";
+
+  $result = mysqli_multi_query($db, $sql);
+  // For Insert Statements, result is True False
+  if($result){
+    return true;
+  } else {
+    // INSERT failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+
 // admins
 
 function find_all_admins(){
