@@ -16,7 +16,7 @@
     $project = [];
     $project['project_title'] = isset($_POST['project_title']) ? $_POST['project_title'] : '';
     $project['project_state'] = isset($_POST['project_state']) ? $_POST['project_state'] : '';
-    $project['project_description'] = isset($_POST['project_description']) ? $_POST[''] : 'project_description';
+    $project['project_description'] = isset($_POST['project_description']) ? $_POST['project_description'] : '';
     $project['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
     $project['individual_id'] = isset($_POST['individual_id']) ? $_POST['individual_id'] : '';
     $project['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
@@ -75,7 +75,7 @@
       </div><!-- .form-group -->
 
       <div class="form-group">
-        <label for="project_source">Company:</label>
+        <label for="company_id">Company:</label>
           <select class="form-control" name="company_id">
               <option value='none'>none</option>
             <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
@@ -85,7 +85,7 @@
       </div><!-- form-group -->
 
       <div class="form-group">
-        <label for="project_source">Employee:</label>
+        <label for="individual_id">Employee:</label>
           <select class="form-control" name="individual_id">
               <option value='none'>none</option>
             <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
@@ -95,7 +95,7 @@
       </div><!-- form-group -->
 
       <div class="form-group">
-        <label for="project_source">project Owner:</label>
+        <label for="user_id">project Owner:</label>
           <select class="form-control" name="user_id">
             <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
             <option value="<?php echo h($admin['id']); ?>" ><?php echo h($admin['username']); ?></option>
