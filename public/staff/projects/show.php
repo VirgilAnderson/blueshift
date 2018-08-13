@@ -6,6 +6,8 @@
   $task_set = find_all_task_project($project);
   $note_set = find_all_project_notes($project);
   $history_set = find_history_by_project_id($id);
+  $admin_id = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
+  $admin = find_admin_by_id($admin_id);
 
  ?>
 <?php $page_title = "Show Project"; ?>
@@ -14,7 +16,7 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/projects/index.php'); ?>">Projects</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/projects/index.php'); ?>">Projectsgit </a></li>
     <li class="breadcrumb-item active"><?php echo h($project['project_title']); ?></li>
   </ol>
 </div><!-- .container mt-4 -->
@@ -57,7 +59,7 @@
 
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">Project Owner</dt>
-                <dd><?php echo h($project['user_id']); ?></dd>
+                <dd><?php echo h($admin['username']); ?></dd>
               </dl>
 
           </div><!-- .col-sm-5  -->
