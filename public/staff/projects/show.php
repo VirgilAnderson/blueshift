@@ -5,7 +5,7 @@
   $company = find_company_by_id($project['company_id']);
   $task_set = find_all_task_project($project);
   $note_set = find_all_project_notes($project);
-  //$history_set = find_history_by_project_id($id);
+  $history_set = find_history_by_project_id($id);
 
  ?>
 <?php $page_title = "Show Project"; ?>
