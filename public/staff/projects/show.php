@@ -14,7 +14,8 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item active">Projects</li>
+    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/projects/index.php'); ?>">Projects</a></li>
+    <li class="breadcrumb-item active"><?php echo h($project['project_title']); ?></li>
   </ol>
 </div><!-- .container mt-4 -->
 
@@ -225,10 +226,10 @@
         <div class="card-footer">
           <dl class="list-group-item d-flex">
             <dt class="mr-4">
-              <a class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+              <a class="card-link mr-4" href="<?php echo url_for('/staff/projects/delete.php?project_id=' . h(u($project['id']))); ?>">Delete project</a>
             </dt>
             <dt>
-              <a class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id'])) . '&company_id=' . h(u($company['id']))); ?>">Edit Employee</a>
+              <a class="card-link" href="<?php echo url_for('/staff/projects/edit.php?project_id=' . h(u($project['id']))); ?>">Edit Project</a>
             </dt>
           </dl>
         </div><!-- .card-footer -->
