@@ -15,7 +15,7 @@
 
     $project = [];
     $project['project_title'] = isset($_POST['project_title']) ? $_POST['project_title'] : '';
-    $project['project_status'] = isset($_POST['project_status']) ? $_POST['project_status'] : '';
+    $project['project_state'] = isset($_POST['project_state']) ? $_POST['project_state'] : '';
     $project['project_description'] = isset($_POST['project_description']) ? $_POST[''] : 'project_description';
     $project['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
     $project['individual_id'] = isset($_POST['individual_id']) ? $_POST['individual_id'] : '';
@@ -104,7 +104,7 @@
       </div><!-- form-group -->
 
 
-      <button class="btn btn-outline-info" type="submit">Create New Lead</button>
+      <button class="btn btn-outline-info" type="submit">Create New Project</button>
     </fieldset><!-- fieldset -->
   </form>
 </div><!-- .container -->
