@@ -105,7 +105,7 @@
                 <tr>
                   <th>Project Title</th>
                   <th>Project State</th>
-                  <th>Company</th>
+                  <th>Company Name</th>
                   <th>Employee</th>
                   <th>Project Owner</th>
 
@@ -123,7 +123,7 @@
                   <td><?php echo h($project['project_title']); ?></td>
                   <td><?php echo h($project['project_state']); ?></td>
                   <td><?php echo h($company['company_name']); ?></td>
-                  <td><?php echo h($individual['first_name']); ?></td>
+                  <td><?php echo h($individual['first_name']) . h($individual['last_name']); ?></td>
                   <td><?php echo h($admin['username']); ?></td>
                 </tr>
               <?php } ?>
