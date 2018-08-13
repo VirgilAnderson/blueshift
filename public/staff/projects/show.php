@@ -16,7 +16,7 @@
 <div class="container" style="margin-top:90px">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/index.php'); ?>">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/projects/index.php'); ?>">Projectsgit </a></li>
+    <li class="breadcrumb-item"><a href="<?php echo url_for('/staff/projects/index.php'); ?>">Projects</a></li>
     <li class="breadcrumb-item active"><?php echo h($project['project_title']); ?></li>
   </ol>
 </div><!-- .container mt-4 -->
