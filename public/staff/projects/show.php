@@ -49,12 +49,12 @@
 
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">Company</dt>
-                <dd><?php echo h($project['company_id']); ?></dd>
+                <dd><?php echo h($company['company_name']); ?></dd>
               </dl>
 
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">Employee</dt>
-                <dd><?php echo h($project['individual_id']); ?></dd>
+                <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
               </dl>
 
               <dl class="list-group-item d-flex">
@@ -70,6 +70,9 @@
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#company_pane">Company</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#employee_pane">Employees</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#task_pane">Tasks</a>
@@ -117,6 +120,42 @@
                         </dt>
                       </dl>
                     </div><!-- #company_pane -->
+
+                    <div id="employee_pane" class="container tab-pane"><br>
+                      <ul class="list-group list-group-flush">
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Employee Name</dt>
+                          <dd><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></a></dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Phone</dt>
+                          <dd><?php echo h($individual['phone_direct']); ?></dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Email</dt>
+                          <dd><?php echo h($individual['email']); ?></dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Role</dt>
+                          <dd><?php echo h($individual['role']); ?></dd>
+                        </dl>
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Lead source</dt>
+                          <dd><?php echo h($individual['lead_source']); ?></dd>
+                        </dl>
+                        <dl class="list-group-item d-flex">
+                          <dt class="mr-4">
+                            <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>
+                          </dt>
+                          <dt>
+                            <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/edit.php?id=' . h(u($individual['id']))); ?>">Edit Employee</a>
+                          </dt>
+                          <dt>
+                            <a <?php if($individual){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/new.php?company_id=' . $id); ?>">Add Employee</a>
+                          </dt>
+                        </dl>
+                      </ul>
+                    </div><!-- #employee_pane -->
 
                     <div id="task_pane" class="container tab-pane fade"><br>
                       <div class="table-responsive">
