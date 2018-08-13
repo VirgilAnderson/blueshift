@@ -1,4 +1,6 @@
 <?php require_once('../../../private/initialize.php'); ?>
+<?php $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : ''; ?>
+<?php $project_set = find_all_user_project($admin); ?>
 <?php $page_title = "Projects"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -15,81 +17,37 @@
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Projects</h2>
+          <h2>Leads</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-sm">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Due Date</th>
-                  <th>Time</th>
+                  <th>Project Title</th>
+                  <th>Project State</th>
+                  <th>Company</th>
+                  <th>Employee</th>
+                  <th>Project Owner</th>
+
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
+
+              <?php while($project = mysqli_fetch_assoc($project_set)){ ?>
+                <tr class='clickable-row' data-href="<?php echo url_for('/staff/projects/show.php?id=' . h(u($project['id']))); ?>">
+                  <td><?php echo h($project['project_title']); ?></td>
+                  <td><?php echo h($project['project_state']); ?></td>
+                  <td><?php echo h($project['company_id']); ?></td>
+                  <td><?php echo h($project['individual_id']); ?></td>
+                  <td><?php echo h($project['user_id']); ?></td>
                 </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-              </tbody>
+              <?php } ?>
+            </tbody>
             </table>
+            <?php
+              mysqli_free_result($project_set);
+             ?>
           </div><!-- .table-responsive -->
         </div><!-- .card-body -->
       </div><!-- .card -->

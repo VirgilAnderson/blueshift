@@ -61,11 +61,11 @@
       <div class="form-group">
         <label for="project_state">Project State</label>
             <select class="form-control" name="project_state">
-              <option>Not Started</option>
-              <option>In Progress</option>
-              <option>Complete</option>
-              <option>Postponed</option>
-              <option>Cancelled</option>
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Complete">Complete</option>
+              <option value="Postponed">Postponed</option>
+              <option value="Cancelled">Cancelled</option>
           </select>
       </div><!-- form-group -->
 
