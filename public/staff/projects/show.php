@@ -53,11 +53,6 @@
               </dl>
 
               <dl class="list-group-item d-flex">
-                <dt class="mr-4">Employee</dt>
-                <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
-              </dl>
-
-              <dl class="list-group-item d-flex">
                 <dt class="mr-4">Project Owner</dt>
                 <dd><?php echo h($admin['username']); ?></dd>
               </dl>
