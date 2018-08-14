@@ -9,7 +9,7 @@
   $company = find_company_by_id($task['company_id']);
   $note_set = find_all_user_notes($individual);
   $history_set = find_history_by_task_id($id);
-  $project = find_project_by_task_id($id);
+  $project = find_project_by_id($task['project_id']);
   $admin = find_admin_by_id($task['user_id']);
 ?>
 <?php $page_title = "Show lead"; ?>

@@ -419,7 +419,7 @@ function insert_task($task, $next_id){
   global $db;
 
   $sql = "INSERT INTO tasks ";
-  $sql .= "(task_name, task_type, task_state, task_description, due_date, individual_id, company_id, user_id) ";
+  $sql .= "(task_name, task_type, task_state, task_description, due_date, individual_id, company_id, project_id, user_id) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $task['task_name']) . "', ";
   $sql .= "'" . db_escape($db, $task['task_type']) . "', ";
@@ -435,6 +435,11 @@ function insert_task($task, $next_id){
     $sql .= 'NULL, ';
   } else {
     $sql .= "'" . db_escape($db, $task['company_id']) . "', ";
+  }
+  if($task['project_id'] == 'none'){
+    $sql .= 'NULL, ';
+  } else {
+    $sql .= "'" . db_escape($db, $task['project_id']) . "', ";
   }
   $sql .= "'" . db_escape($db, $task['user_id']) . "'";
   $sql .= ");";
@@ -999,8 +1004,9 @@ function find_project_by_individual_id($id){
 function find_project_by_task_id($id){
   global $db;
 
-  $sql = "SELECT * FROM tasks ";
-  $sql .= "WHERE project_id ='" . db_escape($db, $id) . "' ";
+  $sql = "SELECT * FROM project ";
+  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   $project = mysqli_fetch_assoc($result);

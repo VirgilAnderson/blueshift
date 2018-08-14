@@ -4,7 +4,9 @@ $admin_set = find_all_admins();
 $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
 $company_set = find_all_user_company($admin);
 $company_id = isset($_GET['company_id']) ? $_GET['company_id'] : '';
+$project_id = isset($_GET['project_id']) ? $_GET['project_id'] : '';
 $company = find_company_by_id($company_id);
+$project_set = find_all_user_project($admin);
 $individual_set = find_all_user_individual($admin);
 $individual_id = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
 $next_id = last_task_id();
@@ -20,6 +22,7 @@ if(is_post_request()) {
   $task['due_date'] = isset($_POST['due_date']) ? $_POST['due_date'] : '';
   $task['individual_id'] = isset($_POST['individual_id']) ? $_POST['individual_id'] : '';
   $task['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
+  $task['project_id'] = isset($_POST['project_id']) ? $_POST['project_id'] : '';
   $task['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
   $result = insert_task($task, $next_id);
@@ -97,6 +100,16 @@ if(is_post_request()) {
                 <option value='none'>none</option>
               <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
                 <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $company_id){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
+              <?php } ?>
+            </select>
+        </div><!-- form-group -->
+
+        <div class="form-group">
+          <label for="project_id">Project:</label>
+            <select class="form-control" name="project_id">
+                <option value='none'>none</option>
+              <?php while($project = mysqli_fetch_assoc($project_set)){ ?>
+                <option value="<?php echo h($project['id']); ?>" <?php if($project['id'] == $project_id){echo "selected";}?>><?php echo h($project['project_title']); ?></option>
               <?php } ?>
             </select>
         </div><!-- form-group -->
