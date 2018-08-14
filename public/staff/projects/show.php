@@ -117,7 +117,7 @@
                       </dl>
                     </div><!-- #company_pane -->
 
-                    <div id="employee_pane" class="container tab-pane active"><br>
+                    <div id="employee_pane" class="container tab-pane"><br>
                       <ul class="list-group list-group-flush">
                         <dl class="list-group-item d-flex bg-light">
                           <div class="table-responsive">
