@@ -105,7 +105,7 @@ function insert_individual($individual, $next_id){
   global $db;
 
   $sql = "INSERT INTO individual ";
-  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed, user_id, company_id) ";
+  $sql .= "(first_name, last_name, phone_direct, email, role, lead_source, viewed, user_id, company_id, project_id) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $individual['first_name']) . "', ";
   $sql .= "'" . db_escape($db, $individual['last_name']) . "', ";
@@ -116,9 +116,14 @@ function insert_individual($individual, $next_id){
   $sql .="'0', ";
   $sql .= "'" . db_escape($db, $individual['user_id']) . "', ";
   if($individual['company_id']=='none'){
+    $sql .= 'NULL, ';
+  } else {
+    $sql .= "'" . db_escape($db, $individual['company_id']) . "', ";
+  }
+  if($individual['project_id']=='none'){
     $sql .= 'NULL ';
   } else {
-    $sql .= "'" . db_escape($db, $individual['company_id']) . " '";
+    $sql .= "'" . db_escape($db, $individual['project_id']) . "'";
   }
   $sql .= "); ";
 
@@ -932,6 +937,19 @@ function find_five_user_project($admin){
   $sql .= "AND project_state<>'Cancelled' ";
   $sql .= "ORDER BY id DESC ";
   $sql .= "LIMIT 5";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function find_all_user_project($admin){
+  global $db;
+
+  $sql = "SELECT * FROM project ";
+  $sql .= "WHERE user_id='" . $admin . "' ";
+  $sql .= "AND project_state<>'Complete' ";
+  $sql .= "AND project_state<>'Cancelled' ";
+  $sql .= "ORDER BY id DESC ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
