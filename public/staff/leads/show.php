@@ -1,18 +1,37 @@
-<?php require_once('../../../private/initialize.php'); ?>
-
-<?php require_login(); ?>
-<?php
+<?php require_once('../../../private/initialize.php');
+  require_login();
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
   $company = find_company_by_id($individual['company_id']);
   $task_set = find_all_task_individual($individual['id']);
   if($new == 0){individual_visited($individual);}
-  $admin = find_admin_by_id($individual['user_id']);
+  $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
+  $user = find_admin_by_id($individual['user_id']);
   $note_set = find_all_user_notes($individual);
   $history_set = find_history_by_individual_id($id);
   $project = find_project_by_id($individual['project_id']);
+  $project_set = find_all_user_project($admin);
 
+  if(is_post_request()) {
+
+    // Handle form values submitted by new.php
+
+    $individual = [];
+    $individual['project_id'] = isset($_POST['project_id']) ? $_POST['project_id'] : '';
+
+    $result = insert_project_into_individual($individual, $id);
+    if($result === true){
+      redirect_to(url_for('/staff/leads/show.php?id=' . $id));
+    } else {
+      $errors = $result;
+
+      // var_dump($errors);
+    }
+
+  } else {
+    $individual = find_individual_by_id($id);
+  }
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -62,7 +81,7 @@
               </dl>
               <dl class="list-group-item d-flex">
                 <dt class="mr-4">Lead Owner</dt>
-                <dd><?php echo h($admin['username']); ?></dd>
+                <dd><?php echo h($user['username']); ?></dd>
               </dl>
             </ul>
           </div><!-- .col-sm-5  -->
@@ -125,8 +144,9 @@
                     </div><!-- #company_pane -->
 
                     <div id="project_pane" class="container tab-pane"><br>
-                      <ul class="list-group list-group-flush">
-                        <dl class="list-group-item d-flex bg-light">
+                      <ul class="list-group list-group-flush" <?php if(!$project){echo "style='display: none;'";} ?>>
+                        <dl class="list-group-item d-flex bg-light" >
+
                           <dt class="mr-4">Project Title</dt>
                           <dd><a href="<?php echo url_for('/staff/projects/show.php?id=' . h(u($project['id']))); ?>"><?php echo h($project['project_title']); ?></a></dd>
                         </dl>
@@ -153,7 +173,7 @@
 
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Project Owner</dt>
-                          <dd><?php echo h($admin['username']); ?></dd>
+                          <dd><?php echo h($user['username']); ?></dd>
                         </dl>
 
                         <dl class="list-group-item d-flex">
@@ -168,6 +188,26 @@
                           </dt>
                         </dl>
                       </ul>
+
+                      <!-- link to project -->
+                      <form class="col-sm-12" action="<?php echo url_for('staff/leads/show.php?id=' . h(u($id))); ?>" method="post" <?php if($project){echo "style='display: none;'";} ?>>
+                        <fieldset class="form-group">
+                        <legend>Add to project</legend>
+
+                        <div class="form-group">
+                          <label for="project_id">Select list:</label>
+                              <select class="form-control" name="project_id">
+                                <option value="none">none</option>
+                            <?php while($project_link = mysqli_fetch_assoc($project_set)){ ?>
+                                <option value="<?php echo h($project_link['id']); ?>"><?php echo h($project_link['project_title']); ?></option>
+                            <?php } ?>
+                            </select>
+                        </div><!-- form-group -->
+
+                        <button class="btn btn-outline-info" type="submit">Add <?php echo h($individual['first_name']) . " " . h($individual['last_name']);?> to project</button>
+                        </fieldset><!-- fieldset -->
+                      </form>
+
                     </div><!-- #project_pane -->
 
                     <div id="task_pane" class="container tab-pane fade"><br>

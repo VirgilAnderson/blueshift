@@ -308,6 +308,26 @@ function insert_company_into_individual($company, $id){
   }
 }
 
+function insert_project_into_individual($individual, $id){
+  global $db;
+
+  $sql = "UPDATE individual SET ";
+  $sql .= "project_id='" . db_escape($db, $individual['project_id']) .  "' ";
+  $sql .= "WHERE id='" . $id . "';";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 // companies
 
 function insert_company($company, $next_id){
