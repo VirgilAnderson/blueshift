@@ -27,7 +27,6 @@
                   <th>Project Title</th>
                   <th>Project State</th>
                   <th>Company</th>
-                  <th>Employee</th>
                   <th>Project Owner</th>
 
                 </tr>
@@ -36,14 +35,14 @@
 
               <?php while($project = mysqli_fetch_assoc($project_set)){
                 $company = find_company_by_id($project['company_id']);
-                $individual = find_individual_by_id($project['individual_id']);
+                
                 $admin = find_admin_by_id($project['user_id']);
                 ?>
                 <tr class='clickable-row' data-href="<?php echo url_for('/staff/projects/show.php?id=' . h(u($project['id']))); ?>">
                   <td><?php echo h($project['project_title']); ?></td>
                   <td><?php echo h($project['project_state']); ?></td>
                   <td><?php echo h($company['company_name']); ?></td>
-                  <td><?php echo h($individual['first_name']); ?></td>
+
                   <td><?php echo h($admin['username']); ?></td>
                 </tr>
               <?php } ?>
