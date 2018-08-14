@@ -190,7 +190,7 @@
 
                       <dl class="list-group-item d-flex bg-light">
                         <dt class="mr-4">
-                          <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?individual_id=' . h(u($individual['id']))) . '&company_id=' . h(u($company['id'])) . '$project_id=' . h(u($project['id'])); ?>">Add Task</a>
+                          <a class="card-link" href="<?php echo url_for('/staff/tasks/new.php?individual_id=' . h(u($individual['id']))) . '&company_id=' . h(u($company['id'])) . '&project_id=' . h(u($project['id'])); ?>">Add Task</a>
                         </dt>
                       </dl>
                       <?php
