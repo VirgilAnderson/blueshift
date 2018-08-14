@@ -1006,12 +1006,49 @@ function find_project_by_task_id($id){
 
   $sql = "SELECT * FROM project ";
   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-  
+
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   $project = mysqli_fetch_assoc($result);
   mysqli_free_result($result);
   return $project; // Returns an associative array
+}
+
+function update_project($project){
+  global $db;
+
+  $sql = "UPDATE project SET ";
+  $sql .= "project_title='" . db_escape($db, $project['project_title']) . "', ";
+  $sql .= "project_state='" . db_escape($db, $project['project_state']) . "', ";
+  $sql .="project_description='" . db_escape($db, $project['project_description']) . "', ";
+  if($project['company_id'] == 'none'){
+    $sql .= 'company_id=NULL, ';
+  } else {
+    $sql .="company_id='" . db_escape($db, $project['company_id']) . "', ";
+  }
+  if($project['individual_id'] == 'none'){
+    $sql .= 'individual_id=NULL, ';
+  } else {
+    $sql .="individual_id='" . db_escape($db, $project['individual_id']) . "', ";
+  }
+  if($project['user_id'] == 'none'){
+    $sql .= 'user_id=NULL, ';
+  } else {
+    $sql .="user_id='" . db_escape($db, $project['user_id']) . "', ";
+  }
+  $sql .= "WHERE id='" . db_escape($db, $project['id']) . "'; ";
+
+  $result = mysqli_query($db, $sql);
+  // For UPDATE Statements, result is true/false
+
+  if($result){
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
 }
 
 

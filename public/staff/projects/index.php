@@ -17,7 +17,7 @@
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Leads</h2>
+          <h2>Projects</h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
