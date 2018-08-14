@@ -26,7 +26,7 @@
 
 
 
-    $result = insert_project($project);
+    $result = update_project($project);
     if($result === true){
       $new_id = mysqli_insert_id($db);
       $_SESSION['message'] = 'The project was created successfully.';
@@ -96,8 +96,9 @@
         <div class="form-group">
           <label for="user_id">project Owner:</label>
             <select class="form-control" name="user_id">
+              <option value='none'>none</option>
               <?php while($admin = mysqli_fetch_assoc($admin_set)){ ?>
-              <option value="<?php echo h($admin['id']); ?>" ><?php echo h($admin['username']); ?></option>
+              <option value="<?php echo h($admin['id']) . '" '; if($admin['id'] == $project['user_id']){echo "selected";} ?> ><?php echo h($admin['username']); ?></option>
               <?php } ?>
             </select>
         </div><!-- form-group -->
