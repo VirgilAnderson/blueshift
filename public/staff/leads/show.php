@@ -11,7 +11,8 @@
   $admin = find_admin_by_id($individual['user_id']);
   $note_set = find_all_user_notes($individual);
   $history_set = find_history_by_individual_id($id);
-  $project = find_project_by_individual_id($id);
+  $project = find_project_by_id($individual['project_id']);
+
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>

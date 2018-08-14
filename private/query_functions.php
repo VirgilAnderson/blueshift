@@ -923,17 +923,6 @@ function find_all_project(){
   return $result;
 }
 
-function find_all_user_project($admin){
-  global $db;
-
-  $sql = "SELECT * FROM project ";
-  $sql .= "WHERE user_id=" . $admin . " ";
-  $sql .= "ORDER BY id DESC";
-  $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
-  return $result;
-}
-
 function find_five_user_project($admin){
   global $db;
 
