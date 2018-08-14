@@ -996,6 +996,18 @@ function find_project_by_individual_id($id){
   return $project; // Returns an associative array
 }
 
+function find_project_by_task_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM tasks ";
+  $sql .= "WHERE project_id ='" . db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $project = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $project; // Returns an associative array
+}
+
 
 // admins
 
