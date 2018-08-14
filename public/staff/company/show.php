@@ -9,6 +9,7 @@
   $task_set = find_all_task_company($company);
   $note_set = find_all_company_notes($company);
   $history_set = find_history_by_company_id($id);
+  $project = find_project_by_company_id($id);
 ?>
 <?php $page_title = "Show lead"; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>t>
@@ -71,6 +72,9 @@
                     <a class="nav-link active" data-toggle="tab" href="#employee_pane">Employees</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#project_pane">Project</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#history_pane">History</a>
                   </li>
                   <li class="nav-item">
@@ -118,6 +122,52 @@
                         </dl>
                       </ul>
                     </div><!-- #employee_pane -->
+
+                    <div id="project_pane" class="container tab-pane"><br>
+                      <ul class="list-group list-group-flush">
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Project Title</dt>
+                          <dd><a href="<?php echo url_for('/staff/projects/show.php?id=' . h(u($project['id']))); ?>"><?php echo h($project['project_title']); ?></a></dd>
+                        </dl>
+
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Project State</dt>
+                          <dd><?php echo h($project['project_state']); ?></dd>
+                        </dl>
+
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Project Description</dt>
+                          <dd><?php echo h($project['project_description']); ?></dd>
+                        </dl>
+
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Company</dt>
+                          <dd><?php echo h($company['company_name']); ?></dd>
+                        </dl>
+
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Employee</dt>
+                          <dd><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></dd>
+                        </dl>
+
+                        <dl class="list-group-item d-flex bg-light">
+                          <dt class="mr-4">Project Owner</dt>
+                          <dd><?php echo h($admin['username']); ?></dd>
+                        </dl>
+
+                        <dl class="list-group-item d-flex">
+                          <dt class="mr-4">
+                            <a <?php if(!$project){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/projects/delete.php?id=' . h(u($project['id']))); ?>">Delete Project</a>
+                          </dt>
+                          <dt>
+                            <a <?php if(!$project){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/projects/edit.php?id=' . h(u($project['id']))); ?>">Edit Project</a>
+                          </dt>
+                          <dt>
+                            <a <?php if($project){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/projects/new.php?company_id=' . $id); ?>">Add Project</a>
+                          </dt>
+                        </dl>
+                      </ul>
+                    </div><!-- #project_pane -->
 
                     <div id="history_pane" class="container tab-pane"><br>
                       <div class="table-responsive">
