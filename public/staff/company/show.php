@@ -4,7 +4,7 @@
 <?php
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
   $company = find_company_by_id($id);
-  $individual = find_individual_by_company_id($company['id']);
+  $individual_set = find_all_company_individual($company['id']);
   $admin = find_admin_by_id($company['user_id']);
   $task_set = find_all_task_company($company);
   $note_set = find_all_company_notes($company);
@@ -90,25 +90,28 @@
                     <div id="employee_pane" class="container tab-pane active"><br>
                       <ul class="list-group list-group-flush">
                         <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Employee Name</dt>
-                          <dd><a href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>"><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></a></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Phone</dt>
-                          <dd><?php echo h($individual['phone_direct']); ?></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Email</dt>
-                          <dd><?php echo h($individual['email']); ?></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Role</dt>
-                          <dd><?php echo h($individual['role']); ?></dd>
-                        </dl>
-                        <dl class="list-group-item d-flex bg-light">
-                          <dt class="mr-4">Lead source</dt>
-                          <dd><?php echo h($individual['lead_source']); ?></dd>
-                        </dl>
+                          <div class="table-responsive">
+                            <table class="table table-hover table-sm">
+                              <thead>
+                                <tr>
+                                  <th></th>
+                                  <th>First Name</th>
+                                  <th>Last Name</th>
+                                  <th>Role</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                              <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
+                                <tr class='clickable-row' data-href="<?php echo url_for('/staff/leads/show.php?id=' . h(u($individual['id']))); ?>">
+                                  <td><?php if($individual['viewed'] == 0){ echo "<span class='badge badge-info'>new</span> ";} ?></td>
+                                  <td><?php echo h($individual['first_name']); ?></td>
+                                  <td><?php echo h($individual['last_name']); ?></td>
+                                  <td><?php echo h($individual['role']); ?></td>
+                                </tr>
+                              <?php } ?>
+                            </tbody>
+                            </table>
                         <dl class="list-group-item d-flex">
                           <dt class="mr-4">
                             <a <?php if(!$individual){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/leads/delete.php?id=' . h(u($individual['id']))); ?>">Delete Employee</a>

@@ -79,6 +79,17 @@ function find_individual_by_company_id($id){
   return $individual; // Returns an associative array
 }
 
+function find_all_company_individual($id){
+  global $db;
+
+  $sql = "SELECT * FROM individual ";
+  $sql .= "WHERE company_id ='" . db_escape($db, $id) . "' ";
+  $sql .= "ORDER BY id DESC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result; // Returns an associative array
+}
+
 function insert_individual($individual, $next_id){
   global $db;
 
