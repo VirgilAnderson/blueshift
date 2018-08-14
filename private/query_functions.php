@@ -1032,9 +1032,9 @@ function update_project($project){
     $sql .="individual_id='" . db_escape($db, $project['individual_id']) . "', ";
   }
   if($project['user_id'] == 'none'){
-    $sql .= 'user_id=NULL, ';
+    $sql .= 'user_id=NULL ';
   } else {
-    $sql .="user_id='" . db_escape($db, $project['user_id']) . "', ";
+    $sql .="user_id='" . db_escape($db, $project['user_id']) . "' ";
   }
   $sql .= "WHERE id='" . db_escape($db, $project['id']) . "'; ";
 

@@ -1,5 +1,5 @@
 <?php require_once('../../../private/initialize.php');
-  $id = isset($_GET['project_id']) ? $_GET['project_id'] : '';
+  $id = isset($_GET['id']) ? $_GET['id'] : '';
   $admin_set = find_all_admins();
   $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
   $project = find_project_by_id($id);
@@ -8,7 +8,7 @@
   $company = find_company_by_id($company_id);
   $individual_set = find_all_user_individual($admin);
   $individual_id = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
-  if(!isset($_GET['project_id'])){
+  if(!isset($_GET['id'])){
     redirect_to(url_for('/staff/projects/index.php'));
   }
 
@@ -17,6 +17,7 @@
     // Handle form values submitted by new.php
 
     $project = [];
+    $project['id'] = $id;
     $project['project_title'] = isset($_POST['project_title']) ? $_POST['project_title'] : '';
     $project['project_state'] = isset($_POST['project_state']) ? $_POST['project_state'] : '';
     $project['project_description'] = isset($_POST['project_description']) ? $_POST['project_description'] : '';
@@ -24,13 +25,10 @@
     $project['individual_id'] = isset($_POST['individual_id']) ? $_POST['individual_id'] : '';
     $project['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
-
-
     $result = update_project($project);
     if($result === true){
-      $new_id = mysqli_insert_id($db);
-      $_SESSION['message'] = 'The project was created successfully.';
-      redirect_to(url_for('/staff/projects/show.php?id=' . $new_id));
+      $_SESSION['message'] = 'The project was updated successfully.';
+      redirect_to(url_for('/staff/projects/show.php?id=' . $id));
     } else {
       $errors = $result;
     }

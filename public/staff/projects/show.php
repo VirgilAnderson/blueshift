@@ -267,10 +267,10 @@
         <div class="card-footer">
           <dl class="list-group-item d-flex">
             <dt class="mr-4">
-              <a class="card-link mr-4" href="<?php echo url_for('/staff/projects/delete.php?project_id=' . h(u($project['id']))); ?>">Delete project</a>
+              <a class="card-link mr-4" href="<?php echo url_for('/staff/projects/delete.php?id=' . h(u($project['id']))); ?>">Delete project</a>
             </dt>
             <dt>
-              <a class="card-link" href="<?php echo url_for('/staff/projects/edit.php?project_id=' . h(u($project['id'])) . '&individual_id=' . h(u($project['individual_id'])) . '&company_id=' . h(u($project['company_id']))); ?>">Edit Project</a>
+              <a class="card-link" href="<?php echo url_for('/staff/projects/edit.php?id=' . h(u($project['id'])) . '&individual_id=' . h(u($project['individual_id'])) . '&company_id=' . h(u($project['company_id']))); ?>">Edit Project</a>
             </dt>
           </dl>
         </div><!-- .card-footer -->
