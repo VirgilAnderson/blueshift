@@ -1100,6 +1100,26 @@ function update_project($project){
   }
 }
 
+function delete_project($id){
+  global $db;
+
+  $sql .= "DELETE FROM project ";
+  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  $sql .= "LIMIT 1;";
+
+  $result = mysqli_multi_query($db, $sql);
+
+  // For DELETE statements, $result is true/false
+  if($result){
+    return true;
+  } else {
+    // DELETE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 
 // admins
 
