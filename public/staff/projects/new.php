@@ -5,8 +5,6 @@
   $company_set = find_all_user_company($admin);
   $company_id = isset($_GET['company_id']) ? $_GET['company_id'] : '';
   $company = find_company_by_id($company_id);
-  $individual_set = find_all_user_individual($admin);
-  $individual_id = isset($_GET['individual_id']) ? $_GET['individual_id'] : '';
   $next_id = last_project_id();
 
   if(is_post_request()) {
@@ -18,7 +16,6 @@
     $project['project_state'] = isset($_POST['project_state']) ? $_POST['project_state'] : '';
     $project['project_description'] = isset($_POST['project_description']) ? $_POST['project_description'] : '';
     $project['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
-    $project['individual_id'] = isset($_POST['individual_id']) ? $_POST['individual_id'] : '';
     $project['user_id'] = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
 
@@ -80,16 +77,6 @@
               <option value='none'>none</option>
             <?php while($company = mysqli_fetch_assoc($company_set)){ ?>
               <option value="<?php echo h($company['id']); ?>" <?php if($company['id'] == $company_id){echo "selected";}?>><?php echo h($company['company_name']); ?></option>
-            <?php } ?>
-          </select>
-      </div><!-- form-group -->
-
-      <div class="form-group">
-        <label for="individual_id">Employee:</label>
-          <select class="form-control" name="individual_id">
-              <option value='none'>none</option>
-            <?php while($individual = mysqli_fetch_assoc($individual_set)){ ?>
-              <option value="<?php echo h($individual['id']); ?>" <?php if($individual['id'] == $individual_id){echo "selected";}?>><?php echo h($individual['first_name']) . " " . h($individual['last_name']); ?></option>
             <?php } ?>
           </select>
       </div><!-- form-group -->

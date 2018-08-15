@@ -979,16 +979,11 @@ function insert_project($project, $next_id){
   global $db;
 
   $sql = "INSERT INTO project ";
-  $sql .= "(project_title, project_state, project_description, individual_id, company_id, user_id) ";
+  $sql .= "(project_title, project_state, project_description, company_id, user_id) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $project['project_title']) . "', ";
   $sql .= "'" . db_escape($db, $project['project_state']) . "', ";
   $sql .= "'" . db_escape($db, $project['project_description']) . "', ";
-  if($project['individual_id']=='none'){
-    $sql .= 'NULL, ';
-  } else {
-    $sql .= "'" . db_escape($db, $project['individual_id']) . "', ";
-  }
   if($project['company_id']=='none'){
     $sql .= 'NULL, ';
   } else {
@@ -1074,11 +1069,6 @@ function update_project($project){
     $sql .= 'company_id=NULL, ';
   } else {
     $sql .="company_id='" . db_escape($db, $project['company_id']) . "', ";
-  }
-  if($project['individual_id'] == 'none'){
-    $sql .= 'individual_id=NULL, ';
-  } else {
-    $sql .="individual_id='" . db_escape($db, $project['individual_id']) . "', ";
   }
   if($project['user_id'] == 'none'){
     $sql .= 'user_id=NULL ';
