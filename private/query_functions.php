@@ -288,11 +288,11 @@ function shift_subject_position($start_pos, $end_pos, $current_id=0) {
   }
 }
 
-function insert_company_into_individual($company, $id){
+function insert_company_into_individual($individual, $id){
   global $db;
 
   $sql = "UPDATE individual SET ";
-  $sql .= "company_id='" . db_escape($db, $company['company_id']) .  "' ";
+  $sql .= "company_id='" . db_escape($db, $individual['company_id']) .  "' ";
   $sql .= "WHERE id='" . $id . "';";
 
   $result = mysqli_query($db, $sql);

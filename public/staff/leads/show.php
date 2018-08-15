@@ -1,9 +1,11 @@
 <?php require_once('../../../private/initialize.php');
   require_login();
   $id = isset($_GET['id']) ? $_GET['id'] : '1';
+  $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
   $new = isset($_GET['new']) ? $_GET['new'] : '0';
   $individual = find_individual_by_id($id);
   $company = find_company_by_id($individual['company_id']);
+  $company_set = find_all_user_company($admin);
   $task_set = find_all_task_individual($individual['id']);
   if($new == 0){individual_visited($individual);}
   $admin = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : '';
@@ -15,19 +17,36 @@
 
   if(is_post_request()) {
 
-    // Handle form values submitted by new.php
+    // Submit insert project form
+    if(isset($_POST['insert_project'])){
+      $individual = [];
+      $individual['project_id'] = isset($_POST['project_id']) ? $_POST['project_id'] : '';
 
-    $individual = [];
-    $individual['project_id'] = isset($_POST['project_id']) ? $_POST['project_id'] : '';
+      $result = insert_project_into_individual($individual, $id);
+      if($result === true){
+        redirect_to(url_for('/staff/leads/show.php?id=' . $id));
+      } else {
+        $errors = $result;
 
-    $result = insert_project_into_individual($individual, $id);
-    if($result === true){
-      redirect_to(url_for('/staff/leads/show.php?id=' . $id));
-    } else {
-      $errors = $result;
-
-      // var_dump($errors);
+        // var_dump($errors);
+      }
     }
+
+    // Submit insert company form
+    if(isset($_POST['insert_company'])){
+      $individual = [];
+      $individual['company_id'] = isset($_POST['company_id']) ? $_POST['company_id'] : '';
+
+      $result = insert_company_into_individual($individual, $id);
+      if($result === true){
+        redirect_to(url_for('/staff/leads/show.php?id=' . $id));
+      } else {
+        $errors = $result;
+
+        // var_dump($errors);
+      }
+    }
+
 
   } else {
     $individual = find_individual_by_id($id);
@@ -111,7 +130,7 @@
                 <div class="card-body">
                   <div class="tab-content">
                     <div id="company_pane" class="container tab-pane active"><br>
-                      <ul class="list-group list-group-flush">
+                      <ul class="list-group list-group-flush" <?php if(!$company){echo "style='display: none;'";} ?>>
                         <dl class="list-group-item d-flex bg-light">
                           <dt class="mr-4">Company Name</dt>
                           <dd><a href="<?php echo url_for('/staff/company/show.php?id=' . h(u($company['id']))); ?>"><?php echo h($company['company_name']); ?></a></dd>
@@ -128,12 +147,9 @@
                           <dt class="mr-4">Phone</dt>
                           <dd><?php echo h($company['company_phone']); ?></dd>
                         </dl>
-                      </ul>
+
 
                       <dl class="list-group-item d-flex bg-light">
-                        <dt class="mr-4">
-                          <a <?php if($company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/leads/link.php?id=' . h(u($individual['id']))); ?>">Set As Company Contact</a>
-                        </dt>
                         <dt class="mr-4">
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link mr-4" href="<?php echo url_for('/staff/company/delete.php?id=' . h(u($company['id']))); ?>">Delete Company</a>
                         </dt>
@@ -141,6 +157,28 @@
                           <a <?php if(!$company){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/company/edit.php?id=' . h(u($company['id']))); ?>">Edit Company</a>
                         </dt>
                       </dl>
+                      </ul>
+
+                      <!-- link to company -->
+                      <form class="col-sm-12" action="<?php echo url_for('staff/leads/show.php?id=' . h(u($id))); ?>" method="post" <?php if($company){echo "style='display: none;'";} ?>>
+                        <fieldset class="form-group">
+                        <legend>Link to company</legend>
+
+                        <div class="form-group">
+                          <label for="company_id">Select list:</label>
+                              <select class="form-control" name="company_id">
+                                <option value="none">none</option>
+                            <?php while($company_link = mysqli_fetch_assoc($company_set)){ ?>
+                                <option value="<?php echo h($company_link['id']); ?>" <?php if($company_link['id'] == $company['id']){echo "selected";} ?>><?php echo h($company_link['company_name']); ?></option>
+                            <?php } ?>
+                            </select>
+                        </div><!-- form-group -->
+
+                        <button class="btn btn-outline-info" type="submit" name="insert_company">Add <?php echo h($individual['first_name']) . " " . h($individual['last_name']);?> to company</button>
+                        </fieldset><!-- fieldset -->
+                      </form>
+
+
                     </div><!-- #company_pane -->
 
                     <div id="project_pane" class="container tab-pane"><br>
@@ -183,9 +221,6 @@
                           <dt>
                             <a <?php if(!$project){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/projects/edit.php?id=' . h(u($project['id']))); ?>">Edit Project</a>
                           </dt>
-                          <dt>
-                            <a <?php if($project){echo 'style="display: none;"';} ?> class="card-link" href="<?php echo url_for('/staff/projects/new.php?company_id=' . $id); ?>">Add Project</a>
-                          </dt>
                         </dl>
                       </ul>
 
@@ -199,12 +234,12 @@
                               <select class="form-control" name="project_id">
                                 <option value="none">none</option>
                             <?php while($project_link = mysqli_fetch_assoc($project_set)){ ?>
-                                <option value="<?php echo h($project_link['id']); ?>"><?php echo h($project_link['project_title']); ?></option>
+                                <option value="<?php echo h($project_link['id']); ?>" <?php if($project_link['id'] == $project['id']) {echo "selected"; } ?>><?php echo h($project_link['project_title']); ?></option>
                             <?php } ?>
                             </select>
                         </div><!-- form-group -->
 
-                        <button class="btn btn-outline-info" type="submit">Add <?php echo h($individual['first_name']) . " " . h($individual['last_name']);?> to project</button>
+                        <button class="btn btn-outline-info" type="submit" name="insert_project">Add <?php echo h($individual['first_name']) . " " . h($individual['last_name']);?> to project</button>
                         </fieldset><!-- fieldset -->
                       </form>
 
