@@ -269,7 +269,7 @@
               <a class="card-link mr-4" href="<?php echo url_for('/staff/projects/delete.php?id=' . h(u($project['id']))); ?>">Delete project</a>
             </dt>
             <dt>
-              <a class="card-link" href="<?php echo url_for('/staff/projects/edit.php?id=' . h(u($project['id'])) . '&individual_id=' . h(u($project['individual_id'])) . '&company_id=' . h(u($project['company_id']))); ?>">Edit Project</a>
+              <a class="card-link" href="<?php echo url_for('/staff/projects/edit.php?id=' . h(u($project['id'])) . '&company_id=' . h(u($project['company_id']))); ?>">Edit Project</a>
             </dt>
           </dl>
         </div><!-- .card-footer -->
