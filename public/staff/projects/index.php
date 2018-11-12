@@ -17,7 +17,7 @@
     <div class="container col-12 mb-4">
       <div class="card">
         <div class="card-header">
-          <h2>Projects</h2>
+          <h2>Projects </h2>
         </div><!-- .card-header -->
         <div class="card-body">
           <div class="table-responsive">
@@ -35,7 +35,7 @@
 
               <?php while($project = mysqli_fetch_assoc($project_set)){
                 $company = find_company_by_id($project['company_id']);
-                
+
                 $admin = find_admin_by_id($project['user_id']);
                 ?>
                 <tr class='clickable-row' data-href="<?php echo url_for('/staff/projects/show.php?id=' . h(u($project['id']))); ?>">
